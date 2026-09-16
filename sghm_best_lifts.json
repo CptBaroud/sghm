@@ -1,0 +1,545 @@
+{
+  "athletes": [
+    {
+      "requestedAs": "COUËDEL Marine",
+      "matchedName": "Marine Couëdel",
+      "found": true,
+      "bestSBDByTier": {
+        "national": {
+          "date": "2025-04-19",
+          "federation": "FFForce",
+          "meetName": "Championnats de France Jeunes de Force Athlétique",
+          "meetCountry": "France",
+          "meetTown": "Villenave-d'Ornon",
+          "division": "Juniors",
+          "ageClass": "20-23",
+          "weightClassKg": "76",
+          "bodyweightKg": 70.82,
+          "equipment": "Raw",
+          "squatKg": 137.5,
+          "benchKg": 85.0,
+          "deadliftKg": 172.5,
+          "totalKg": 395.0,
+          "place": "10",
+          "goodlift": 80.68,
+          "tier": "national"
+        },
+        "regional": {
+          "date": "2025-10-25",
+          "federation": "FFForce",
+          "meetName": "Challenge de Rezé Jeunes Mixtes",
+          "meetCountry": "France",
+          "meetTown": "Rezé",
+          "division": "Juniors",
+          "ageClass": "20-23",
+          "weightClassKg": "69",
+          "bodyweightKg": 67.82,
+          "equipment": "Raw",
+          "squatKg": 137.5,
+          "benchKg": 92.5,
+          "deadliftKg": 170.0,
+          "totalKg": 400.0,
+          "place": "1",
+          "goodlift": 83.68,
+          "tier": "regional"
+        }
+      },
+      "bestBenchByTier": {
+        "national": {
+          "date": "2026-02-26",
+          "federation": "FFForce",
+          "meetName": "Championnats de France de Développé Couché",
+          "meetCountry": "France",
+          "meetTown": "Le Crès",
+          "division": "Juniors",
+          "ageClass": "20-23",
+          "weightClassKg": "69",
+          "bodyweightKg": 66.8,
+          "equipment": "Raw",
+          "benchKg": 92.5,
+          "place": "4",
+          "goodlift": 74.87,
+          "tier": "national"
+        },
+        "regional": {
+          "date": "2024-05-04",
+          "federation": "FFForce",
+          "meetName": "Championnat Régional DC/BP Ligérienne",
+          "meetCountry": "France",
+          "meetTown": "Guérande",
+          "division": "Juniors",
+          "ageClass": "20-23",
+          "weightClassKg": "76",
+          "bodyweightKg": 74.81,
+          "equipment": "Raw",
+          "benchKg": 92.5,
+          "place": "1",
+          "goodlift": 71.44,
+          "tier": "regional"
+        }
+      }
+    },
+    {
+      "requestedAs": "FOUCHER Yann",
+      "matchedName": null,
+      "found": false,
+      "bestSBDByTier": {},
+      "bestBenchByTier": {},
+      "note": "No matching row found in the OpenIPF export under this name or common spelling variants."
+    },
+    {
+      "requestedAs": "LECUYER teddy",
+      "matchedName": "Teddy Lecuyer",
+      "found": true,
+      "bestSBDByTier": {},
+      "bestBenchByTier": {
+        "regional": {
+          "date": "2025-05-24",
+          "federation": "FFForce",
+          "meetName": "Championnats Départementaux DC/BP Ligérienne",
+          "meetCountry": "France",
+          "meetTown": "Challans",
+          "division": "Seniors",
+          "ageClass": "35-39",
+          "weightClassKg": "93",
+          "bodyweightKg": 90.75,
+          "equipment": "Raw",
+          "benchKg": 135.0,
+          "place": "2",
+          "goodlift": 64.83,
+          "tier": "regional"
+        }
+      }
+    },
+    {
+      "requestedAs": "ADAM Patrice",
+      "matchedName": "Patrice Adam",
+      "found": true,
+      "bestSBDByTier": {
+        "international": {
+          "date": "2008-07-01",
+          "federation": "EPF",
+          "meetName": "European Masters Powerlifting Championships",
+          "meetCountry": "Luxembourg",
+          "meetTown": "Hamm",
+          "division": "Masters 1",
+          "ageClass": "40-44",
+          "weightClassKg": "67.5",
+          "bodyweightKg": 67.13,
+          "equipment": "Single-ply",
+          "squatKg": 185.0,
+          "benchKg": 135.0,
+          "deadliftKg": 225.0,
+          "totalKg": 545.0,
+          "place": "4",
+          "goodlift": 72.13,
+          "tier": "international"
+        }
+      },
+      "bestBenchByTier": {
+        "national": {
+          "date": "2024-02-23",
+          "federation": "FFForce",
+          "meetName": "Championnats de France de Développé Couché",
+          "meetCountry": "France",
+          "meetTown": "Châteaubernard",
+          "division": "Masters 2",
+          "ageClass": "55-59",
+          "weightClassKg": "74",
+          "bodyweightKg": 73.62,
+          "equipment": "Raw",
+          "benchKg": 130.0,
+          "place": "4",
+          "goodlift": 69.52,
+          "tier": "national"
+        },
+        "regional": {
+          "date": "2024-12-07",
+          "federation": "FFForce",
+          "meetName": "Grand prix des marais salants",
+          "meetCountry": "France",
+          "meetTown": "Guérande",
+          "division": "Masters 2",
+          "ageClass": "55-59",
+          "weightClassKg": "74",
+          "bodyweightKg": 71.9,
+          "equipment": "Raw",
+          "benchKg": 125.0,
+          "place": "1",
+          "goodlift": 67.69,
+          "tier": "regional"
+        }
+      }
+    },
+    {
+      "requestedAs": "BODIN Serge",
+      "matchedName": "Serge Bodin",
+      "found": true,
+      "bestSBDByTier": {},
+      "bestBenchByTier": {
+        "national": {
+          "date": "2018-06-02",
+          "federation": "FFForce",
+          "meetName": "Championnats de France Développé Couché",
+          "meetCountry": "France",
+          "meetTown": "Albi",
+          "division": "Masters 3",
+          "ageClass": "60-64",
+          "weightClassKg": "105",
+          "bodyweightKg": 98.76,
+          "equipment": "Raw",
+          "benchKg": 127.5,
+          "place": "4",
+          "goodlift": 58.76,
+          "tier": "national"
+        },
+        "regional": {
+          "date": "2018-11-17",
+          "federation": "FFForce",
+          "meetName": "Départemental DC BP Ligérienne",
+          "meetCountry": "France",
+          "meetTown": "Guérande",
+          "division": "Masters 3",
+          "ageClass": "60-64",
+          "weightClassKg": "105",
+          "bodyweightKg": 98.9,
+          "equipment": "Raw",
+          "benchKg": 125.0,
+          "place": "1",
+          "goodlift": 57.57,
+          "tier": "regional"
+        }
+      }
+    },
+    {
+      "requestedAs": "LEITERER Gérad",
+      "matchedName": "Gérard Leiterer",
+      "found": true,
+      "bestSBDByTier": {},
+      "bestBenchByTier": {
+        "national": {
+          "date": "2020-02-15",
+          "federation": "FFForce",
+          "meetName": "Championnats de France Powerlifting / Bench Press",
+          "meetCountry": "France",
+          "meetTown": "Pontoise",
+          "division": "Masters 3",
+          "ageClass": "65-69",
+          "weightClassKg": "83",
+          "bodyweightKg": 79.7,
+          "equipment": "Single-ply",
+          "benchKg": 150.0,
+          "place": "2",
+          "goodlift": 55.01,
+          "tier": "national"
+        },
+        "regional": {
+          "date": "2019-12-21",
+          "federation": "FFForce",
+          "meetName": "Régional DC BP Ligérienne",
+          "meetCountry": "France",
+          "meetTown": "Saint-Joachim",
+          "division": "Masters 3",
+          "ageClass": "65-69",
+          "weightClassKg": "83",
+          "bodyweightKg": 77.25,
+          "equipment": "Single-ply",
+          "benchKg": 140.0,
+          "place": "1",
+          "goodlift": 52.61,
+          "tier": "regional"
+        }
+      }
+    },
+    {
+      "requestedAs": "CELLE Lénaïg",
+      "matchedName": "Lenaïg Celle",
+      "found": true,
+      "bestSBDByTier": {
+        "national": {
+          "date": "2025-12-17",
+          "federation": "FFForce",
+          "meetName": "Championnats de France de Force Athlétique Open",
+          "meetCountry": "France",
+          "meetTown": "Marseille",
+          "division": "Open",
+          "ageClass": "24-34",
+          "weightClassKg": "47",
+          "bodyweightKg": 45.97,
+          "equipment": "Raw",
+          "squatKg": 95.0,
+          "benchKg": 62.5,
+          "deadliftKg": 150.0,
+          "totalKg": 307.5,
+          "place": "9",
+          "goodlift": 87.16,
+          "tier": "national"
+        },
+        "regional": {
+          "date": "2026-04-18",
+          "federation": "FFForce",
+          "meetName": "Grand Prix des Pays de la Loire",
+          "meetCountry": "France",
+          "meetTown": "Nantes",
+          "division": "Seniors",
+          "ageClass": "24-34",
+          "weightClassKg": "47",
+          "bodyweightKg": 46.88,
+          "equipment": "Raw",
+          "squatKg": 105.0,
+          "benchKg": 65.0,
+          "deadliftKg": 160.0,
+          "totalKg": 330.0,
+          "place": "1",
+          "goodlift": 91.71,
+          "tier": "regional"
+        }
+      },
+      "bestBenchByTier": {
+        "national": {
+          "date": "2026-02-26",
+          "federation": "FFForce",
+          "meetName": "Championnats de France de Développé Couché",
+          "meetCountry": "France",
+          "meetTown": "Le Crès",
+          "division": "Open",
+          "ageClass": "24-34",
+          "weightClassKg": "47",
+          "bodyweightKg": 46.75,
+          "equipment": "Raw",
+          "benchKg": 60.0,
+          "place": "3",
+          "goodlift": 63.98,
+          "tier": "national"
+        },
+        "regional": {
+          "date": "2025-11-15",
+          "federation": "FFForce",
+          "meetName": "Championnat Régional DC/BP Ligérienne",
+          "meetCountry": "France",
+          "meetTown": "La Bugallière",
+          "division": "Seniors",
+          "ageClass": "24-34",
+          "weightClassKg": "47",
+          "bodyweightKg": 46.7,
+          "equipment": "Raw",
+          "benchKg": 62.5,
+          "place": "1",
+          "goodlift": 66.72,
+          "tier": "regional"
+        }
+      }
+    },
+    {
+      "requestedAs": "JALTIER Celiane",
+      "matchedName": "Céliane Jaltier",
+      "found": true,
+      "bestSBDByTier": {
+        "regional": {
+          "date": "2026-04-18",
+          "federation": "FFForce",
+          "meetName": "Grand Prix des Pays de la Loire",
+          "meetCountry": "France",
+          "meetTown": "Nantes",
+          "division": "Seniors",
+          "ageClass": "24-34",
+          "weightClassKg": "63",
+          "bodyweightKg": 60.65,
+          "equipment": "Raw",
+          "squatKg": 110.0,
+          "benchKg": 80.0,
+          "deadliftKg": 145.0,
+          "totalKg": 335.0,
+          "place": "3",
+          "goodlift": 75.16,
+          "tier": "regional"
+        }
+      },
+      "bestBenchByTier": {
+        "national": {
+          "date": "2026-02-26",
+          "federation": "FFForce",
+          "meetName": "Championnats de France de Développé Couché",
+          "meetCountry": "France",
+          "meetTown": "Le Crès",
+          "division": "Open",
+          "ageClass": "24-34",
+          "weightClassKg": "63",
+          "bodyweightKg": 60.45,
+          "equipment": "Raw",
+          "benchKg": 82.5,
+          "place": "11",
+          "goodlift": 70.54,
+          "tier": "national"
+        },
+        "regional": {
+          "date": "2025-11-15",
+          "federation": "FFForce",
+          "meetName": "Championnat Régional DC/BP Ligérienne",
+          "meetCountry": "France",
+          "meetTown": "La Bugallière",
+          "division": "Seniors",
+          "ageClass": "24-34",
+          "weightClassKg": "63",
+          "bodyweightKg": 60.56,
+          "equipment": "Raw",
+          "benchKg": 80.5,
+          "place": "1",
+          "goodlift": 68.75,
+          "tier": "regional"
+        }
+      }
+    },
+    {
+      "requestedAs": "JAMBON Yoann",
+      "matchedName": "Yohann Jambon",
+      "found": true,
+      "bestSBDByTier": {},
+      "bestBenchByTier": {
+        "regional": {
+          "date": "2025-11-15",
+          "federation": "FFForce",
+          "meetName": "Championnat Régional DC/BP Ligérienne",
+          "meetCountry": "France",
+          "meetTown": "La Bugallière",
+          "division": "Seniors",
+          "ageClass": "35-39",
+          "weightClassKg": "105",
+          "bodyweightKg": 96.62,
+          "equipment": "Raw",
+          "benchKg": 135.0,
+          "place": "3",
+          "goodlift": 62.87,
+          "tier": "regional"
+        }
+      }
+    },
+    {
+      "requestedAs": "BERTHO Richard",
+      "matchedName": "Richard Bertho",
+      "found": true,
+      "bestSBDByTier": {},
+      "bestBenchByTier": {
+        "international": {
+          "date": "2026-05-23",
+          "federation": "IPF",
+          "meetName": "World Classic & Equipped Bench Press Championships",
+          "meetCountry": "Poland",
+          "meetTown": "Warsaw",
+          "division": "Masters 1",
+          "ageClass": "40-44",
+          "weightClassKg": "105",
+          "bodyweightKg": 103.59,
+          "equipment": "Raw",
+          "benchKg": 210.0,
+          "place": "3",
+          "goodlift": 94.62,
+          "tier": "international"
+        },
+        "national": {
+          "date": "2023-02-18",
+          "federation": "FFForce",
+          "meetName": "Championnats de France de Développé Couché",
+          "meetCountry": "France",
+          "meetTown": "La Garde",
+          "division": "Open",
+          "ageClass": "40-44",
+          "weightClassKg": "105",
+          "bodyweightKg": 104.09,
+          "equipment": "Raw",
+          "benchKg": 212.5,
+          "place": "1",
+          "goodlift": 95.54,
+          "tier": "national"
+        },
+        "regional": {
+          "date": "2024-12-07",
+          "federation": "FFForce",
+          "meetName": "Grand prix des marais salants",
+          "meetCountry": "France",
+          "meetTown": "Guérande",
+          "division": "Masters 1",
+          "ageClass": "40-44",
+          "weightClassKg": "105",
+          "bodyweightKg": 103.8,
+          "equipment": "Raw",
+          "benchKg": 207.5,
+          "place": "1",
+          "goodlift": 93.41,
+          "tier": "regional"
+        }
+      }
+    },
+    {
+      "requestedAs": "Avril-Allain Tristan",
+      "matchedName": "Tristan Avril-Allain",
+      "found": true,
+      "bestSBDByTier": {
+        "regional": {
+          "date": "2025-04-05",
+          "federation": "FFForce",
+          "meetName": "Championnats Départementaux FA Seniors & Masters Mixes",
+          "meetCountry": "France",
+          "meetTown": "Guérande",
+          "division": "Seniors",
+          "ageClass": "24-34",
+          "weightClassKg": "105",
+          "bodyweightKg": 100.28,
+          "equipment": "Raw",
+          "squatKg": 212.5,
+          "benchKg": 117.5,
+          "deadliftKg": 252.5,
+          "totalKg": 582.5,
+          "place": "3",
+          "goodlift": 73.49,
+          "tier": "regional"
+        }
+      },
+      "bestBenchByTier": {
+        "regional": {
+          "date": "2024-12-07",
+          "federation": "FFForce",
+          "meetName": "Grand prix des marais salants",
+          "meetCountry": "France",
+          "meetTown": "Guérande",
+          "division": "Seniors",
+          "ageClass": "24-34",
+          "weightClassKg": "105",
+          "bodyweightKg": 100.25,
+          "equipment": "Raw",
+          "benchKg": 120.0,
+          "place": "2",
+          "goodlift": 54.91,
+          "tier": "regional"
+        }
+      }
+    },
+    {
+      "requestedAs": "SEVENO Gurvan",
+      "matchedName": "Gurvan Seveno",
+      "found": true,
+      "bestSBDByTier": {
+        "regional": {
+          "date": "2025-04-05",
+          "federation": "FFForce",
+          "meetName": "Championnats Départementaux FA Seniors & Masters Mixes",
+          "meetCountry": "France",
+          "meetTown": "Guérande",
+          "division": "Seniors",
+          "ageClass": "24-34",
+          "weightClassKg": "105",
+          "bodyweightKg": 102.09,
+          "equipment": "Raw",
+          "squatKg": 210.0,
+          "benchKg": 130.0,
+          "deadliftKg": 242.5,
+          "totalKg": 582.5,
+          "place": "4",
+          "goodlift": 72.87,
+          "tier": "regional"
+        }
+      },
+      "bestBenchByTier": {}
+    }
+  ]
+}
