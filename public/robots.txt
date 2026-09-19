@@ -1,4 +1,2 @@
 User-Agent: *
-Disallow:
-
-Sitemap: https://www.sghm.fr/sitemap.xml
+Disallow: /

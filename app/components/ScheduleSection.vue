@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const schedule = [
-  { days: 'Lundi, Mardi, Jeudi, Vendredi', hours: '17h00 – 21h00', closed: false },
+  { days: 'Lundi, Mardi, Mercredi, Jeudi, Vendredi', hours: '17h00 – 21h00', closed: false },
   { days: 'Samedi', hours: '14h00 – 17h00', closed: false },
   { days: 'Dimanche', hours: '9h00 - 12h00', closed: false },
   { days: 'Jours fériés', hours: 'Fermé', closed: true },

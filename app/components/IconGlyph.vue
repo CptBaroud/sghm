@@ -12,7 +12,9 @@ import {
   ChevronDown,
   ArrowRight,
   Sun,
-  Moon
+  Moon,
+  Heart,
+  Calendar
 } from '@lucide/vue'
 
 type IconName =
@@ -30,6 +32,8 @@ type IconName =
   | 'arrow-right'
   | 'sun'
   | 'moon'
+  | 'heart'
+  | 'calendar'
 
 const props = withDefaults(defineProps<{ name: IconName; size?: number }>(), { size: 20 })
 
@@ -46,7 +50,9 @@ const lucideIcons = {
   'chevron-down': ChevronDown,
   'arrow-right': ArrowRight,
   sun: Sun,
-  moon: Moon
+  moon: Moon,
+  heart: Heart,
+  calendar: Calendar
 } as const
 
 const lucideIcon = computed(() => lucideIcons[props.name as keyof typeof lucideIcons])

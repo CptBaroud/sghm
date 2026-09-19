@@ -4,7 +4,7 @@
     <AppHeader />
     <main>
       <HeroSection />
-      <ClubSpiritSection />
+      <ClubLifeSection />
       <MovementsSection />
       <ScheduleSection />
       <ResultsSection />

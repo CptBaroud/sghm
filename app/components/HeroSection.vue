@@ -1,11 +1,46 @@
+<script setup lang="ts">
+const slides = [
+  {
+    src: '/hero@1x.png',
+    srcset: '/hero@1x.png 1x, /hero@2x.jpg 2x',
+    alt: 'Athlète en squat sur le plateau de la salle de musculation SGHM à la Salle des Sports J.Ménager, Guérande'
+  },
+  {
+    src: '/group.jpg',
+    srcset: '',
+    alt: 'Groupe d\'adhérents du club SGHM réunis à la salle de musculation'
+  }
+]
+
+const activeSlide = ref(0)
+let timer: ReturnType<typeof setInterval> | undefined
+
+onMounted(() => {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  if (!prefersReducedMotion) {
+    timer = setInterval(() => {
+      activeSlide.value = (activeSlide.value + 1) % slides.length
+    }, 5666)
+  }
+})
+
+onBeforeUnmount(() => {
+  if (timer) clearInterval(timer)
+})
+</script>
+
 <template>
   <section id="top" class="hero">
     <div class="hero__bg">
       <img
-        src="/hero@1x.png"
-        srcset="/hero@1x.png 1x, /hero@2x.jpg 2x"
-        alt="Athlète en squat sur le plateau de la salle de musculation SGHM à la Salle des Sports J.Ménager, Guérande"
+        v-for="(slide, index) in slides"
+        :key="slide.src"
+        :src="slide.src"
+        :srcset="slide.srcset || undefined"
+        :alt="slide.alt"
+        :aria-hidden="index === activeSlide ? undefined : 'true'"
         class="hero__bg-photo"
+        :class="{ 'hero__bg-photo--active': index === activeSlide }"
       />
       <div class="hero__bg-scrim" aria-hidden="true" />
     </div>
@@ -62,6 +97,8 @@
   object-fit: cover;
   transform: scale(1.5);
   transform-origin: right center;
+  opacity: 0;
+  transition: opacity 666ms ease;
   mask-image: linear-gradient(
     to right,
     transparent 0%,
@@ -74,6 +111,10 @@
     rgba(0, 0, 0, 0.6) 25%,
     black 55%
   );
+}
+
+.hero__bg-photo--active {
+  opacity: 1;
 }
 
 .hero__bg-scrim {

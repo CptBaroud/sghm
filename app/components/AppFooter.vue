@@ -11,9 +11,10 @@ const navLinks = [
 ]
 
 const schedule = [
-  { days: 'Lun, Mar, Jeu, Ven', hours: '17h00 – 21h00', closed: false },
-  { days: 'Samedi', hours: '14h00 – 17h00', closed: false },
-  { days: 'Dimanche & Fériés', hours: 'Fermé', closed: true }
+  { days: 'Lun, Mar, Mer, Jeu, Ven', hours: '17h00 - 21h00', closed: false },
+  { days: 'Samedi', hours: '14h00 - 17h00', closed: false },
+  { days: 'Dimanche', hours: '9h00 - 12h00', closed: false },
+  { days: 'Fériés', hours: 'Fermé', closed: true }
 ]
 </script>
 

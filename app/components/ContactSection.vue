@@ -2,15 +2,8 @@
 const form = reactive({
   name: '',
   email: '',
-  subject: 'Renseignement pour adhésion Loisir',
   message: ''
 })
-
-const subjectOptions = [
-  'Renseignement pour adhésion Loisir',
-  'Renseignement pour licence Compétiteur',
-  'Autre demande'
-]
 
 const errors = reactive({ name: '', email: '' })
 const submitted = ref(false)
@@ -28,7 +21,7 @@ function onSubmit() {
   if (!validate()) return
 
   const body = encodeURIComponent(`${form.message}\n\n— ${form.name} (${form.email})`)
-  const subject = encodeURIComponent(form.subject)
+  const subject = encodeURIComponent('Demande de contact - Site SGHM')
   window.location.href = `mailto:${CLUB_EMAIL}?subject=${subject}&body=${body}`
   submitted.value = true
 }
@@ -79,13 +72,6 @@ function onSubmit() {
               <input id="email" v-model="form.email" type="email" autocomplete="email" :aria-invalid="!!errors.email" />
               <span v-if="errors.email" class="contact__error">{{ errors.email }}</span>
             </div>
-          </div>
-
-          <div class="contact__field">
-            <label for="subject">Objet de votre demande *</label>
-            <select id="subject" v-model="form.subject">
-              <option v-for="option in subjectOptions" :key="option" :value="option">{{ option }}</option>
-            </select>
           </div>
 
           <div class="contact__field">
@@ -177,7 +163,6 @@ function onSubmit() {
 }
 
 .contact__field input,
-.contact__field select,
 .contact__field textarea {
   font-family: var(--font-body);
   font-size: 15px;
@@ -187,15 +172,6 @@ function onSubmit() {
   background: var(--bg-base);
   color: var(--text-primary);
   resize: vertical;
-}
-
-.contact__field select {
-  appearance: none;
-  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
-  background-position: calc(100% - 18px) center, calc(100% - 13px) center;
-  background-size: 5px 5px, 5px 5px;
-  background-repeat: no-repeat;
-  color: var(--text-primary);
 }
 
 .contact__field input[aria-invalid='true'] {
