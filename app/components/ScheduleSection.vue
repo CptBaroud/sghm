@@ -39,7 +39,6 @@ const pricing = [
   <section id="tarifs" class="section schedule">
     <div class="container">
       <div class="section__head section__head--center">
-        <span class="section__eyebrow">Transparence Associative</span>
         <h2 class="section__title">Horaires &amp; Adhésions</h2>
         <p class="section__lede">
           Tarifs annuels fixés par l'assemblée générale. Aucun frais caché, ni réengagement

@@ -5,6 +5,7 @@
     <main>
       <HeroSection />
       <ClubLifeSection />
+      <GallerySection />
       <MovementsSection />
       <ScheduleSection />
       <ResultsSection />

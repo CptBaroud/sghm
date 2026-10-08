@@ -6,7 +6,7 @@ const slides = [
     alt: 'Athlète en squat sur le plateau de la salle de musculation SGHM à la Salle des Sports J.Ménager, Guérande'
   },
   {
-    src: '/group.jpg',
+    src: '/group.jpeg',
     srcset: '',
     alt: 'Groupe d\'adhérents du club SGHM réunis à la salle de musculation'
   }

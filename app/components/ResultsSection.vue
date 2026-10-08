@@ -336,7 +336,6 @@ const benchPanels = computed(() => [
   <section id="resultats" class="section results">
     <div class="container">
       <div class="section__head section__head--center">
-        <span class="section__eyebrow">Palmarès &amp; Compétition FFForce</span>
         <h2 class="section__title">Résultats Récents du Club</h2>
         <p class="section__lede">
           Résultats des athlètes du club sur les plateaux FFForce et IPF.

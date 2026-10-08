@@ -1,88 +1,111 @@
 <script setup lang="ts">
-type BentoIcon = 'discipline' | 'equipment' | 'community' | 'heart' | 'trophy' | 'calendar' | 'clock'
+type BentoIcon =
+  | "discipline"
+  | "equipment"
+  | "community"
+  | "heart"
+  | "trophy"
+  | "calendar"
+  | "clock";
 
 const heroCard = {
-  icon: 'community' as const,
-  title: 'Esprit Associatif',
+  icon: "community" as const,
+  title: "Esprit Associatif",
   description:
-    "Entraide entre pratiquants, quel que soit le niveau ou l'objectif : parades sur les gros squats, conseils partagés au quotidien."
-}
+    "Entraide entre pratiquants, quel que soit le niveau ou l'objectif : parades sur les gros squats, conseils partagés au quotidien.",
+};
 
-const photoCard = { caption: 'Ambiance salle', photo: '/group.jpg' }
+const photoCard = { caption: "Ambiance salle", photo: "/group.jpeg" };
 
 interface ClubCard {
-  icon: BentoIcon
-  title: string
-  description: string
-  cta?: { label: string; href: string }
+  icon: BentoIcon;
+  title: string;
+  description: string;
+  cta?: { label: string; href: string };
 }
 
 const cards: ClubCard[] = [
   {
-    icon: 'discipline',
-    title: 'Discipline & Technique',
+    icon: "discipline",
+    title: "Discipline & Technique",
     description:
-      "L'apprentissage privilégie la technique avant la charge : profondeur du squat, trajectoire de la barre au développé couché, verrouillage au soulevé de terre."
+      "L'apprentissage privilégie la technique avant la charge : profondeur du squat, trajectoire de la barre au développé couché, verrouillage au soulevé de terre.",
   },
   {
-    icon: 'equipment',
-    title: 'Matériel FFForce',
-    description: 'Racks de compétition, barres olympiques 20 kg et 15 kg, disques calibrés aux normes IPF.'
-  }
-]
+    icon: "equipment",
+    title: "Matériel FFForce",
+    description:
+      "Racks de compétition, barres olympiques 20 kg et 15 kg, disques calibrés aux normes IPF.",
+  },
+];
 
 // TODO: confirm exact counts with the bureau before publishing.
 const topRightStats = [
-  { icon: 'heart' as const, value: '200+', label: 'Adhérents en pratique loisir' },
-  { icon: 'trophy' as const, value: '10+', label: 'Compétiteurs licenciés' }
-]
+  {
+    icon: "heart" as const,
+    value: "200+",
+    label: "Adhérents en pratique loisir",
+  },
+  { icon: "trophy" as const, value: "10+", label: "Compétiteurs licenciés" },
+];
 
 const bottomLeftStats = [
-  { icon: 'calendar' as const, value: '35', label: "Ans d'existence associative, depuis 1991" },
-  { icon: 'clock' as const, value: '7j/7', label: 'Créneaux libres, à son propre rythme' }
-]
+  {
+    icon: "calendar" as const,
+    value: "35",
+    label: "Ans d'existence associative, depuis 1991",
+  },
+  {
+    icon: "clock" as const,
+    value: "7j/7",
+    label: "Créneaux libres, à son propre rythme",
+  },
+];
 
 interface GalleryPair {
-  caption: string
-  photo: string
-  quote: string
-  author: string
-  reverse?: boolean
+  caption: string;
+  photo: string;
+  quote: string;
+  author: string;
+  reverse?: boolean;
 }
 
-// TODO: placeholder images — replace 'photo' with real photos, and confirm testimonials with members before publishing.
+// TODO: confirm testimonials with members before publishing.
 const galleryPairs: GalleryPair[] = [
   {
-    caption: 'Créneau libre',
-    photo: '/stock-solo-training.jpg',
-    quote: "Je viens m'entraîner après le travail, à mon rythme, dans une ambiance simple et conviviale.",
-    author: 'Adhérent(e) du club'
+    caption: "Créneau libre",
+    photo: "/gallery/20.jpg",
+    quote:
+      "Je viens m'entraîner après le travail, à mon rythme, dans une ambiance simple et conviviale.",
+    author: "Adhérent(e) du club",
   },
   {
-    caption: 'Entraide entre membres',
-    photo: '/stock-spotting.jpg',
-    quote: "L'ambiance est simple et bienveillante. On vient pour la régularité et les conseils des autres membres.",
-    author: 'Adhérent(e) du club',
-    reverse: true
+    caption: "Entraide entre membres",
+    photo: "/gallery/05.jpg",
+    quote:
+      "L'ambiance est simple et bienveillante. On vient pour la régularité et les conseils des autres membres.",
+    author: "Adhérent(e) du club",
+    reverse: true,
   },
   {
-    caption: 'Tous niveaux, tous âges',
-    photo: '/stock-diverse.jpg',
-    quote: 'Pas besoin de viser la compétition pour se sentir à sa place ici, tout le monde progresse à son rythme.',
-    author: 'Adhérent(e) du club'
-  }
-]
+    caption: "Tous niveaux, tous âges",
+    photo: "/gallery/06.jpg",
+    quote:
+      "Pas besoin de viser la compétition pour se sentir à sa place ici, tout le monde progresse à son rythme.",
+    author: "Adhérent(e) du club",
+  },
+];
 </script>
 
 <template>
   <section id="club" class="section club-life">
     <div class="container">
       <div class="section__head section__head--center">
-        <span class="section__eyebrow">Association Loi 1901</span>
         <h2 class="section__title">L'Esprit et la Vie du Club</h2>
         <p class="section__lede">
-          Fondée en 1991, l'association vit grâce à ses bénévoles. La majorité des adhérents
-          vient ici pour une raison simple : s'entraîner régulièrement, à son rythme.
+          Fondée en 1991, l'association vit grâce à ses bénévoles. La majorité
+          des adhérents vient ici pour une raison simple : s'entraîner
+          régulièrement, à son rythme.
         </p>
       </div>
 
@@ -100,11 +123,17 @@ const galleryPairs: GalleryPair[] = [
           </article>
 
           <div class="club-life__feature-pair">
-            <div v-for="stat in bottomLeftStats" :key="stat.label" class="card club-life__stat">
+            <div
+              v-for="stat in bottomLeftStats"
+              :key="stat.label"
+              class="card club-life__stat"
+            >
               <span class="club-life__watermark" aria-hidden="true">
                 <IconGlyph :name="stat.icon" :size="64" />
               </span>
-              <span class="club-life__stat-value tabular-nums">{{ stat.value }}</span>
+              <span class="club-life__stat-value tabular-nums">{{
+                stat.value
+              }}</span>
               <span class="club-life__stat-label">{{ stat.label }}</span>
             </div>
           </div>
@@ -112,11 +141,17 @@ const galleryPairs: GalleryPair[] = [
 
         <div class="club-life__feature-col">
           <div class="club-life__feature-pair">
-            <div v-for="stat in topRightStats" :key="stat.label" class="card club-life__stat">
+            <div
+              v-for="stat in topRightStats"
+              :key="stat.label"
+              class="card club-life__stat"
+            >
               <span class="club-life__watermark" aria-hidden="true">
                 <IconGlyph :name="stat.icon" :size="64" />
               </span>
-              <span class="club-life__stat-value tabular-nums">{{ stat.value }}</span>
+              <span class="club-life__stat-value tabular-nums">{{
+                stat.value
+              }}</span>
               <span class="club-life__stat-label">{{ stat.label }}</span>
             </div>
           </div>
@@ -124,14 +159,23 @@ const galleryPairs: GalleryPair[] = [
           <article class="card club-life__feature-photo">
             <img :src="photoCard.photo" alt="" class="club-life__photo-img" />
             <span class="club-life__photo-scrim" aria-hidden="true" />
-            <span class="club-life__photo-caption">{{ photoCard.caption }}</span>
+            <span class="club-life__photo-caption">{{
+              photoCard.caption
+            }}</span>
           </article>
         </div>
       </div>
 
       <div class="club-life__cards">
-        <article v-for="card in cards" :key="card.title" class="card club-life__card">
-          <span class="club-life__watermark club-life__watermark--card" aria-hidden="true">
+        <article
+          v-for="card in cards"
+          :key="card.title"
+          class="card club-life__card"
+        >
+          <span
+            class="club-life__watermark club-life__watermark--card"
+            aria-hidden="true"
+          >
             <IconGlyph :name="card.icon" :size="100" />
           </span>
           <span class="club-life__card-icon">
@@ -139,7 +183,11 @@ const galleryPairs: GalleryPair[] = [
           </span>
           <h3 class="club-life__card-title">{{ card.title }}</h3>
           <p class="club-life__card-text">{{ card.description }}</p>
-          <a v-if="card.cta" :href="card.cta.href" class="btn btn-primary club-life__card-cta">
+          <a
+            v-if="card.cta"
+            :href="card.cta.href"
+            class="btn btn-primary club-life__card-cta"
+          >
             {{ card.cta.label }}
             <IconGlyph name="arrow-right" :size="15" />
           </a>
@@ -157,10 +205,11 @@ const galleryPairs: GalleryPair[] = [
             <img :src="pair.photo" alt="" class="club-life__photo-img" />
             <span class="club-life__photo-scrim" aria-hidden="true" />
             <span class="club-life__photo-caption">{{ pair.caption }}</span>
-            <span class="club-life__photo-tag">Photo à remplacer</span>
           </div>
           <article class="club-life__quote">
-            <span class="club-life__quote-mark" aria-hidden="true">&ldquo;</span>
+            <span class="club-life__quote-mark" aria-hidden="true"
+              >&ldquo;</span
+            >
             <p class="club-life__quote-text">{{ pair.quote }}</p>
             <span class="club-life__quote-author">{{ pair.author }}</span>
           </article>
@@ -181,7 +230,7 @@ const galleryPairs: GalleryPair[] = [
   pointer-events: none;
 }
 
-[data-theme='light'] .club-life__watermark {
+[data-theme="light"] .club-life__watermark {
   opacity: 0.07;
 }
 
@@ -189,7 +238,7 @@ const galleryPairs: GalleryPair[] = [
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-4);
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-4);
 }
 
 .club-life__feature-col {
@@ -259,7 +308,11 @@ const galleryPairs: GalleryPair[] = [
 .club-life__photo-scrim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(11, 11, 14, 0) 40%, rgba(11, 11, 14, 0.75) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(11, 11, 14, 0) 40%,
+    rgba(11, 11, 14, 0.75) 100%
+  );
 }
 
 .club-life__photo-caption {
@@ -270,20 +323,6 @@ const galleryPairs: GalleryPair[] = [
   color: var(--color-white);
 }
 
-.club-life__photo-tag {
-  position: absolute;
-  z-index: 1;
-  top: var(--space-3);
-  right: var(--space-3);
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--color-white);
-  background: rgba(0, 0, 0, 0.45);
-  padding: 4px 10px;
-  border-radius: var(--radius-pill);
-}
 
 .club-life__cards {
   display: grid;
@@ -313,7 +352,7 @@ const galleryPairs: GalleryPair[] = [
   flex-shrink: 0;
 }
 
-[data-theme='light'] .club-life__card-icon {
+[data-theme="light"] .club-life__card-icon {
   background: var(--text-primary);
   color: var(--color-red);
 }
@@ -343,7 +382,7 @@ const galleryPairs: GalleryPair[] = [
 }
 
 .club-life__gallery {
-  margin-top: var(--space-8);
+  margin-top: var(--space-9);
   display: grid;
   grid-template-columns: 1fr;
   align-items: stretch;

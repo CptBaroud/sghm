@@ -31,7 +31,6 @@ function onSubmit() {
   <section id="contact" class="section contact">
     <div class="container">
       <div class="section__head section__head--center">
-        <span class="section__eyebrow">Contact &amp; Adhésion</span>
         <h2 class="section__title">Venez Nous Rencontrer</h2>
         <p class="section__lede">
           Aucune séance d'essai gratuite : une prise de contact avec le bureau est nécessaire avant
