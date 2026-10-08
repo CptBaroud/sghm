@@ -13,7 +13,8 @@ const pricing = [
     price: '70 €',
     period: '/ an',
     features: ['Accès a tous les créneaux libres', 'Licence loisir FFForce', "Accompagnement d'un adulte obligatoire"],
-    cta: 'Rejoindre'
+    cta: 'S\'inscrire sur HelloAsso',
+    url: HELLOASSO_LOISIR_URL
   },
   {
     eyebrow: 'Pratique Loisir',
@@ -21,7 +22,8 @@ const pricing = [
     price: '100 €',
     period: '/ an',
     features: ['Accès à tous les créneaux libres', 'Licence loisir FFForce'],
-    cta: 'Rejoindre',
+    cta: 'S\'inscrire sur HelloAsso',
+    url: HELLOASSO_LOISIR_URL,
     highlight: true
   },
   {
@@ -30,7 +32,9 @@ const pricing = [
     price: '100 €',
     period: '/ an',
     features: ['Accès à tous les créneaux libres', 'Licence compétition FFForce'],
-    cta: 'Rejoindre'
+    // compétition: on-site sign-up only, the button points to the contact section
+    cta: 'S\'inscrire sur place',
+    url: ''
   }
 ]
 </script>
@@ -88,13 +92,20 @@ const pricing = [
               <li v-for="feature in tier.features" :key="feature">{{ feature }}</li>
             </ul>
             <a
-              href="#contact"
+              :href="tier.url || '#contact'"
+              :target="tier.url ? '_blank' : undefined"
+              :rel="tier.url ? 'noopener' : undefined"
               class="btn schedule__tier-btn"
               :class="tier.highlight ? 'btn-primary' : 'btn-secondary'"
             >
+              <img v-if="tier.url" src="/helloasso.svg" alt="" class="schedule__tier-logo" width="16" height="16">
               {{ tier.cta }}
+              <IconGlyph v-if="!tier.url" name="arrow-right" :size="14" />
             </a>
           </article>
+          <p class="schedule__pricing-note">
+            Licences loisir : inscription et paiement sécurisé en ligne via HelloAsso.
+          </p>
         </div>
       </div>
     </div>
@@ -277,7 +288,21 @@ const pricing = [
   width: 100%;
   padding: 9px 16px;
   font-size: 13px;
+  line-height: 1.25;
+  text-align: center;
+  text-wrap: balance;
   border-radius: var(--radius-pill);
+}
+
+.schedule__tier-logo {
+  flex-shrink: 0;
+}
+
+.schedule__pricing-note {
+  margin: 0;
+  grid-column: 1 / -1;
+  font-size: 13px;
+  color: var(--text-muted);
 }
 
 @media (min-width: 560px) {

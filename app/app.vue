@@ -9,6 +9,7 @@
       <MovementsSection />
       <ScheduleSection />
       <ResultsSection />
+      <PreorderSection />
       <ContactSection />
     </main>
     <AppFooter />

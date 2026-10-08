@@ -47,17 +47,12 @@ onBeforeUnmount(() => {
 
     <div class="container hero__container">
       <div class="hero__card">
-        <span class="badge hero__badge">
-          <span class="hero__badge-dot" />
-          Club affilié FFForce · Depuis 1991 · Guérande
-        </span>
-
         <h1 class="hero__title">
           Salle de Musculation <br><span class="hero__title-accent">à Guérande</span>
         </h1>
 
         <p class="hero__subtitle">
-          La salle de musculation associative de Guérande, ouverte depuis 1991. 35 ans d'entraide et de sport. Club affilié a la FFForce
+          Depuis 1991, débutants et confirmés se retrouvent ici pour s'entraîner à leur rythme. Une salle de musculation associative où l'on progresse ensemble, entre conseils, parades et bonne humeur, au sein d'un club affilié à la FFForce.
         </p>
 
         <div class="hero__ctas">
@@ -90,13 +85,14 @@ onBeforeUnmount(() => {
 
 .hero__bg-photo {
   position: absolute;
-  top: 20%;
+  /* same box as the old scale(1.5) from top 20%, but capped to the hero width so the left fade stays on screen */
+  top: -5%;
   right: 0;
-  height: 100%;
+  height: 150%;
   width: auto;
+  max-width: 100%;
   object-fit: cover;
-  transform: scale(1.5);
-  transform-origin: right center;
+  object-position: right center;
   opacity: 0;
   transition: opacity 666ms ease;
   mask-image: linear-gradient(
@@ -139,6 +135,9 @@ onBeforeUnmount(() => {
     right: 0;
     width: 100%;
     height: auto;
+    /* every slide gets the portrait frame the scrim is built for */
+    aspect-ratio: 1080 / 1350;
+    object-position: center;
     transform: scale(1.15) translateX(-4%);
     transform-origin: center;
     mask-image: none;

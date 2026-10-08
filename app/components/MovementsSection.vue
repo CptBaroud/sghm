@@ -46,7 +46,6 @@ const movements = [
               :alt="`Athlète en ${move.tag.toLowerCase()} sur le plateau de la salle de musculation SGHM à la Salle des Sports J.Ménager`"
               class="movements__photo-img"
             />
-            <span class="movements__photo-tag">{{ move.number }} · {{ move.tag }}</span>
           </div>
 
           <div class="movements__body">

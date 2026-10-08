@@ -33,8 +33,12 @@ function onSubmit() {
       <div class="section__head section__head--center">
         <h2 class="section__title">Venez Nous Rencontrer</h2>
         <p class="section__lede">
-          Aucune séance d'essai gratuite : une prise de contact avec le bureau est nécessaire avant
-          l'adhésion.
+          Inscrivez-vous en ligne sur
+          <a :href="HELLOASSO_LOISIR_URL" target="_blank" rel="noopener">HelloAsso</a>
+          ou directement auprès d'un membre du bureau, à la salle.
+        </p>
+        <p class="section__lede contact__note">
+          Licence compétiteur : inscription uniquement sur place, auprès du bureau.
         </p>
       </div>
 
@@ -89,6 +93,17 @@ function onSubmit() {
 </template>
 
 <style scoped>
+.section__lede a {
+  color: var(--text-primary);
+  text-decoration: underline;
+}
+
+.contact__note {
+  margin-top: var(--space-2);
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
 .contact__grid {
   display: grid;
   gap: var(--space-5);

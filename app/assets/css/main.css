@@ -170,20 +170,23 @@ img {
   margin-bottom: var(--space-7);
 }
 
-.section__head--center {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+/* centered from tablet up; small screens keep text anchored left */
+@media (min-width: 768px) {
+  .section__head--center {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-.section__head--center .section__eyebrow {
-  justify-content: center;
-}
+  .section__head--center .section__eyebrow {
+    justify-content: center;
+  }
 
-.section__head--center .section__lede {
-  margin-left: auto;
-  margin-right: auto;
+  .section__head--center .section__lede {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 @media (min-width: 768px) {

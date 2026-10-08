@@ -27,8 +27,7 @@ function closeDrawer() {
           class="header__logo"
         />
         <span class="header__name">
-          SGHM Guérande
-          <span class="header__name-sub">Force Athlétique · 1991</span>
+          SGHM 
         </span>
       </a>
 
@@ -68,13 +67,15 @@ function closeDrawer() {
 
     <Transition name="drawer">
       <div v-if="drawerOpen" class="drawer">
-        <nav class="drawer__nav" aria-label="Navigation mobile">
-          <a v-for="link in navLinks" :key="link.href" :href="link.href" @click="closeDrawer">{{ link.label }}</a>
-          <a href="#contact" class="btn btn-primary drawer__cta" @click="closeDrawer">
-            Nous rencontrer
-            <IconGlyph name="arrow-right" :size="15" />
-          </a>
-        </nav>
+        <div class="drawer__inner">
+          <nav class="drawer__nav" aria-label="Navigation mobile">
+            <a v-for="link in navLinks" :key="link.href" :href="link.href" @click="closeDrawer">{{ link.label }}</a>
+            <a href="#contact" class="btn btn-primary drawer__cta" @click="closeDrawer">
+              Nous rencontrer
+              <IconGlyph name="arrow-right" :size="15" />
+            </a>
+          </nav>
+        </div>
       </div>
     </Transition>
   </header>
@@ -231,20 +232,34 @@ function closeDrawer() {
 }
 
 .drawer {
+  display: grid;
+  grid-template-rows: 1fr;
   border-top: 1px solid var(--border-card);
   background: var(--bg-base);
+}
+
+/* 0fr → 1fr animates to the content's real height; the inner wrapper must be able to shrink to 0 */
+.drawer__inner {
+  min-height: 0;
   overflow: hidden;
 }
 
 .drawer-enter-active,
 .drawer-leave-active {
-  transition: opacity 200ms ease, transform 200ms ease;
+  transition: grid-template-rows 300ms cubic-bezier(0.22, 1, 0.36, 1), opacity 250ms ease;
 }
 
 .drawer-enter-from,
 .drawer-leave-to {
+  grid-template-rows: 0fr;
   opacity: 0;
-  transform: translateY(-8px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drawer-enter-active,
+  .drawer-leave-active {
+    transition: opacity 150ms ease;
+  }
 }
 
 .drawer__nav {
