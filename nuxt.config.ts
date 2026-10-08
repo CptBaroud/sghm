@@ -13,7 +13,7 @@ export default defineNuxtConfig({
         {
           name: 'description',
           content:
-            "SGHM, salle de musculation associative à Guérande — club de force athlétique affilié FFForce (N°44-012) et IPF, plateau homologué à Kerbiniou. Squat, bench press, soulevé de terre."
+            "SGHM, salle de musculation associative à Guérande — club de force athlétique affilié FFForce, à la Salle des Sports Jean Ménager. Squat, bench press, soulevé de terre."
         },
         { property: 'og:type', content: 'website' },
         { property: 'og:locale', content: 'fr_FR' },
@@ -22,7 +22,7 @@ export default defineNuxtConfig({
         {
           property: 'og:description',
           content:
-            "Salle de musculation associative affiliée FFForce à Guérande. Squat, bench, deadlift sur plateau homologué à Kerbiniou. Depuis 1991."
+            "Salle de musculation associative affiliée FFForce à Guérande. Squat, bench, deadlift à la Salle des Sports Jean Ménager. Depuis 1991."
         },
         { property: 'og:url', content: 'https://www.sghm.fr' },
         { property: 'og:image', content: 'https://www.sghm.fr/hero@1x.png' },
@@ -51,17 +51,16 @@ export default defineNuxtConfig({
           innerHTML: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'SportsActivityLocation',
-            name: 'SGHM — Société Guérandaise d\'Haltérophilie et de Musculation',
+            name: 'SGHM — Section Guérandaise Haltérophilie Musculation',
             alternateName: 'SGHM Force Athlétique Guérande',
             description:
-              "Salle de musculation associative et club de force athlétique (powerlifting) affilié FFForce et IPF, fondé en 1991 à Guérande.",
+              "Salle de musculation associative et club de force athlétique (powerlifting) affilié FFForce, fondé en 1991 à Guérande.",
             url: 'https://www.sghm.fr',
             image: 'https://www.sghm.fr/hero@1x.png',
-            telephone: 'TODO_PHONE',
-            email: 'contact@sghm-guerande.fr',
+            email: 'contact@sghm.fr',
             address: {
               '@type': 'PostalAddress',
-              streetAddress: 'Avenue Gustave Flaubert, Complexe Sportif de Kerbiniou',
+              streetAddress: 'Salle des Sports Jean Ménager, rue des Collèges',
               addressLocality: 'Guérande',
               postalCode: '44350',
               addressCountry: 'FR'
@@ -70,7 +69,7 @@ export default defineNuxtConfig({
             openingHoursSpecification: [
               {
                 '@type': 'OpeningHoursSpecification',
-                dayOfWeek: ['Monday', 'Tuesday', 'Thursday', 'Friday'],
+                dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
                 opens: '17:00',
                 closes: '21:00'
               },
@@ -79,6 +78,12 @@ export default defineNuxtConfig({
                 dayOfWeek: ['Saturday'],
                 opens: '14:00',
                 closes: '17:00'
+              },
+              {
+                '@type': 'OpeningHoursSpecification',
+                dayOfWeek: ['Sunday'],
+                opens: '09:00',
+                closes: '12:00'
               }
             ]
           })

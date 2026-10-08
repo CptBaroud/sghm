@@ -26,7 +26,7 @@ const schedule = [
         <div>
           <span class="footer__brand-name">SGHM Guérande</span>
           <p class="footer__brand-tagline">
-            Société Guérandaise d'Haltérophilie et Musculation · Fondée en 1991
+            Section Guérandaise Haltérophilie Musculation · Fondée en 1991
           </p>
         </div>
       </div>
