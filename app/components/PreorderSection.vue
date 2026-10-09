@@ -9,14 +9,14 @@ const products = [
     name: 'T-shirt Classique',
     tagline: 'Le t-shirt classique du club, pour venir s\'entraîner comme pour le quotidien. Le logo SGHM sur le cœur, « Guérande, depuis 1991 » dans le dos.',
     price: '25 €',
-    worn: { src: '/tshirt-classic-worn.jpg', alt: 'Deux personnes portant le T-shirt Classique SGHM, vu de face et de dos' },
+    worn: { zoom: 2, focus: '45% 6%', src: '/tshirt-classic-worn.jpg', alt: 'Deux personnes portant le T-shirt Classique SGHM, vu de face et de dos' },
     flat: { src: '/tshirt-classic.jpg', alt: 'T-shirt Classique SGHM noir, face et dos : logo du club sur le cœur, « Guérande depuis 1991 » dans le dos' }
   },
   {
     name: 'T-shirt Compétition',
     tagline: 'Le t-shirt de compétition, conçu pour être porté sous le singlet et pensé pour des performances optimales sur le plateau.',
     price: 'Prix à confirmer',
-    worn: { src: '/tshirt-comp-worn.jpg', alt: 'Deux personnes portant le T-shirt Compétition SGHM, vu de face et de dos' },
+    worn: { zoom: 1.2, focus: '60% 40%', src: '/tshirt-comp-worn.jpg', alt: 'Deux personnes portant le T-shirt Compétition SGHM, vu de face et de dos' },
     flat: { src: '/tshirt-comp.jpg', alt: 'T-shirt Compétition SGHM noir, face et dos : SGHM sur l\'encolure, écusson Force Athlétique dans le dos' }
   }
 ]
@@ -40,7 +40,16 @@ const products = [
         :class="{ 'preorder__product--reverse': index % 2 }"
       >
         <div class="preorder__media">
-          <img :src="product.worn.src" :alt="product.worn.alt" class="preorder__worn" loading="lazy" decoding="async">
+          <div class="preorder__frame">
+            <img
+              :src="product.worn.src"
+              :alt="product.worn.alt"
+              class="preorder__worn"
+              :style="{ transform: `scale(${product.worn.zoom})`, transformOrigin: product.worn.focus }"
+              loading="lazy"
+              decoding="async"
+            >
+          </div>
           <img :src="product.flat.src" :alt="product.flat.alt" class="preorder__flat" loading="lazy" decoding="async">
         </div>
 
@@ -73,6 +82,8 @@ const products = [
 
       <p class="preorder__note">
         Paiement sécurisé sur HelloAsso · Retrait à la salle, aux heures d'ouverture · {{ DEADLINE }}
+        <br>
+        <em>Photos non contractuelles, générées par IA.</em>
       </p>
     </div>
   </section>
@@ -95,13 +106,19 @@ const products = [
   margin-bottom: var(--space-8);
 }
 
+.preorder__frame {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: #fff;
+}
+
+/* zoomed in on the shirts; zoom/focus set per photo in `products` */
 .preorder__worn {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  height: 100%;
   object-fit: cover;
-  border-radius: var(--radius-lg);
-  background: #fff;
 }
 
 /* flat product shot straddling the photo's edge */
