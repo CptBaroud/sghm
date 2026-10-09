@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// TODO: paste the HelloAsso boutique link, the compétition price and the pre-order deadline before publishing.
+// TODO: paste the HelloAsso boutique link and the pre-order deadline before publishing.
 const HELLOASSO_URL = ''
 const DEADLINE = 'Précommandes bientôt ouvertes'
 const SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL']
@@ -15,7 +15,7 @@ const products = [
   {
     name: 'T-shirt Compétition',
     tagline: 'Le t-shirt de compétition, conçu pour être porté sous le singlet et pensé pour des performances optimales sur le plateau.',
-    price: 'Prix à confirmer',
+    price: '45 €',
     worn: { zoom: 1.2, focus: '60% 40%', src: '/tshirt-comp-worn.jpg', alt: 'Deux personnes portant le T-shirt Compétition SGHM, vu de face et de dos' },
     flat: { src: '/tshirt-comp.jpg', alt: 'T-shirt Compétition SGHM noir, face et dos : SGHM sur l\'encolure, écusson Force Athlétique dans le dos' }
   }
