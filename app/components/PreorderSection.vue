@@ -21,7 +21,7 @@ const SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL']
         <div class="preorder__photo">
           <img
             src="/tshirt-club.jpeg"
-            alt="T-shirt noir SGHM : logo du club sur le devant, inscription « Guérande since 1991 » dans le dos"
+            alt="T-shirt noir SGHM : logo du club sur le devant, inscription « Guérande depuis 1991 » dans le dos"
             loading="lazy"
             decoding="async"
           >
@@ -73,7 +73,7 @@ const SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL']
 
 .preorder__photo {
   position: relative;
-  aspect-ratio: 1016 / 896;
+  aspect-ratio: 1200 / 896;
   background: #f1efec;
 }
 
