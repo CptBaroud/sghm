@@ -52,7 +52,7 @@ onBeforeUnmount(() => {
         </h1>
 
         <p class="hero__subtitle">
-          Depuis 1991, débutants et confirmés se retrouvent ici pour s'entraîner à leur rythme. Une salle de musculation associative où l'on progresse ensemble, entre conseils, parades et bonne humeur, au sein d'un club affilié à la FFForce.
+          Depuis 1991, débutants et confirmés se retrouvent ici pour s'entraîner. Une salle de musculation associative où l'on progresse ensemble, entre conseils et bonne humeur, au sein d'un club affilié à la FFForce.
         </p>
 
         <div class="hero__ctas">
