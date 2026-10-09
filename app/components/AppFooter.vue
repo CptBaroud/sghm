@@ -24,7 +24,7 @@ const schedule = [
       <div class="footer__brand">
         <img src="/logo-dark.png" alt="Logo SGHM Guérande" class="footer__logo" />
         <div>
-          <span class="footer__brand-name">SGHM Guérande</span>
+          <span class="footer__brand-name">SGHM</span>
           <p class="footer__brand-tagline">
             Section Guérandaise Haltérophilie Musculation · Fondée en 1991
           </p>
@@ -50,7 +50,7 @@ const schedule = [
     </div>
 
     <div class="container footer__bottom">
-      <p>&copy; {{ year }} SGHM Force Athlétique Guérande. Association Loi 1901. Salle des Sports J.Ménager.</p>
+      <p>&copy; {{ year }} SGHM. Association Loi 1901. Salle des Sports J.Ménager.</p>
       <p>Club affilié à la Fédération Française de Force (FFForce)</p>
     </div>
   </footer>
