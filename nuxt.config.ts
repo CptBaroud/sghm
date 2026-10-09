@@ -13,7 +13,7 @@ export default defineNuxtConfig({
         {
           name: 'description',
           content:
-            "SGHM, salle de musculation associative à Guérande — club de force athlétique affilié FFForce, à la Salle des Sports Jean Ménager. Squat, bench press, soulevé de terre."
+            "Salle de musculation associative à Guérande depuis 1991, affiliée FFForce. Musculation et force athlétique tous niveaux : horaires, tarifs, inscription."
         },
         { property: 'og:type', content: 'website' },
         { property: 'og:locale', content: 'fr_FR' },
@@ -22,17 +22,20 @@ export default defineNuxtConfig({
         {
           property: 'og:description',
           content:
-            "Salle de musculation associative affiliée FFForce à Guérande. Squat, bench, deadlift à la Salle des Sports Jean Ménager. Depuis 1991."
+            "Salle de musculation associative à Guérande, affiliée FFForce. Musculation et force athlétique pour tous les niveaux, à la Salle des Sports Jean Ménager depuis 1991."
         },
         { property: 'og:url', content: 'https://www.sghm.fr' },
-        { property: 'og:image', content: 'https://www.sghm.fr/hero@1x.png' },
+        { property: 'og:image', content: 'https://www.sghm.fr/og-image.jpg' },
+        { property: 'og:image:width', content: '1200' },
+        { property: 'og:image:height', content: '630' },
+        { property: 'og:image:alt', content: 'Logo SGHM et titre « Salle de Musculation à Guérande » sur une photo floutée des athlètes du club' },
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:title', content: 'Salle de Musculation Guérande | SGHM — Club Associatif FFForce' },
         {
           name: 'twitter:description',
-          content: "Salle de musculation associative affiliée FFForce à Guérande, depuis 1991."
+          content: "Salle de musculation associative à Guérande, affiliée FFForce. Musculation et force athlétique pour tous les niveaux, depuis 1991."
         },
-        { name: 'twitter:image', content: 'https://www.sghm.fr/hero@1x.png' }
+        { name: 'twitter:image', content: 'https://www.sghm.fr/og-image.jpg' }
       ],
       link: [
         { rel: 'icon', type: 'image/png', href: '/logo-light.png' },
@@ -56,7 +59,7 @@ export default defineNuxtConfig({
             description:
               "Salle de musculation associative et club de force athlétique (powerlifting) affilié FFForce, fondé en 1991 à Guérande.",
             url: 'https://www.sghm.fr',
-            image: 'https://www.sghm.fr/hero@1x.png',
+            image: 'https://www.sghm.fr/og-image.jpg',
             email: 'contact@sghm.fr',
             address: {
               '@type': 'PostalAddress',

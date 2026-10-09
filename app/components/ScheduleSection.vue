@@ -43,7 +43,7 @@ const pricing = [
   <section id="tarifs" class="section schedule">
     <div class="container">
       <div class="section__head section__head--center">
-        <h2 class="section__title">Horaires &amp; Adhésions</h2>
+        <h2 class="section__title">Horaires &amp; Tarifs d'Adhésion</h2>
         <p class="section__lede">
           Tarifs annuels fixés par l'assemblée générale. Aucun frais caché, ni réengagement
           automatique.
@@ -83,7 +83,7 @@ const pricing = [
           >
             <span v-if="tier.highlight" class="schedule__tier-badge">Populaire</span>
             <span class="schedule__tier-eyebrow">{{ tier.eyebrow }}</span>
-            <h4 class="schedule__tier-title">{{ tier.title }}</h4>
+            <h3 class="schedule__tier-title">{{ tier.title }}</h3>
             <p class="schedule__tier-price">
               <span class="tabular-nums">{{ tier.price }}</span>
               <span class="schedule__tier-period">{{ tier.period }}</span>
@@ -238,8 +238,14 @@ const pricing = [
   color: var(--text-muted);
 }
 
+/* h3 for document outline, styled like the former h4 (body font, not the display headings) */
 .schedule__tier-title {
   margin-top: var(--space-1);
+  margin-bottom: 1.33em;
+  font-family: var(--font-body);
+  font-weight: 700;
+  line-height: 1.55;
+  text-transform: none;
   font-size: 17px;
   color: var(--text-primary);
 }

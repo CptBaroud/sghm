@@ -1,19 +1,19 @@
 <script setup lang="ts">
 // Order matters: 2-row grid, smalls/wides come in pairs so each column fills. Landscape (24, 25, 27) get big/wide tiles.
-const photos: { n: string, size: 'big' | 'wide' | 'tall' | 'small' }[] = [
-  { n: '24', size: 'big' },
-  { n: '01', size: 'tall' },
-  { n: '03', size: 'small' },
-  { n: '05', size: 'small' },
-  { n: '27', size: 'wide' },
-  { n: '25', size: 'wide' },
-  { n: '06', size: 'tall' },
-  { n: '07', size: 'small' },
-  { n: '15', size: 'small' },
-  { n: '18', size: 'tall' },
-  { n: '20', size: 'small' },
-  { n: '23', size: 'small' },
-  { n: '26', size: 'tall' },
+const photos: { n: string, alt: string, size: 'big' | 'wide' | 'tall' | 'small' }[] = [
+  { n: '24', alt: "Espace haltères et bancs inclinables de la salle SGHM, banderole SGHM Force Athlétique au fond", size: 'big' },
+  { n: '01', alt: "Adhérents à l'entraînement entre les racks de la salle de musculation SGHM à Guérande", size: 'tall' },
+  { n: '03', alt: "Banc de développé couché et racks à squat de la salle de musculation SGHM", size: 'small' },
+  { n: '05', alt: "Adhérent au développé couché avec un pareur, salle de musculation SGHM", size: 'small' },
+  { n: '27', alt: "Râteliers d'haltères et bancs réglables rouges de la salle SGHM à Guérande", size: 'wide' },
+  { n: '25', alt: "Rangée d'haltères sous la banderole SGHM Force Athlétique, salle des sports Jean Ménager", size: 'wide' },
+  { n: '06', alt: "Adhérents échangeant entre deux séries à la salle de musculation SGHM", size: 'tall' },
+  { n: '07', alt: "Développé couché à la barre, adhérents de la salle SGHM à Guérande", size: 'small' },
+  { n: '15', alt: "Espace cardio et machines guidées de la salle de musculation SGHM", size: 'small' },
+  { n: '18', alt: "Cages à squat et disques de compétition de la salle SGHM", size: 'tall' },
+  { n: '20', alt: "Soulevé de terre sur le plateau en bois de la salle de force athlétique SGHM", size: 'small' },
+  { n: '23', alt: "Séance de développé couché entre adhérents à la salle SGHM de Guérande", size: 'small' },
+  { n: '26', alt: "Râtelier d'haltères, bancs et miroir de la salle de musculation SGHM", size: 'tall' },
 ]
 
 const section = ref<HTMLElement>()
@@ -74,7 +74,7 @@ onBeforeUnmount(() => {
           class="gallery__item"
           :class="`gallery__item--${photo.size}`"
         >
-          <img :src="`/gallery/${photo.n}.jpg`" alt="Salle de musculation SGHM à Guérande" loading="lazy" decoding="async">
+          <img :src="`/gallery/${photo.n}.jpg`" :alt="photo.alt" loading="lazy" decoding="async">
         </figure>
       </div>
     </div>

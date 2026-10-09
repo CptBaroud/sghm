@@ -157,7 +157,7 @@ const galleryPairs: GalleryPair[] = [
           </div>
 
           <article class="card club-life__feature-photo">
-            <img :src="photoCard.photo" alt="" class="club-life__photo-img" />
+            <img :src="photoCard.photo" alt="Adhérents du club SGHM réunis à la salle de musculation de Guérande" class="club-life__photo-img" />
             <span class="club-life__photo-scrim" aria-hidden="true" />
             <span class="club-life__photo-caption">{{
               photoCard.caption
@@ -202,7 +202,7 @@ const galleryPairs: GalleryPair[] = [
           :class="{ 'club-life__gallery-col--reverse': pair.reverse }"
         >
           <div class="club-life__photo">
-            <img :src="pair.photo" alt="" class="club-life__photo-img" />
+            <img :src="pair.photo" :alt="`${pair.caption} à la salle de musculation SGHM de Guérande`" class="club-life__photo-img" />
             <span class="club-life__photo-scrim" aria-hidden="true" />
             <span class="club-life__photo-caption">{{ pair.caption }}</span>
           </div>

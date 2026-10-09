@@ -31,7 +31,7 @@ const movements = [
   <section id="mouvements" class="section movements">
     <div class="container">
       <div class="section__head section__head--center">
-        <h2 class="section__title">Les 3 Mouvements Officiels</h2>
+        <h2 class="section__title">Les 3 Mouvements de la Force Athlétique</h2>
         <p class="section__lede">
           Les trois mouvements jugés en compétition, avec les règles FFForce telles qu'elles sont
           appliquées sur le plateau.
