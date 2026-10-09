@@ -1,49 +1,58 @@
 <script setup lang="ts">
-// TODO: paste the HelloAsso boutique link and set the pre-order deadline before publishing.
+// TODO: paste the HelloAsso boutique link, the compétition price and the pre-order deadline before publishing.
 const HELLOASSO_URL = ''
-const PRICE = '25 €'
 const DEADLINE = 'Précommandes bientôt ouvertes'
 const SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL']
+
+const products = [
+  {
+    name: 'T-shirt Classique',
+    tagline: 'Le t-shirt classique du club, pour venir s\'entraîner comme pour le quotidien. Le logo SGHM sur le cœur, « Guérande, depuis 1991 » dans le dos.',
+    price: '25 €',
+    worn: { src: '/tshirt-classic-worn.jpg', alt: 'Deux personnes portant le T-shirt Classique SGHM, vu de face et de dos' },
+    flat: { src: '/tshirt-classic.jpg', alt: 'T-shirt Classique SGHM noir, face et dos : logo du club sur le cœur, « Guérande depuis 1991 » dans le dos' }
+  },
+  {
+    name: 'T-shirt Compétition',
+    tagline: 'Le t-shirt de compétition, conçu pour être porté sous le singlet et pensé pour des performances optimales sur le plateau.',
+    price: 'Prix à confirmer',
+    worn: { src: '/tshirt-comp-worn.jpg', alt: 'Deux personnes portant le T-shirt Compétition SGHM, vu de face et de dos' },
+    flat: { src: '/tshirt-comp.jpg', alt: 'T-shirt Compétition SGHM noir, face et dos : SGHM sur l\'encolure, écusson Force Athlétique dans le dos' }
+  }
+]
 </script>
 
 <template>
   <section id="boutique" class="section preorder">
     <div class="container">
       <div class="section__head section__head--center">
-        <h2 class="section__title">Le T-shirt du Club</h2>
+        <h2 class="section__title">Les T-shirts du Club</h2>
         <p class="section__lede">
-          Portez fièrement les couleurs du club, à la salle comme en dehors. Réservez le vôtre dès maintenant et récupérez-le
-          directement à la salle.
+          Portez fièrement les couleurs du club, à la salle comme en dehors. Réservez le vôtre dès
+          maintenant et récupérez-le directement à la salle.
         </p>
       </div>
 
-      <div class="card preorder__card">
-        <div class="preorder__photo">
-          <img
-            src="/tshirt-club.jpeg"
-            alt="T-shirt noir SGHM : logo du club sur le devant, inscription « Guérande since 1991 » dans le dos"
-            loading="lazy"
-            decoding="async"
-          >
-          <span class="badge preorder__badge">Précommande</span>
+      <article
+        v-for="(product, index) in products"
+        :key="product.name"
+        class="preorder__product"
+        :class="{ 'preorder__product--reverse': index % 2 }"
+      >
+        <div class="preorder__media">
+          <img :src="product.worn.src" :alt="product.worn.alt" class="preorder__worn" loading="lazy" decoding="async">
+          <img :src="product.flat.src" :alt="product.flat.alt" class="preorder__flat" loading="lazy" decoding="async">
         </div>
 
-        <div class="preorder__body">
-          <div>
-            <p class="preorder__price">{{ PRICE }}</p>
-            <p class="preorder__deadline">{{ DEADLINE }}</p>
-          </div>
+        <div class="preorder__text">
+          <span class="preorder__tag">Précommande</span>
+          <h3 class="preorder__name">{{ product.name }}</h3>
+          <p class="preorder__tagline">{{ product.tagline }}</p>
+          <p class="preorder__price">{{ product.price }}</p>
 
-          <div>
-            <p class="preorder__label">Tailles disponibles</p>
-            <ul class="preorder__sizes">
-              <li v-for="size in SIZES" :key="size">{{ size }}</li>
-            </ul>
-          </div>
-
-          <ul class="preorder__steps">
-            <li>Choix de la taille et paiement sécurisé sur HelloAsso</li>
-            <li>Retrait du t-shirt à la salle, aux heures d'ouverture</li>
+          <p class="preorder__label">Tailles</p>
+          <ul class="preorder__sizes">
+            <li v-for="size in SIZES" :key="size">{{ size }}</li>
           </ul>
 
           <a
@@ -53,68 +62,94 @@ const SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL']
             rel="noopener"
             class="btn btn-primary preorder__cta"
           >
-            Précommander — {{ PRICE }}
-            <IconGlyph name="arrow-right" :size="15" />
+            <img src="/helloasso.svg" alt="" width="16" height="16">
+            Précommander sur HelloAsso
           </a>
           <span v-else class="btn preorder__cta preorder__cta--soon" aria-disabled="true">
             Précommandes bientôt ouvertes
           </span>
         </div>
-      </div>
+      </article>
+
+      <p class="preorder__note">
+        Paiement sécurisé sur HelloAsso · Retrait à la salle, aux heures d'ouverture · {{ DEADLINE }}
+      </p>
     </div>
   </section>
 </template>
 
 <style scoped>
-.preorder__card {
+.preorder__product {
   display: grid;
-  overflow: hidden;
+  gap: var(--space-7);
+  align-items: center;
 }
 
-.preorder__photo {
+.preorder__product + .preorder__product {
+  margin-top: var(--space-9);
+}
+
+.preorder__media {
   position: relative;
-  aspect-ratio: 1016 / 896;
-  background: #f1efec;
+  /* room for the flat shot hanging below the photo on small screens */
+  margin-bottom: var(--space-8);
 }
 
-.preorder__photo img {
+.preorder__worn {
+  display: block;
   width: 100%;
-  height: 100%;
+  aspect-ratio: 4 / 5;
   object-fit: cover;
+  border-radius: var(--radius-lg);
+  background: #fff;
 }
 
-.preorder__badge {
+/* flat product shot straddling the photo's edge */
+.preorder__flat {
   position: absolute;
-  top: var(--space-4);
-  left: var(--space-4);
-  background: var(--color-red);
-  border-color: var(--color-red);
-  color: var(--color-white);
+  right: var(--space-4);
+  bottom: calc(var(--space-8) * -1);
+  width: 48%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 4px solid var(--bg-base);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
 }
 
-.preorder__body {
-  padding: var(--space-6);
-  display: grid;
-  gap: var(--space-5);
-  align-content: center;
+.preorder__tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-red);
 }
 
-.preorder__price {
-  margin: 0;
-  font-family: var(--font-display);
+.preorder__name {
+  margin-top: var(--space-2);
   font-size: 40px;
   line-height: 1;
   color: var(--text-primary);
 }
 
-.preorder__deadline {
-  margin: var(--space-2) 0 0;
-  font-size: 14px;
+.preorder__tagline {
+  margin: var(--space-4) 0 0;
+  max-width: 38ch;
+  font-size: 16px;
   color: var(--text-secondary);
 }
 
+.preorder__price {
+  margin: var(--space-5) 0 0;
+  font-family: var(--font-display);
+  font-size: 48px;
+  line-height: 1;
+  color: var(--color-red);
+}
+
 .preorder__label {
-  margin: 0 0 var(--space-2);
+  margin: var(--space-6) 0 var(--space-2);
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
@@ -137,28 +172,14 @@ const SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL']
   text-align: center;
   border-radius: var(--radius);
   border: 1px solid var(--border-card);
-  background: var(--bg-base);
   color: var(--text-primary);
   font-weight: 600;
   font-size: 14px;
 }
 
-.preorder__steps {
-  margin: 0;
-  padding-left: 1.2em;
-  display: grid;
-  gap: var(--space-2);
-  font-size: 14px;
-  color: var(--text-secondary);
-}
-
-.preorder__steps li::marker {
-  color: var(--color-red);
-}
-
 .preorder__cta {
+  margin-top: var(--space-6);
   border-radius: var(--radius-pill);
-  justify-self: start;
 }
 
 .preorder__cta--soon {
@@ -167,14 +188,50 @@ const SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL']
   cursor: default;
 }
 
-@media (min-width: 1024px) {
-  .preorder__card {
-    grid-template-columns: 1.1fr 1fr;
+.preorder__note {
+  margin: var(--space-9) 0 0;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+@media (min-width: 768px) {
+  .preorder__product {
+    grid-template-columns: 1.15fr 1fr;
+    gap: var(--space-9);
   }
 
-  .preorder__photo {
-    aspect-ratio: auto;
-    min-height: 100%;
+  .preorder__media {
+    margin-bottom: 0;
+  }
+
+  /* on wide screens the flat shot sits on the photo's left edge, kept inside the viewport */
+  .preorder__flat {
+    right: auto;
+    left: max(-12%, calc(8px - var(--container-pad)));
+    bottom: 8%;
+    width: 58%;
+  }
+
+  .preorder__product--reverse {
+    grid-template-columns: 1fr 1.15fr;
+  }
+
+  .preorder__product--reverse .preorder__media {
+    order: 2;
+  }
+
+  .preorder__product--reverse .preorder__flat {
+    left: -18%;
+  }
+
+  .preorder__note {
+    text-align: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .preorder__name {
+    font-size: 52px;
   }
 }
 </style>
