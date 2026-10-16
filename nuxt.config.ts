@@ -62,7 +62,9 @@ export default defineNuxtConfig({
           href:
             'https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap'
         }
-      ]
+      ],
+      // Vercel Web Analytics, served by Vercel itself (@vercel/analytics needs vue-router 4, we're on 5)
+      script: [{ src: '/_vercel/insights/script.js', defer: true }]
     }
   }
 })
