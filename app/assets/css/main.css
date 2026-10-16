@@ -285,6 +285,221 @@ select:focus-visible,
   border-radius: var(--radius-lg);
 }
 
+/* Pill tabs / filters (résultats, classement) */
+.results__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-7);
+}
+
+.results__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 11px 22px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-card);
+  background: var(--surface-card);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease, transform 80ms ease;
+}
+
+.results__tab:active {
+  transform: scale(0.97);
+}
+
+.results__tab--active {
+  background: var(--text-primary);
+  border-color: var(--text-primary);
+  color: var(--bg-base);
+}
+
+/* Results tables (home section, athlete pages) */
+.results__panels {
+  display: grid;
+  gap: var(--space-7);
+  min-width: 0;
+}
+
+.results__panel {
+  min-width: 0;
+}
+
+.results__panel-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: var(--space-4);
+}
+
+.results__panel-title svg {
+  color: var(--color-red);
+}
+
+.results__table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+}
+
+.results__table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 680px;
+  font-size: 14px;
+}
+
+.results__table th,
+.results__table td {
+  text-align: left;
+  padding: 14px 16px;
+  white-space: nowrap;
+}
+
+.results__table th {
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border-card);
+}
+
+.results__table td {
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-card);
+  vertical-align: top;
+}
+
+.results__table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.results__cell-main {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.results__cell-main--clip {
+  max-width: 175px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.results__cell-sub {
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.results__place-clip {
+  display: inline-block;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: bottom;
+}
+
+.results__total {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.results__pill {
+  display: inline-flex;
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--text-primary);
+  color: var(--bg-base);
+}
+
+.results__pill--highlight {
+  background: var(--color-red);
+  color: var(--color-white);
+}
+
+.results__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-7);
+}
+
+/* Stats typography shared by /resultats, /resultats/[slug] and /classement; sizes stay per page */
+.stat-total {
+  font-family: 'Anton', var(--font-display);
+  font-weight: 400;
+  line-height: 0.95;
+  color: var(--text-primary);
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--text-primary);
+}
+
+.stat-unit {
+  margin-left: 4px;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.stat-class {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.stat-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.stat-class .stat-label {
+  margin-left: 6px;
+}
+
+.attempt--dim {
+  opacity: 0.48;
+}
+
+.attempt--failed {
+  text-decoration: line-through;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

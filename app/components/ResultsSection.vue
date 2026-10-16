@@ -445,159 +445,17 @@ const benchPanels = computed(() => [
           </div>
         </div>
       </div>
+
+      <div class="results__links">
+        <a href="/resultats" class="btn btn-secondary">
+          Tous les résultats
+          <IconGlyph name="arrow-right" :size="15" />
+        </a>
+        <a href="/classement" class="btn btn-secondary">
+          Classement du club
+          <IconGlyph name="arrow-right" :size="15" />
+        </a>
+      </div>
     </div>
   </section>
 </template>
-
-<style scoped>
-.results__tabs {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--space-3);
-  margin-bottom: var(--space-7);
-}
-
-.results__tab {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 14px;
-  padding: 11px 22px;
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--border-card);
-  background: var(--surface-card);
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease, transform 80ms ease;
-}
-
-.results__tab:active {
-  transform: scale(0.97);
-}
-
-.results__tab--active {
-  background: var(--text-primary);
-  border-color: var(--text-primary);
-  color: var(--bg-base);
-}
-
-.results__panels {
-  display: grid;
-  gap: var(--space-7);
-  min-width: 0;
-}
-
-.results__panel {
-  min-width: 0;
-}
-
-.results__panel-title {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-muted);
-  margin-bottom: var(--space-4);
-}
-
-.results__panel-title svg {
-  color: var(--color-red);
-}
-
-.results__table-wrap {
-  overflow-x: auto;
-  border: 1px solid var(--border-card);
-  border-radius: var(--radius-lg);
-}
-
-.results__table {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 680px;
-  font-size: 14px;
-}
-
-.results__table th,
-.results__table td {
-  text-align: left;
-  padding: 14px 16px;
-  white-space: nowrap;
-}
-
-.results__table th {
-  font-weight: 600;
-  color: var(--text-muted);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  background: var(--bg-elevated);
-  border-bottom: 1px solid var(--border-card);
-}
-
-.results__table td {
-  color: var(--text-secondary);
-  border-bottom: 1px solid var(--border-card);
-  vertical-align: top;
-}
-
-.results__table tbody tr:last-child td {
-  border-bottom: none;
-}
-
-.results__cell-main {
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.results__cell-main--clip {
-  max-width: 175px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.results__cell-sub {
-  margin-top: 2px;
-  font-size: 12px;
-  color: var(--text-muted);
-}
-
-.results__place-clip {
-  display: inline-block;
-  max-width: 100px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  vertical-align: bottom;
-}
-
-.results__total {
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-.results__pill {
-  display: inline-flex;
-  white-space: nowrap;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  padding: 6px 12px;
-  border-radius: var(--radius-pill);
-  background: var(--text-primary);
-  color: var(--bg-base);
-}
-
-.results__pill--highlight {
-  background: var(--color-red);
-  color: var(--color-white);
-}
-</style>

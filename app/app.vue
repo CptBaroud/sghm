@@ -3,14 +3,7 @@
     <NuxtRouteAnnouncer />
     <AppHeader />
     <main>
-      <HeroSection />
-      <ClubLifeSection />
-      <GallerySection />
-      <MovementsSection />
-      <ScheduleSection />
-      <ResultsSection />
-      <PreorderSection />
-      <ContactSection />
+      <NuxtPage />
     </main>
     <AppFooter />
   </div>

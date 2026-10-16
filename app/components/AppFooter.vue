@@ -2,12 +2,13 @@
 const year = new Date().getFullYear()
 
 const navLinks = [
-  { label: 'Accueil', href: '#top' },
-  { label: 'Le Club', href: '#club' },
-  { label: 'Les Mouvements', href: '#mouvements' },
-  { label: 'Tarifs', href: '#tarifs' },
-  { label: 'Résultats', href: '#resultats' },
-  { label: 'Contact', href: '#contact' }
+  { label: 'Accueil', href: '/#top' },
+  { label: 'Le Club', href: '/#club' },
+  { label: 'Les Mouvements', href: '/#mouvements' },
+  { label: 'Tarifs', href: '/#tarifs' },
+  { label: 'Résultats', href: '/resultats' },
+  { label: 'Classement', href: '/classement' },
+  { label: 'Contact', href: '/#contact' }
 ]
 
 const schedule = [

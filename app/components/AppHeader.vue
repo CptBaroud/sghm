@@ -1,10 +1,10 @@
 <script setup lang="ts">
 const navLinks = [
-  { label: 'Le Club', href: '#club' },
-  { label: 'Les Mouvements', href: '#mouvements' },
-  { label: 'Horaires & Tarifs', href: '#tarifs' },
-  { label: 'Résultats', href: '#resultats' },
-  { label: 'Contact', href: '#contact' }
+  { label: 'Le Club', href: '/#club' },
+  { label: 'Les Mouvements', href: '/#mouvements' },
+  { label: 'Horaires & Tarifs', href: '/#tarifs' },
+  { label: 'Résultats', href: '/#resultats' },
+  { label: 'Contact', href: '/#contact' }
 ]
 
 const { theme, init, toggle } = useTheme()
@@ -20,7 +20,7 @@ function closeDrawer() {
 <template>
   <header class="header">
     <div class="container header__inner">
-      <a href="#top" class="header__brand" @click="closeDrawer">
+      <a href="/#top" class="header__brand" @click="closeDrawer">
         <img
           :src="theme === 'dark' ? '/logo-dark.png' : '/logo-light.png'"
           alt="Logo SGHM Guérande"
@@ -46,7 +46,7 @@ function closeDrawer() {
           <IconGlyph v-else name="moon" :size="17" />
         </button>
 
-        <a href="#contact" class="btn btn-primary header__cta">
+        <a href="/#contact" class="btn btn-primary header__cta">
           Nous rencontrer
           <IconGlyph name="arrow-right" :size="15" />
         </a>
@@ -70,7 +70,7 @@ function closeDrawer() {
         <div class="drawer__inner">
           <nav class="drawer__nav" aria-label="Navigation mobile">
             <a v-for="link in navLinks" :key="link.href" :href="link.href" @click="closeDrawer">{{ link.label }}</a>
-            <a href="#contact" class="btn btn-primary drawer__cta" @click="closeDrawer">
+            <a href="/#contact" class="btn btn-primary drawer__cta" @click="closeDrawer">
               Nous rencontrer
               <IconGlyph name="arrow-right" :size="15" />
             </a>
