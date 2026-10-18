@@ -319,16 +319,20 @@ const regionalBench: BenchResult[] = [
   }
 ]
 
+// Homepage only shows the current and previous year (evaluated at build/render time), newest first
+const minYear = new Date().getFullYear() - 1
+const recent = <T extends { year: string }>(rows: T[]) => rows.filter((row) => Number(row.year) >= minYear).toSorted((a, b) => b.year.localeCompare(a.year))
+
 const completePanels = computed(() => [
-  { title: 'Compétitions Internationales', icon: 'trophy' as const, rows: internationalResults },
-  { title: 'Compétitions Nationales', icon: 'trophy' as const, rows: nationalResults },
-  { title: 'Compétitions Régionales & Épreuves de Ligue', icon: 'flag' as const, rows: regionalResults }
+  { title: 'Compétitions Internationales', icon: 'trophy' as const, rows: recent(internationalResults) },
+  { title: 'Compétitions Nationales', icon: 'trophy' as const, rows: recent(nationalResults) },
+  { title: 'Compétitions Régionales & Épreuves de Ligue', icon: 'flag' as const, rows: recent(regionalResults) }
 ].filter((panel) => panel.rows.length > 0))
 
 const benchPanels = computed(() => [
-  { title: 'Compétitions Internationales', icon: 'trophy' as const, rows: internationalBench },
-  { title: 'Compétitions Nationales', icon: 'trophy' as const, rows: nationalBench },
-  { title: 'Compétitions Régionales & Épreuves de Ligue', icon: 'flag' as const, rows: regionalBench }
+  { title: 'Compétitions Internationales', icon: 'trophy' as const, rows: recent(internationalBench) },
+  { title: 'Compétitions Nationales', icon: 'trophy' as const, rows: recent(nationalBench) },
+  { title: 'Compétitions Régionales & Épreuves de Ligue', icon: 'flag' as const, rows: recent(regionalBench) }
 ].filter((panel) => panel.rows.length > 0))
 </script>
 

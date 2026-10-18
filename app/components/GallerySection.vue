@@ -21,7 +21,7 @@ const track = ref<HTMLElement>()
 const distance = ref(0)
 const offset = ref(0)
 
-// Reduced motion gets native swipe (distance 0 = static mode).
+// Mobile and reduced motion get native swipe (distance 0 = static mode): scroll-jacking breaks page navigation on phones.
 let animate: MediaQueryList | undefined
 
 function measure() {
@@ -39,7 +39,7 @@ function update() {
 }
 
 onMounted(() => {
-  animate = window.matchMedia('(prefers-reduced-motion: no-preference)')
+  animate = window.matchMedia('(prefers-reduced-motion: no-preference) and (min-width: 768px)')
   measure()
   window.addEventListener('scroll', update, { passive: true })
   window.addEventListener('resize', measure)
@@ -98,7 +98,7 @@ onBeforeUnmount(() => {
   gap: var(--space-5);
 }
 
-/* reduced motion: native swipe with snap */
+/* mobile & reduced motion: native swipe with snap */
 .gallery__sticky--static {
   position: static;
   height: auto;

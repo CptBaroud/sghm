@@ -62,9 +62,15 @@ export default defineNuxtConfig({
           href:
             'https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap'
         }
-      ],
-      // Vercel Web Analytics, served by Vercel itself (@vercel/analytics needs vue-router 4, we're on 5)
-      script: [{ src: '/_vercel/insights/script.js', defer: true }]
+      ]
     }
-  }
+  },
+
+  // Vercel Web Analytics, served by Vercel itself (@vercel/analytics needs vue-router 4, we're on 5); 404s in dev
+  $production: {
+    app: { head: { script: [{ src: '/_vercel/insights/script.js', defer: true }] } }
+  },
+
+  // unhead's dev lint flags the twitter:* tags Nuxt SEO emits on purpose (X still reads twitter:card)
+  unhead: { vite: { validate: false } }
 })

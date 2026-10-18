@@ -73,3 +73,13 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+## Athlete results
+
+Results come from [OpenIPF](https://www.openipf.org). Edit the names in `data/athletes.txt`, then:
+
+```bash
+npm run data   # download latest OpenIPF dump + regenerate data/athletes.json
+```
+
+`npm run data:scrape` alone re-runs the extraction on the already downloaded CSV.

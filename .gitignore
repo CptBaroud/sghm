@@ -22,3 +22,6 @@ logs
 .env
 .env.*
 !.env.example
+
+# OpenIPF raw dataset (npm run data:download)
+data/openipf

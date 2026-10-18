@@ -1,0 +1,27 @@
+# One athlete per line, as written on openipf.org (case and accents don't matter).
+# Run `npm run data:scrape` after editing.
+Marine Couëdel
+Yann Foucher
+Teddy Lecuyer
+Patrice Adam
+Serge Bodin
+Gérard Leiterer
+Lenaïg Celle
+Céliane Jaltier
+Yohann Jambon
+Richard Bertho
+Tristan Avril-Allain
+Gurvan Seveno
+Julien lionnard 
+Kevin lionnard 
+Dylan jaffre 
+Jérémy paringaux 
+Jean Marie Moreau 
+François Lalande 
+Maxime tual 
+Jean salun
+Julien Segard
+Clément flohic
+Samy leiterer 
+Flora leiterer
+Benoît visset

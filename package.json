@@ -7,7 +7,10 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "data:download": "./scripts/download-openipf.sh",
+    "data:scrape": "python3 -I scripts/scrape-athletes.py",
+    "data": "npm run data:download && npm run data:scrape"
   },
   "dependencies": {
     "@lucide/vue": "^1.46.0",

@@ -1,4 +1,4 @@
-import data from '~~/sghm_athletes_results.json'
+import data from '~~/data/athletes.json'
 
 // Found athletes with at least one valid result; DQ dropped, newest first
 export const clubAthletes = data.athletes.flatMap((athlete) => {
@@ -6,11 +6,11 @@ export const clubAthletes = data.athletes.flatMap((athlete) => {
     .filter((r) => r.place !== 'DQ')
     .toSorted((a, b) => b.date.localeCompare(a.date))
   const latest = results[0]
-  if (!athlete.matchedName || !latest) return []
+  if (!latest) return []
 
   return [{
-    name: athlete.matchedName,
-    slug: normalizeName(athlete.matchedName).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
+    name: athlete.name,
+    slug: normalizeName(athlete.name).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
     sex: latest.sex,
     // FFForce "Open" is an all-ages category, not an age division
     division: (results.find((r) => r.division !== 'Open') ?? latest).division,
