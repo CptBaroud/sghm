@@ -66,6 +66,11 @@ const pricing = [
             </li>
           </ul>
 
+          <p class="schedule__summer">
+            Juillet &amp; août : ouvert en semaine uniquement. Horaires indicatifs, susceptibles de changer
+            selon les vacances, compétitions et disponibilité des bénévoles.
+          </p>
+
           <p class="schedule__location">
             <IconGlyph name="pin" :size="16" />
             <span>
@@ -105,6 +110,10 @@ const pricing = [
           </article>
           <p class="schedule__pricing-note">
             Licences loisir : inscription et paiement sécurisé en ligne via HelloAsso.
+            Tarif loisir réduit de 50 % pour une licence prise après le 1er mai.
+            Pas de séance d'essai. L'adhésion vaut acceptation du
+            <a href="/documents/reglement-interieur-sghm-2026.pdf" target="_blank">règlement intérieur</a>
+            (<a href="/documents/statuts-sghm-2026.pdf" target="_blank">statuts</a>).
           </p>
         </div>
       </div>
@@ -308,6 +317,16 @@ const pricing = [
   margin: 0;
   grid-column: 1 / -1;
   font-size: 13px;
+  color: var(--text-muted);
+}
+
+.schedule__pricing-note a {
+  color: inherit;
+}
+
+.schedule__summer {
+  margin: var(--space-4) 0 var(--space-5);
+  font-size: 12px;
   color: var(--text-muted);
 }
 

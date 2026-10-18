@@ -82,6 +82,7 @@ const products = [
 
       <p class="preorder__note">
         Paiement sécurisé sur HelloAsso · Retrait à la salle, aux heures d'ouverture · {{ DEADLINE }}
+        · <NuxtLink to="/mentions-legales#precommandes">Conditions de précommande</NuxtLink>
         <br>
         <em>Photos non contractuelles, générées par IA.</em>
       </p>

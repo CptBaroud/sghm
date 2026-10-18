@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['@nuxtjs/seo'],
+  modules: ['@nuxtjs/seo', '@nuxt/fonts'],
   css: ['~/assets/css/main.css'],
 
   // Read by every Nuxt SEO module: canonical URLs, og:*, title template, sitemap, robots.txt, schema.org
@@ -52,18 +52,13 @@ export default defineNuxtConfig({
     }
   },
 
-  app: {
-    head: {
-      link: [
-        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
-        {
-          rel: 'stylesheet',
-          href:
-            'https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap'
-        }
-      ]
-    }
+  // Downloaded at build and served from our own domain: no visitor IP sent to Google (GDPR)
+  fonts: {
+    families: [
+      { name: 'Anton', weights: [400] },
+      { name: 'Oswald', weights: [400, 500, 600, 700] },
+      { name: 'Inter', weights: [400, 500, 600, 700] }
+    ]
   },
 
   // Vercel Web Analytics, served by Vercel itself (@vercel/analytics needs vue-router 4, we're on 5); 404s in dev

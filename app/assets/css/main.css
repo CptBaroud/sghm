@@ -512,3 +512,24 @@ select:focus-visible,
     transition-duration: 0.001ms !important;
   }
 }
+
+/* Mentions légales / confidentialité: plain prose */
+.legal {
+  max-width: 72ch;
+  color: var(--text-secondary);
+}
+
+.legal h2 {
+  margin: var(--space-7) 0 var(--space-3);
+  font-size: 20px;
+  color: var(--text-primary);
+}
+
+.legal p + p,
+.legal .section__title + p {
+  margin-top: var(--space-4);
+}
+
+.legal a {
+  color: var(--color-red);
+}

@@ -2,13 +2,9 @@
 const year = new Date().getFullYear()
 
 const navLinks = [
-  { label: 'Accueil', href: '/#top' },
-  { label: 'Le Club', href: '/#club' },
-  { label: 'Les Mouvements', href: '/#mouvements' },
-  { label: 'Tarifs', href: '/#tarifs' },
+  { label: 'Accueil', href: '/' },
   { label: 'Résultats', href: '/resultats' },
-  { label: 'Classement', href: '/classement' },
-  { label: 'Contact', href: '/#contact' }
+  { label: 'Classement', href: '/classement' }
 ]
 
 const schedule = [
@@ -32,6 +28,10 @@ const schedule = [
         </div>
       </div>
 
+      <nav class="footer__nav" aria-label="Navigation secondaire">
+        <a v-for="link in navLinks" :key="link.href" :href="link.href">{{ link.label }}</a>
+      </nav>
+
       <div class="footer__hours">
         <h3 class="footer__heading">
           <IconGlyph name="clock" :size="14" />
@@ -44,15 +44,15 @@ const schedule = [
           </li>
         </ul>
       </div>
-
-      <nav class="footer__nav" aria-label="Navigation secondaire">
-        <a v-for="link in navLinks" :key="link.href" :href="link.href">{{ link.label }}</a>
-      </nav>
     </div>
 
     <div class="container footer__bottom">
       <p>&copy; {{ year }} SGHM. Association Loi 1901. Salle des Sports J.Ménager.</p>
       <p>Club affilié à la Fédération Française de Force (FFForce)</p>
+      <p>
+        <NuxtLink to="/mentions-legales">Mentions légales</NuxtLink> ·
+        <NuxtLink to="/confidentialite">Confidentialité</NuxtLink>
+      </p>
     </div>
   </footer>
 </template>
@@ -61,13 +61,13 @@ const schedule = [
 .footer {
   background: var(--color-navy-2);
   color: var(--color-steel-300);
-  padding: var(--space-7) 0 var(--space-6);
+  padding: var(--space-9) 0 var(--space-7);
 }
 
 .footer__inner {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: var(--space-8);
 }
 
 .footer__heading {
@@ -88,10 +88,10 @@ const schedule = [
 
 .footer__hours-list {
   list-style: none;
-  margin: var(--space-3) 0 0;
+  margin: var(--space-4) 0 0;
   padding: 0;
   display: grid;
-  gap: var(--space-2);
+  gap: var(--space-3);
   font-size: 13px;
 }
 
@@ -143,7 +143,7 @@ const schedule = [
 .footer__nav {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-5);
+  gap: var(--space-4) var(--space-6);
   font-size: 13px;
   font-weight: 600;
   text-transform: uppercase;
@@ -155,17 +155,21 @@ const schedule = [
   text-decoration: none;
 }
 
+.footer__bottom a {
+  color: inherit;
+}
+
 .footer__nav a:hover {
   color: var(--color-white);
 }
 
 .footer__bottom {
-  margin-top: var(--space-7);
-  padding-top: var(--space-4);
+  margin-top: var(--space-8);
+  padding-top: var(--space-5);
   border-top: 1px solid #27272f;
   display: flex;
   flex-direction: column;
-  gap: var(--space-1);
+  gap: var(--space-2);
   font-size: 12px;
   color: var(--color-steel-400);
 }
@@ -173,8 +177,9 @@ const schedule = [
 @media (min-width: 768px) {
   .footer__inner {
     display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr;
-    gap: var(--space-7);
+    /* left: brand with the nav inline below it · right: schedule */
+    grid-template-columns: 1fr minmax(240px, 280px);
+    gap: var(--space-6) var(--space-9);
   }
 
   .footer__brand {
@@ -182,14 +187,23 @@ const schedule = [
   }
 
   .footer__nav {
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    gap: var(--space-3) var(--space-5);
-    align-content: start;
+    grid-column: 1;
+    align-self: start;
+    gap: var(--space-4) var(--space-5);
+  }
+
+  .footer__brand-tagline {
+    max-width: none;
+  }
+
+  .footer__hours {
+    grid-column: 2;
+    grid-row: 1 / span 2;
   }
 
   .footer__bottom {
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
   }
 }
