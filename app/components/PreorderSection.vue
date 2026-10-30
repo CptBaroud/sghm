@@ -1,7 +1,5 @@
 <script setup lang="ts">
-// TODO: paste the HelloAsso boutique link and the pre-order deadline before publishing.
-const HELLOASSO_URL = ''
-const DEADLINE = 'Précommandes bientôt ouvertes'
+const HELLOASSO_URL = 'https://www.helloasso.com/associations/section-guerandaise-halterophilie-musculation/boutiques/boutique-officielle-sghm'
 const SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL']
 
 const products = [
@@ -81,7 +79,7 @@ const products = [
       </article>
 
       <p class="preorder__note">
-        Paiement sécurisé sur HelloAsso · Retrait à la salle, aux heures d'ouverture · {{ DEADLINE }}
+        Paiement sécurisé sur HelloAsso · Retrait à la salle, aux heures d'ouverture
         · <NuxtLink to="/mentions-legales#precommandes">Conditions de précommande</NuxtLink>
         <br>
         <em>Photos non contractuelles, générées par IA.</em>
