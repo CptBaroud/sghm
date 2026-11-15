@@ -66,6 +66,11 @@ const pricing = [
             </li>
           </ul>
 
+          <p class="schedule__coach">
+            <strong>Coach présent le mardi et le mercredi.</strong>
+            Cours collectif le mardi soir.
+          </p>
+
           <p class="schedule__summer">
             Juillet &amp; août : ouvert en semaine uniquement. Horaires indicatifs, susceptibles de changer
             selon les vacances, compétitions et disponibilité des bénévoles.
@@ -322,6 +327,18 @@ const pricing = [
 
 .schedule__pricing-note a {
   color: inherit;
+}
+
+.schedule__coach {
+  margin: var(--space-5) 0 0;
+  padding-left: var(--space-3);
+  border-left: 3px solid var(--color-red);
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.schedule__coach strong {
+  color: var(--text-primary);
 }
 
 .schedule__summer {
