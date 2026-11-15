@@ -69,6 +69,7 @@ const pricing = [
           <p class="schedule__coach">
             <strong>Coach présent le mardi et le mercredi.</strong>
             Cours collectif le mardi soir.
+            <NuxtLink to="/coaching">En savoir plus</NuxtLink>
           </p>
 
           <p class="schedule__summer">
@@ -335,6 +336,10 @@ const pricing = [
   border-left: 3px solid var(--color-red);
   font-size: 13px;
   color: var(--text-secondary);
+}
+
+.schedule__coach a {
+  color: var(--color-red);
 }
 
 .schedule__coach strong {

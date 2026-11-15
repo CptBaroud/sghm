@@ -3,6 +3,9 @@ const year = new Date().getFullYear()
 
 const navLinks = [
   { label: 'Accueil', href: '/' },
+  { label: 'Coach & cours', href: '/coaching' },
+  { label: 'Musculation loisir', href: '/musculation' },
+  { label: 'Force athlétique', href: '/force-athletique' },
   { label: 'Résultats', href: '/resultats' },
   { label: 'Classement', href: '/classement' }
 ]
