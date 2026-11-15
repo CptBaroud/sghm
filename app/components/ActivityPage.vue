@@ -1,0 +1,378 @@
+<script setup lang="ts">
+type Icon = 'discipline' | 'equipment' | 'community' | 'clock' | 'trophy' | 'flag' | 'heart' | 'calendar'
+
+interface Link { label: string; href: string; external?: boolean }
+
+defineProps<{
+  eyebrow: string
+  title: string
+  accent: string
+  lede: string
+  photo: string
+  photoAlt: string
+  facts: { icon: Icon; label: string }[]
+  features: { icon: Icon; title: string; text: string }[]
+  splitTitle: string
+  splitPhoto: string
+  gallery: { src: string; caption: string }[]
+  cta: { title: string; text: string; primary: Link; secondary?: Link }
+  related: Link[]
+}>()
+</script>
+
+<template>
+  <section class="activity-hero">
+    <img :src="photo" :alt="photoAlt" class="activity-hero__photo" />
+    <span class="activity-hero__scrim" aria-hidden="true" />
+    <div class="container activity-hero__inner">
+      <span class="section__eyebrow">{{ eyebrow }}</span>
+      <h1 class="activity-hero__title">
+        {{ title }} <span class="activity-hero__accent">{{ accent }}</span>
+      </h1>
+      <p class="activity-hero__lede">{{ lede }}</p>
+      <ul class="activity-hero__facts">
+        <li v-for="fact in facts" :key="fact.label" class="activity-hero__fact">
+          <IconGlyph :name="fact.icon" :size="16" />
+          {{ fact.label }}
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="activity__features">
+        <article v-for="feature in features" :key="feature.title" class="card activity__feature">
+          <span class="activity__watermark" aria-hidden="true">
+            <IconGlyph :name="feature.icon" :size="96" />
+          </span>
+          <span class="activity__icon"><IconGlyph :name="feature.icon" :size="20" /></span>
+          <h2 class="activity__feature-title">{{ feature.title }}</h2>
+          <p class="activity__feature-text">{{ feature.text }}</p>
+        </article>
+      </div>
+
+      <div class="activity__split">
+        <div class="activity__split-photo">
+          <img :src="splitPhoto" alt="" />
+        </div>
+        <div class="activity__split-body">
+          <h2 class="section__title">{{ splitTitle }}</h2>
+          <div class="activity__prose"><slot /></div>
+        </div>
+      </div>
+
+      <div class="activity__gallery">
+        <figure v-for="item in gallery" :key="item.src" class="activity__gallery-item">
+          <img :src="item.src" :alt="`${item.caption} à la salle de musculation SGHM de Guérande`" loading="lazy" />
+          <figcaption>{{ item.caption }}</figcaption>
+        </figure>
+      </div>
+
+      <div class="card activity__cta">
+        <div>
+          <h2 class="activity__cta-title">{{ cta.title }}</h2>
+          <p>{{ cta.text }}</p>
+        </div>
+        <div class="activity__cta-actions">
+          <a
+            :href="cta.primary.href"
+            :target="cta.primary.external ? '_blank' : undefined"
+            :rel="cta.primary.external ? 'noopener' : undefined"
+            class="btn btn-primary"
+          >
+            {{ cta.primary.label }}
+            <IconGlyph name="arrow-right" :size="15" />
+          </a>
+          <a v-if="cta.secondary" :href="cta.secondary.href" class="btn btn-secondary">{{ cta.secondary.label }}</a>
+        </div>
+      </div>
+
+      <nav class="activity__related" aria-label="Voir aussi">
+        <span>Voir aussi</span>
+        <NuxtLink v-for="link in related" :key="link.href" :to="link.href" class="badge">{{ link.label }}</NuxtLink>
+      </nav>
+    </div>
+  </section>
+</template>
+
+<style scoped>
+.activity-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-navy-2);
+  padding: var(--space-9) 0 var(--space-8);
+  min-height: 460px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.activity-hero__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+}
+
+.activity-hero__scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(11, 11, 14, 0.92) 0%, rgba(11, 11, 14, 0.6) 55%, rgba(11, 11, 14, 0.2) 100%),
+    linear-gradient(180deg, rgba(11, 11, 14, 0) 50%, rgba(11, 11, 14, 0.7) 100%);
+}
+
+.activity-hero__inner {
+  position: relative;
+  width: 100%;
+}
+
+.activity-hero__title {
+  font-size: 40px;
+  color: var(--color-white);
+  max-width: 14ch;
+}
+
+.activity-hero__accent {
+  color: var(--color-red);
+}
+
+.activity-hero__lede {
+  margin-top: var(--space-4);
+  max-width: 52ch;
+  font-size: 17px;
+  color: var(--color-steel-300);
+}
+
+.activity-hero__facts {
+  list-style: none;
+  margin: var(--space-6) 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.activity-hero__fact {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  background: rgba(11, 11, 14, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+.activity-hero__fact svg {
+  color: var(--color-red);
+}
+
+.activity__features {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.activity__feature {
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-6);
+}
+
+.activity__watermark {
+  position: absolute;
+  right: -14px;
+  bottom: -14px;
+  color: var(--color-red);
+  opacity: 0.08;
+  line-height: 0;
+  pointer-events: none;
+}
+
+.activity__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--bg-elevated);
+  color: var(--color-red);
+}
+
+[data-theme='light'] .activity__icon {
+  background: var(--text-primary);
+}
+
+.activity__feature-title {
+  margin-top: var(--space-4);
+  font-size: 20px;
+  color: var(--text-primary);
+}
+
+.activity__feature-text {
+  margin-top: var(--space-2);
+  font-size: 15px;
+}
+
+.activity__split {
+  margin-top: var(--space-9);
+  display: grid;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.activity__split-photo {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.activity__split-photo::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--color-red);
+}
+
+.activity__split-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.activity__prose {
+  margin-top: var(--space-4);
+}
+
+.activity__prose :deep(p + p) {
+  margin-top: var(--space-4);
+}
+
+.activity__prose :deep(a) {
+  color: var(--color-red);
+}
+
+.activity__prose :deep(strong) {
+  color: var(--text-primary);
+}
+
+.activity__gallery {
+  margin-top: var(--space-9);
+  display: grid;
+  gap: var(--space-4);
+}
+
+.activity__gallery-item {
+  position: relative;
+  margin: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.activity__gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.activity__gallery-item figcaption {
+  position: absolute;
+  inset: auto 0 0;
+  padding: var(--space-6) var(--space-4) var(--space-3);
+  background: linear-gradient(180deg, rgba(11, 11, 14, 0), rgba(11, 11, 14, 0.8));
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+.activity__cta {
+  margin-top: var(--space-9);
+  padding: var(--space-6);
+  border-color: var(--color-red);
+  box-shadow: 0 12px 32px rgba(227, 25, 55, 0.16);
+  display: grid;
+  gap: var(--space-5);
+}
+
+.activity__cta-title {
+  font-size: 26px;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.activity__cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.activity__cta-actions .btn {
+  border-radius: var(--radius-pill);
+}
+
+.activity__related {
+  margin-top: var(--space-6);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.activity__related a {
+  text-decoration: none;
+}
+
+.activity__related a:hover {
+  border-color: var(--color-red);
+}
+
+@media (max-width: 767px) {
+  .activity-hero__scrim {
+    background: linear-gradient(180deg, rgba(11, 11, 14, 0.35) 0%, rgba(11, 11, 14, 0.75) 45%, rgba(11, 11, 14, 0.95) 100%);
+  }
+}
+
+@media (min-width: 768px) {
+  .activity-hero {
+    min-height: 560px;
+  }
+
+  .activity-hero__title {
+    font-size: 60px;
+    letter-spacing: -0.02em;
+  }
+
+  .activity__features {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .activity__split {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+  }
+
+  .activity__gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .activity__cta {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: var(--space-7);
+  }
+}
+</style>

@@ -7,29 +7,50 @@ useBreadcrumbItems({ overrides: [{ label: 'Accueil' }, { label: 'Force athlétiq
 </script>
 
 <template>
-  <section class="section">
-    <div class="container legal">
-      <h1 class="section__title">Force athlétique</h1>
-      <p>
-        La force athlétique (powerlifting) consiste à soulever la charge la plus lourde possible sur trois
-        mouvements : le squat, le développé couché et le soulevé de terre. La SGHM est affiliée à la Fédération
-        Française de Force (FFForce) et une dizaine de ses adhérents sont licenciés en compétition.
-      </p>
-
-      <h2>Se lancer en compétition</h2>
-      <p>
-        La licence compétiteur coûte 100 € par an et se prend sur place, à la salle. Le
-        <NuxtLink to="/coaching">coach</NuxtLink> aide à préparer les mouvements selon les règles d'arbitrage.
-        Le remboursement des compétitions et la charte du compétiteur sont détaillés dans le
-        <a href="/documents/reglement-interieur-sghm-2026.pdf" target="_blank">règlement intérieur</a>.
-      </p>
-
-      <p class="legal__see-also">
-        Voir aussi : <NuxtLink to="/resultats">résultats du club</NuxtLink> ·
-        <NuxtLink to="/classement">classement</NuxtLink> ·
-        <NuxtLink to="/musculation">la pratique loisir</NuxtLink>
-      </p>
-    </div>
-  </section>
+  <ActivityPage
+    eyebrow="Pratique compétitive"
+    title="Force"
+    accent="athlétique"
+    lede="Soulever la charge la plus lourde possible sur trois mouvements : squat, développé couché et soulevé de terre. La SGHM est affiliée à la Fédération Française de Force (FFForce)."
+    photo="/hero@2x.jpg"
+    photo-alt="Athlète en squat sur le plateau de la salle de musculation SGHM à Guérande"
+    :facts="[
+      { icon: 'flag', label: 'Club affilié FFForce' },
+      { icon: 'trophy', label: '10+ compétiteurs licenciés' },
+      { icon: 'equipment', label: 'Matériel aux normes IPF' }
+    ]"
+    :features="[
+      { icon: 'discipline', title: 'Règles IPF', text: 'Les mouvements se travaillent selon les règles d\'arbitrage appliquées sur le plateau.' },
+      { icon: 'equipment', title: 'Matériel de compétition', text: 'Racks de compétition, barres 20 kg et 15 kg, disques calibrés aux normes IPF.' },
+      { icon: 'trophy', title: 'Résultats suivis', text: 'Les performances des athlètes du club sont publiées et classées sur ce site.' }
+    ]"
+    split-title="Se lancer en compétition"
+    split-photo="/deadlift.jpg"
+    :gallery="[
+      { src: '/gallery/05.jpg', caption: 'Développé couché' },
+      { src: '/gallery/23.jpg', caption: 'Séance de force' },
+      { src: '/gallery/18.jpg', caption: 'Plateau de soulevé de terre' }
+    ]"
+    :cta="{
+      title: 'Licence compétiteur',
+      text: '100 € par an, inscription sur place à la salle.',
+      primary: { label: 'Nous contacter', href: '/#contact' },
+      secondary: { label: 'Résultats du club', href: '/resultats' }
+    }"
+    :related="[
+      { label: 'Classement', href: '/classement' },
+      { label: 'Coach & cours collectif', href: '/coaching' },
+      { label: 'Musculation loisir', href: '/musculation' }
+    ]"
+  >
+    <p>
+      La licence compétiteur coûte <strong>100 € par an</strong> et se prend sur place, à la salle. Le
+      <NuxtLink to="/coaching">coach</NuxtLink> aide à préparer les mouvements selon les règles d'arbitrage.
+    </p>
+    <p>
+      Le remboursement des compétitions et la charte du compétiteur sont détaillés dans le
+      <a href="/documents/reglement-interieur-sghm-2026.pdf" target="_blank">règlement intérieur</a>.
+    </p>
+  </ActivityPage>
   <MovementsSection />
 </template>
