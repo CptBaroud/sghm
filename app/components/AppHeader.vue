@@ -1,11 +1,17 @@
 <script setup lang="ts">
+// Contact stays reachable from the "Nous rencontrer" button
 const navLinks = [
   { label: 'Le Club', href: '/#club' },
-  { label: 'Les Mouvements', href: '/#mouvements' },
+  { label: 'Musculation', href: '/musculation' },
+  { label: 'Force athlétique', href: '/force-athletique' },
+  { label: 'Coaching', href: '/coaching' },
   { label: 'Horaires & Tarifs', href: '/#tarifs' },
-  { label: 'Résultats', href: '/#resultats' },
-  { label: 'Contact', href: '/#contact' }
+  { label: 'Résultats', href: '/resultats' }
 ]
+
+const route = useRoute()
+// Pages match their own path and sub-pages (/resultats/<athlete>); home anchors never show as current
+const isCurrent = (href: string) => !href.includes('#') && (route.path === href || route.path.startsWith(`${href}/`))
 
 const { theme, init, toggle } = useTheme()
 const drawerOpen = ref(false)
@@ -32,7 +38,12 @@ function closeDrawer() {
       </a>
 
       <nav class="header__nav" aria-label="Navigation principale">
-        <a v-for="link in navLinks" :key="link.href" :href="link.href">{{ link.label }}</a>
+        <NuxtLink
+          v-for="link in navLinks"
+          :key="link.href"
+          :to="link.href"
+          :aria-current="isCurrent(link.href) ? 'page' : undefined"
+        >{{ link.label }}</NuxtLink>
       </nav>
 
       <div class="header__actions">
@@ -69,7 +80,13 @@ function closeDrawer() {
       <div v-if="drawerOpen" class="drawer">
         <div class="drawer__inner">
           <nav class="drawer__nav" aria-label="Navigation mobile">
-            <a v-for="link in navLinks" :key="link.href" :href="link.href" @click="closeDrawer">{{ link.label }}</a>
+            <NuxtLink
+              v-for="link in navLinks"
+              :key="link.href"
+              :to="link.href"
+              :aria-current="isCurrent(link.href) ? 'page' : undefined"
+              @click="closeDrawer"
+            >{{ link.label }}</NuxtLink>
             <a href="/#contact" class="btn btn-primary drawer__cta" @click="closeDrawer">
               Nous rencontrer
               <IconGlyph name="arrow-right" :size="15" />
@@ -166,8 +183,17 @@ function closeDrawer() {
   color: var(--text-primary);
 }
 
-.header__nav a:hover::after {
+.header__nav a:hover::after,
+.header__nav a[aria-current='page']::after {
   background: var(--color-red);
+}
+
+.header__nav a[aria-current='page'] {
+  color: var(--text-primary);
+}
+
+.drawer__nav a[aria-current='page'] {
+  color: var(--color-red);
 }
 
 .header__actions {
