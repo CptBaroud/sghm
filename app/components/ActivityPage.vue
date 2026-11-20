@@ -37,6 +37,15 @@ defineProps<{
           {{ fact.label }}
         </li>
       </ul>
+      <a
+        :href="cta.primary.href"
+        :target="cta.primary.external ? '_blank' : undefined"
+        :rel="cta.primary.external ? 'noopener' : undefined"
+        class="btn btn-primary activity-hero__cta"
+      >
+        {{ cta.primary.label }}
+        <IconGlyph name="arrow-right" :size="15" />
+      </a>
     </div>
   </section>
 
@@ -126,6 +135,14 @@ defineProps<{
   height: 100%;
   object-fit: cover;
   object-position: center 25%;
+  animation: activity-hero-settle 1600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* the header photo settles from a slight zoom on load */
+@keyframes activity-hero-settle {
+  from {
+    transform: scale(1.08);
+  }
 }
 
 .activity-hero__scrim {
@@ -148,7 +165,7 @@ defineProps<{
 }
 
 .activity-hero__accent {
-  color: var(--color-red);
+  color: var(--accent-text);
 }
 
 .activity-hero__lede {
@@ -181,8 +198,13 @@ defineProps<{
   row-gap: var(--space-3);
 }
 
+.activity-hero__cta {
+  margin-top: var(--space-6);
+  border-radius: var(--radius-pill);
+}
+
 .activity-hero__fact svg {
-  color: var(--color-red);
+  color: var(--accent-text);
 }
 
 /* plain text columns, no boxes or icons */
@@ -265,7 +287,7 @@ defineProps<{
 }
 
 .activity__prose :deep(a) {
-  color: var(--color-red);
+  color: var(--accent-text);
 }
 
 .activity__prose :deep(strong) {
@@ -389,7 +411,9 @@ defineProps<{
   .activity__gallery {
     grid-template-columns: repeat(3, 1fr);
   }
+}
 
+@media (min-width: 1024px) {
   .activity__cta {
     grid-template-columns: 1fr auto;
     align-items: center;

@@ -121,7 +121,7 @@
 .coach-home__slot-hours {
   font-family: var(--font-display);
   font-size: 22px;
-  color: var(--color-red);
+  color: var(--accent-text);
 }
 
 .coach-home__slot-label {

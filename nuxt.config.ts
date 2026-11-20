@@ -55,7 +55,6 @@ export default defineNuxtConfig({
   // Downloaded at build and served from our own domain: no visitor IP sent to Google (GDPR)
   fonts: {
     families: [
-      { name: 'Anton', weights: [400] },
       { name: 'Oswald', weights: [400, 500, 600, 700] },
       { name: 'Inter', weights: [400, 500, 600, 700] }
     ]

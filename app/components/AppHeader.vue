@@ -102,7 +102,6 @@ function closeDrawer() {
 .header {
   background: var(--header-bg);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border-card);
   position: sticky;
   top: 0;
   z-index: 20;
@@ -193,7 +192,7 @@ function closeDrawer() {
 }
 
 .drawer__nav a[aria-current='page'] {
-  color: var(--color-red);
+  color: var(--accent-text);
 }
 
 .header__actions {
@@ -210,8 +209,8 @@ function closeDrawer() {
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  border: 1px solid var(--border-card);
-  background: var(--surface-card);
+  border: none;
+  background: var(--surface-card-2);
   color: var(--text-primary);
   cursor: pointer;
   flex-shrink: 0;
@@ -238,8 +237,8 @@ function closeDrawer() {
   width: 38px;
   height: 38px;
   border-radius: var(--radius);
-  border: 1px solid var(--border-card);
-  background: var(--surface-card);
+  border: none;
+  background: var(--surface-card-2);
   cursor: pointer;
   align-items: center;
   transition: transform 150ms ease, background-color 150ms ease, border-color 150ms ease;
@@ -260,7 +259,6 @@ function closeDrawer() {
 .drawer {
   display: grid;
   grid-template-rows: 1fr;
-  border-top: 1px solid var(--border-card);
   background: var(--bg-base);
 }
 
@@ -352,6 +350,11 @@ function closeDrawer() {
 @media (min-width: 1200px) {
   .header__nav {
     gap: var(--space-5);
+    font-size: 13px;
+  }
+
+  .header__cta {
+    font-size: 13px;
   }
 }
 </style>

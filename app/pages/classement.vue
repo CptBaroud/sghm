@@ -160,8 +160,7 @@ const boards = computed(() => {
   display: flex;
   align-items: baseline;
   gap: var(--space-3);
-  padding: var(--space-3) 0;
-  border-top: 1px solid var(--border-card);
+  padding: var(--space-2) 0;
 }
 
 .ranking__rank {
@@ -172,7 +171,7 @@ const boards = computed(() => {
 }
 
 .ranking__row:first-child .ranking__rank {
-  color: var(--color-red);
+  color: var(--accent-text);
 }
 
 .ranking__athlete {
@@ -187,7 +186,7 @@ const boards = computed(() => {
 }
 
 .ranking__athlete a:hover {
-  color: var(--color-red);
+  color: var(--accent-text);
   text-decoration: underline;
   text-underline-offset: 3px;
 }

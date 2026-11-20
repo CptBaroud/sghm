@@ -76,7 +76,7 @@ defineProps<{ links: PageCardHref[] }>()
 }
 
 .page-cards__more svg {
-  color: var(--color-red);
+  color: var(--accent-text);
   transition: transform 200ms ease;
 }
 

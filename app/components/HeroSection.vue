@@ -205,7 +205,7 @@ onBeforeUnmount(() => {
 }
 
 .hero__title-accent {
-  color: var(--color-red);
+  color: var(--accent-text);
 }
 
 .hero__subtitle {
@@ -230,7 +230,8 @@ onBeforeUnmount(() => {
 .hero__ctas .btn-secondary {
   border-radius: var(--radius-pill);
   color: var(--color-white);
-  border-color: rgba(255, 255, 255, 0.28);
+  /* sits on the photo in both themes */
+  background: rgba(255, 255, 255, 0.14);
 }
 
 @media (min-width: 768px) {

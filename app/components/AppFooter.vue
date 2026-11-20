@@ -79,15 +79,14 @@ const schedule = [
   align-items: center;
   gap: var(--space-2);
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
   color: var(--color-white);
+  text-transform: none;
 }
 
 .footer__heading svg {
-  color: var(--color-red);
+  color: var(--accent-text);
 }
 
 .footer__hours-list {
@@ -96,7 +95,7 @@ const schedule = [
   padding: 0;
   display: grid;
   gap: var(--space-3);
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .footer__hours-list li {
@@ -139,8 +138,8 @@ const schedule = [
 
 .footer__brand-tagline {
   margin-top: var(--space-2);
-  font-size: 12px;
-  color: var(--color-steel-400);
+  font-size: 14px;
+  color: var(--color-steel-300);
   max-width: 46ch;
 }
 
@@ -148,10 +147,8 @@ const schedule = [
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-4) var(--space-6);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
 }
 
 .footer__nav a {
@@ -169,13 +166,11 @@ const schedule = [
 
 .footer__bottom {
   margin-top: var(--space-8);
-  padding-top: var(--space-5);
-  border-top: 1px solid #27272f;
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
-  font-size: 12px;
-  color: var(--color-steel-400);
+  font-size: 14px;
+  color: var(--color-steel-300);
 }
 
 @media (min-width: 768px) {

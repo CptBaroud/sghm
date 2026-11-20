@@ -136,13 +136,13 @@ const records = ([
 }
 
 .records__name:hover {
-  color: var(--color-red);
+  color: var(--accent-text);
 }
 
 .records__value {
   font-family: var(--font-display);
   font-size: 30px;
-  color: var(--color-red);
+  color: var(--accent-text);
 }
 
 .records__sex {

@@ -54,7 +54,6 @@ const formatPlace = (place: string) => (place === 'G' ? 'Invité' : place === '1
 <template>
   <section class="section">
     <div class="container">
-      <a href="/resultats" class="athlete-page__back"><span aria-hidden="true">←</span> Tous les résultats</a>
 
       <div class="section__head">
         <h1 class="section__title">{{ athlete.name }}</h1>
@@ -189,23 +188,16 @@ const formatPlace = (place: string) => (place === 'G' ? 'Invité' : place === '1
           </ul>
         </div>
       </div>
+
+      <a href="/resultats" class="btn btn-secondary athlete-page__back"><span aria-hidden="true">←</span> Tous les résultats</a>
     </div>
   </section>
 </template>
 
 <style scoped>
 .athlete-page__back {
-  display: inline-flex;
-  gap: var(--space-2);
-  margin-bottom: var(--space-5);
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  text-decoration: none;
-}
-
-.athlete-page__back:hover {
-  color: var(--color-red);
+  margin-top: var(--space-7);
+  border-radius: var(--radius-pill);
 }
 
 /* 8 columns: tighter than the home table so it fits the container on desktop */
@@ -213,11 +205,6 @@ const formatPlace = (place: string) => (place === 'G' ? 'Invité' : place === '1
 .results__table td {
   padding-left: 12px;
   padding-right: 12px;
-}
-
-.athlete-page__best td,
-.meet--best {
-  background: color-mix(in srgb, var(--color-red) 8%, var(--surface-card));
 }
 
 .athlete-page__attempts {
@@ -286,8 +273,8 @@ const formatPlace = (place: string) => (place === 'G' ? 'Invité' : place === '1
 
 .meet__info {
   margin-top: var(--space-1);
-  font-size: 13px;
-  color: var(--text-muted);
+  font-size: 14px;
+  color: var(--text-secondary);
 }
 
 .meet__body {

@@ -188,7 +188,7 @@ const linkGroups = [
 .coach__slot-hours {
   font-family: var(--font-display);
   font-size: 30px;
-  color: var(--color-red);
+  color: var(--accent-text);
 }
 
 .coach__slot-label {
@@ -225,7 +225,7 @@ const linkGroups = [
 }
 
 .coach__link svg {
-  color: var(--color-red);
+  color: var(--accent-text);
 }
 
 .coach__link:hover {

@@ -114,12 +114,6 @@ const galleryPairs: GalleryPair[] = [
       <div class="club-life__feature">
         <div class="club-life__feature-col">
           <article class="card club-life__feature-hero">
-            <span class="club-life__watermark" aria-hidden="true">
-              <IconGlyph :name="heroCard.icon" :size="110" />
-            </span>
-            <span class="club-life__card-icon">
-              <IconGlyph :name="heroCard.icon" :size="20" />
-            </span>
             <h3 class="club-life__card-title">{{ heroCard.title }}</h3>
             <p class="club-life__card-text">{{ heroCard.description }}</p>
           </article>
@@ -130,9 +124,6 @@ const galleryPairs: GalleryPair[] = [
               :key="stat.label"
               class="card club-life__stat"
             >
-              <span class="club-life__watermark" aria-hidden="true">
-                <IconGlyph :name="stat.icon" :size="64" />
-              </span>
               <span class="club-life__stat-value tabular-nums">{{
                 stat.value
               }}</span>
@@ -148,9 +139,6 @@ const galleryPairs: GalleryPair[] = [
               :key="stat.label"
               class="card club-life__stat"
             >
-              <span class="club-life__watermark" aria-hidden="true">
-                <IconGlyph :name="stat.icon" :size="64" />
-              </span>
               <span class="club-life__stat-value tabular-nums">{{
                 stat.value
               }}</span>
@@ -174,15 +162,6 @@ const galleryPairs: GalleryPair[] = [
           :key="card.title"
           class="card club-life__card"
         >
-          <span
-            class="club-life__watermark club-life__watermark--card"
-            aria-hidden="true"
-          >
-            <IconGlyph :name="card.icon" :size="100" />
-          </span>
-          <span class="club-life__card-icon">
-            <IconGlyph :name="card.icon" :size="20" />
-          </span>
           <h3 class="club-life__card-title">{{ card.title }}</h3>
           <p class="club-life__card-text">{{ card.description }}</p>
           <NuxtLink
@@ -209,9 +188,6 @@ const galleryPairs: GalleryPair[] = [
             <span class="club-life__photo-caption">{{ pair.caption }}</span>
           </div>
           <article class="club-life__quote">
-            <span class="club-life__quote-mark" aria-hidden="true"
-              >&ldquo;</span
-            >
             <p class="club-life__quote-text">{{ pair.quote }}</p>
             <span class="club-life__quote-author">{{ pair.author }}</span>
           </article>
@@ -222,20 +198,6 @@ const galleryPairs: GalleryPair[] = [
 </template>
 
 <style scoped>
-.club-life__watermark {
-  position: absolute;
-  right: -14px;
-  bottom: -14px;
-  color: var(--color-red);
-  opacity: 0.09;
-  line-height: 0;
-  pointer-events: none;
-}
-
-[data-theme="light"] .club-life__watermark {
-  opacity: 0.07;
-}
-
 .club-life__feature {
   display: grid;
   grid-template-columns: 1fr;
@@ -288,15 +250,15 @@ const galleryPairs: GalleryPair[] = [
   display: block;
   font-family: var(--font-display);
   font-size: 34px;
-  color: var(--color-red);
+  color: var(--accent-text);
 }
 
 .club-life__stat-label {
   position: relative;
   display: block;
   margin-top: var(--space-2);
-  font-size: 13px;
-  color: var(--text-secondary);
+  font-size: 15px;
+  color: var(--text-primary);
 }
 
 .club-life__photo-img {
@@ -320,7 +282,7 @@ const galleryPairs: GalleryPair[] = [
 .club-life__photo-caption {
   position: relative;
   z-index: 1;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--color-white);
 }
@@ -341,50 +303,32 @@ const galleryPairs: GalleryPair[] = [
   flex-direction: column;
 }
 
-.club-life__card-icon {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: var(--bg-elevated);
-  color: var(--color-red);
-  flex-shrink: 0;
-}
-
-[data-theme="light"] .club-life__card-icon {
-  background: var(--text-primary);
-  color: var(--color-red);
-}
-
 .club-life__card-title {
   position: relative;
-  margin-top: var(--space-4);
-  font-size: 18px;
+  font-size: 24px;
   color: var(--text-primary);
 }
 
 .club-life__card-text {
   position: relative;
-  margin-top: var(--space-2);
-  font-size: 14px;
-  color: var(--text-secondary);
-  max-width: 40ch;
+  margin-top: var(--space-3);
+  font-size: 16px;
+  color: var(--text-primary);
+  max-width: 44ch;
+  margin-bottom: var(--space-5);
 }
 
 .club-life .section__lede a {
-  color: var(--color-red);
+  color: var(--accent-text);
 }
 
 .club-life__card-cta {
   position: relative;
-  margin-top: var(--space-5);
+  /* pushed to the card's bottom edge so both cards' buttons line up */
+  margin-top: auto;
   align-self: flex-start;
-  border-radius: var(--radius-pill);
   padding: 10px 20px;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .club-life__gallery {
@@ -419,28 +363,17 @@ const galleryPairs: GalleryPair[] = [
   flex-direction: column;
 }
 
-.club-life__quote-mark {
-  font-family: var(--font-display);
-  font-size: 48px;
-  line-height: 1;
-  color: var(--color-red);
-}
-
 .club-life__quote-text {
-  margin-top: var(--space-2);
-  font-size: 15px;
-  color: var(--text-secondary);
-  font-style: italic;
+  font-size: 18px;
+  color: var(--text-primary);
 }
 
 .club-life__quote-author {
   display: block;
   margin-top: var(--space-4);
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
 }
 
 @media (min-width: 640px) {

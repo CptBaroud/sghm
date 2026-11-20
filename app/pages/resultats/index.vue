@@ -174,13 +174,11 @@ const filtered = computed(() => {
 .athlete__meet {
   grid-area: meet;
   min-width: 0;
-  padding-top: var(--space-3);
-  border-top: 1px solid var(--border-card);
 }
 
 .athlete__meet p {
-  font-size: 13px;
-  color: var(--text-muted);
+  font-size: 16px;
+  color: var(--text-secondary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -188,7 +186,7 @@ const filtered = computed(() => {
 
 .athlete__meet .athlete__meet-name {
   font-weight: 600;
-  color: var(--text-secondary);
+  color: var(--text-primary);
 }
 
 /* Wide card: lifts stacked on the right, label beside the number */
