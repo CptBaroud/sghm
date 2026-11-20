@@ -26,8 +26,7 @@ defineProps<{
 const pages = {
   '/coaching': { title: 'Coach & cours collectif', photo: '/coach-marc.jpg' },
   '/musculation': { title: 'Musculation loisir', photo: '/gallery/24.jpg' },
-  '/force-athletique': { title: 'Force athlétique', photo: '/squat.jpg' },
-  '/classement': { title: 'Classement du club', photo: '/bench.jpg' }
+  '/force-athletique': { title: 'Force athlétique', photo: '/squat.jpg' }
 }
 </script>
 
