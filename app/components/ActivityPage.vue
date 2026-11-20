@@ -235,7 +235,7 @@ defineProps<{
   position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1;
 }
 
 .activity__split-photo::after {
@@ -366,6 +366,11 @@ defineProps<{
   .activity__split {
     grid-template-columns: 1fr 1fr;
     gap: var(--space-8);
+  }
+
+  /* split photos are portraits (coach, athletes): keep faces whole */
+  .activity__split-photo {
+    aspect-ratio: 4 / 5;
   }
 
   .activity__gallery {

@@ -11,18 +11,38 @@ const slots = [
   { day: 'Mercredi', hours: '17 h – 19 h 30', label: 'Accompagnement sur le plateau de musculation' }
 ]
 
-const links = [
-  { label: 'Site LIFTRAINER', href: 'https://liftrainer.com/' },
-  { label: 'Instagram de Marc', href: 'https://www.instagram.com/marco_liftrainer/', instagram: true },
-  { label: 'Instagram LIFTRAINER', href: 'https://www.instagram.com/liftrainer/', instagram: true },
-  { label: 'Instagram Streetlifting Coach Academy', href: 'https://www.instagram.com/streetlifting_coach_academy/', instagram: true },
-  { label: 'YouTube LIFTRAINER', href: 'https://www.youtube.com/@liftrainer' },
-  { label: 'YouTube LIFT TALK', href: 'https://www.youtube.com/@lifttalk' },
-  { label: 'LIFT TALK sur Apple Podcasts', href: 'https://podcasts.apple.com/fr/podcast/lift-talk-streetlifting-performance-coaching/id6794599839' },
-  { label: 'Facebook LIFTRAINER', href: 'https://www.facebook.com/liftrainer/' },
-  { label: 'LinkedIn de Marc', href: 'https://www.linkedin.com/in/marc-liftrainer/' },
-  { label: 'LinkedIn LIFTRAINER', href: 'https://www.linkedin.com/company/liftrainer/' }
-]
+const linkGroups = [
+  {
+    title: 'Marc',
+    links: [
+      { label: 'Instagram', icon: 'instagram', href: 'https://www.instagram.com/marco_liftrainer/' },
+      { label: 'LinkedIn', icon: 'linkedin', href: 'https://www.linkedin.com/in/marc-liftrainer/' }
+    ]
+  },
+  {
+    title: 'LIFTRAINER',
+    links: [
+      { label: 'Site officiel', icon: 'globe', href: 'https://liftrainer.com/' },
+      { label: 'Instagram', icon: 'instagram', href: 'https://www.instagram.com/liftrainer/' },
+      { label: 'YouTube', icon: 'youtube', href: 'https://www.youtube.com/@liftrainer' },
+      { label: 'Facebook', icon: 'facebook', href: 'https://www.facebook.com/liftrainer/' },
+      { label: 'LinkedIn', icon: 'linkedin', href: 'https://www.linkedin.com/company/liftrainer/' }
+    ]
+  },
+  {
+    title: 'LIFT TALK',
+    links: [
+      { label: 'YouTube', icon: 'youtube', href: 'https://www.youtube.com/@lifttalk' },
+      { label: 'Apple Podcasts', icon: 'podcast', href: 'https://podcasts.apple.com/fr/podcast/lift-talk-streetlifting-performance-coaching/id6794599839' }
+    ]
+  },
+  {
+    title: 'Streetlifting Coach Academy',
+    links: [
+      { label: 'Instagram', icon: 'instagram', href: 'https://www.instagram.com/streetlifting_coach_academy/' }
+    ]
+  }
+] as const
 </script>
 
 <template>
@@ -106,14 +126,19 @@ const links = [
 
       <div class="coach__block">
         <h2 class="section__title">Suivre Marc</h2>
-        <ul class="coach__links">
-          <li v-for="link in links" :key="link.href">
-            <a :href="link.href" target="_blank" rel="noopener" class="badge coach__link">
-              <IconGlyph v-if="link.instagram" name="instagram" :size="14" />
-              {{ link.label }}
-            </a>
-          </li>
-        </ul>
+        <div class="coach__link-groups">
+          <div v-for="group in linkGroups" :key="group.title" class="card coach__link-group">
+            <h3 class="coach__link-title">{{ group.title }}</h3>
+            <ul class="coach__links">
+              <li v-for="link in group.links" :key="link.href">
+                <a :href="link.href" target="_blank" rel="noopener" class="badge coach__link">
+                  <IconGlyph :name="link.icon" :size="15" />
+                  {{ link.label }}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </template>
   </ActivityPage>
@@ -182,9 +207,24 @@ const links = [
   color: var(--text-secondary);
 }
 
+.coach__link-groups {
+  margin-top: var(--space-5);
+  display: grid;
+  gap: var(--space-4);
+}
+
+.coach__link-group {
+  padding: var(--space-5);
+}
+
+.coach__link-title {
+  font-size: 18px;
+  color: var(--text-primary);
+}
+
 .coach__links {
   list-style: none;
-  margin: var(--space-5) 0 0;
+  margin: var(--space-3) 0 0;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
@@ -195,6 +235,10 @@ const links = [
   text-decoration: none;
 }
 
+.coach__link svg {
+  color: var(--color-red);
+}
+
 .coach__link:hover {
   border-color: var(--color-red);
   color: var(--text-primary);
@@ -203,6 +247,10 @@ const links = [
 @media (min-width: 768px) {
   .coach__slots {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .coach__link-groups {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 </style>
