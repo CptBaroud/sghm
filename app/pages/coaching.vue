@@ -81,10 +81,7 @@ const linkGroups = [
       primary: { label: 'Horaires & tarifs', href: '/#tarifs' },
       secondary: { label: 'Nous contacter', href: '/#contact' }
     }"
-    :related="[
-      { label: 'Musculation loisir', href: '/musculation' },
-      { label: 'Force athlétique', href: '/force-athletique' }
-    ]"
+    :related="['/musculation', '/force-athletique']"
   >
     <blockquote class="coach__quote">
       <p>

@@ -37,10 +37,7 @@ useBreadcrumbItems({ overrides: [{ label: 'Accueil' }, { label: 'Musculation loi
       primary: { label: 'S\'inscrire sur HelloAsso', href: HELLOASSO_LOISIR_URL, external: true },
       secondary: { label: 'Horaires & tarifs', href: '/#tarifs' }
     }"
-    :related="[
-      { label: 'Coach & cours collectif', href: '/coaching' },
-      { label: 'Force athlétique', href: '/force-athletique' }
-    ]"
+    :related="['/coaching', '/force-athletique']"
   >
     <p>
       <strong>100 € par an</strong> pour les adultes, <strong>70 €</strong> pour les 16-17 ans (accompagnement d'un

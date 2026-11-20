@@ -37,11 +37,7 @@ useBreadcrumbItems({ overrides: [{ label: 'Accueil' }, { label: 'Force athlétiq
       primary: { label: 'Nous contacter', href: '/#contact' },
       secondary: { label: 'Résultats du club', href: '/resultats' }
     }"
-    :related="[
-      { label: 'Classement', href: '/classement' },
-      { label: 'Coach & cours collectif', href: '/coaching' },
-      { label: 'Musculation loisir', href: '/musculation' }
-    ]"
+    :related="['/musculation', '/coaching', '/classement']"
   >
     <p>
       La licence compétiteur coûte <strong>100 € par an</strong> et se prend sur place, à la salle. Le

@@ -18,8 +18,18 @@ defineProps<{
   splitCaption?: { name: string; title: string }
   gallery: { src: string; caption: string }[]
   cta: { title: string; text: string; primary: Link; secondary?: Link }
-  related: Link[]
+  related: (keyof typeof pages)[]
 }>()
+</script>
+
+<script lang="ts">
+// "Voir aussi" cards, shared so each page only lists which ones it links to
+const pages = {
+  '/coaching': { eyebrow: 'Encadrement', title: 'Coach & cours collectif', text: 'Marc vous accompagne le mardi et le mercredi, Cross Training le mardi à 19 h.', photo: '/coach-marc.jpg' },
+  '/musculation': { eyebrow: 'Pratique loisir', title: 'Musculation loisir', text: 'Créneaux libres 7j/7, à son rythme, dès 100 € par an.', photo: '/gallery/24.jpg' },
+  '/force-athletique': { eyebrow: 'Pratique compétitive', title: 'Force athlétique', text: 'Squat, développé couché, soulevé de terre : la compétition FFForce.', photo: '/squat.jpg' },
+  '/classement': { eyebrow: 'Compétition', title: 'Classement du club', text: 'Les meilleures performances des athlètes de la SGHM.', photo: '/bench.jpg' }
+}
 </script>
 
 <template>
@@ -99,8 +109,22 @@ defineProps<{
       </div>
 
       <nav class="activity__related" aria-label="Voir aussi">
-        <span>Voir aussi</span>
-        <NuxtLink v-for="link in related" :key="link.href" :to="link.href" class="badge">{{ link.label }}</NuxtLink>
+        <h2 class="activity__related-title">Voir aussi</h2>
+        <div class="activity__related-grid">
+          <NuxtLink v-for="href in related" :key="href" :to="href" class="activity__related-card">
+            <img :src="pages[href].photo" alt="" loading="lazy" class="activity__related-photo" />
+            <span class="activity__related-scrim" aria-hidden="true" />
+            <span class="activity__related-body">
+              <span class="activity__related-eyebrow">{{ pages[href].eyebrow }}</span>
+              <span class="activity__related-name">{{ pages[href].title }}</span>
+              <span class="activity__related-text">{{ pages[href].text }}</span>
+              <span class="activity__related-more">
+                Découvrir
+                <IconGlyph name="arrow-right" :size="15" />
+              </span>
+            </span>
+          </NuxtLink>
+        </div>
       </nav>
     </div>
   </section>
@@ -346,22 +370,109 @@ defineProps<{
 }
 
 .activity__related {
-  margin-top: var(--space-6);
+  margin-top: var(--space-9);
+}
+
+.activity__related-title {
+  font-size: 28px;
+  color: var(--text-primary);
+}
+
+.activity__related-grid {
+  margin-top: var(--space-5);
+  display: grid;
+  gap: var(--space-4);
+}
+
+.activity__related-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 260px;
+  border-radius: var(--radius-lg);
   display: flex;
-  flex-wrap: wrap;
+  align-items: flex-end;
+  text-decoration: none;
+  color: var(--color-white);
+}
+
+.activity__related-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  transition: transform 400ms ease;
+}
+
+.activity__related-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11, 11, 14, 0.1) 20%, rgba(11, 11, 14, 0.9) 100%);
+}
+
+.activity__related-body {
+  position: relative;
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.activity__related-eyebrow {
+  align-self: flex-start;
+  margin-bottom: var(--space-1);
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+  background: var(--color-red);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-white);
+}
+
+.activity__related-name {
+  font-family: var(--font-display);
+  font-size: 26px;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.activity__related-text {
+  font-size: 14px;
+  color: var(--color-steel-300);
+}
+
+.activity__related-more {
+  margin-top: var(--space-3);
+  display: inline-flex;
   align-items: center;
   gap: var(--space-2);
   font-size: 13px;
-  color: var(--text-muted);
+  font-weight: 600;
 }
 
-.activity__related a {
-  text-decoration: none;
+.activity__related-more svg {
+  color: var(--color-red);
+  transition: transform 200ms ease;
 }
 
-.activity__related a:hover {
-  border-color: var(--color-red);
+.activity__related-card:hover .activity__related-photo {
+  transform: scale(1.05);
 }
+
+.activity__related-card:hover .activity__related-more svg {
+  transform: translateX(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .activity__related-photo,
+  .activity__related-more svg {
+    transition: none;
+  }
+}
+
 
 @media (max-width: 767px) {
   .activity-hero__scrim {
@@ -395,6 +506,10 @@ defineProps<{
 
   .activity__gallery {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .activity__related-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
 
   .activity__cta {
