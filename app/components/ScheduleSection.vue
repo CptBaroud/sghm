@@ -231,7 +231,6 @@ const pricing = [
 
 .schedule__tier--highlight {
   border-color: var(--color-red);
-  box-shadow: 0 12px 32px rgba(227, 25, 55, 0.16);
 }
 
 .schedule__tier-badge {

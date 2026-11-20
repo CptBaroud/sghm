@@ -9,8 +9,8 @@ defineProps<{
   lede: string
   photo: string
   photoAlt: string
-  facts: { icon: Icon; label: string }[]
-  features: { icon: Icon; title: string; text: string }[]
+  facts?: { icon: Icon; label: string }[]
+  features?: { title: string; text: string }[]
   splitTitle: string
   splitPhoto: string
   splitPhotoAlt?: string
@@ -31,7 +31,7 @@ defineProps<{
         {{ title }} <span class="activity-hero__accent">{{ accent }}</span>
       </h1>
       <p class="activity-hero__lede">{{ lede }}</p>
-      <ul class="activity-hero__facts">
+      <ul v-if="facts" class="activity-hero__facts">
         <li v-for="fact in facts" :key="fact.label" class="activity-hero__fact">
           <IconGlyph :name="fact.icon" :size="16" />
           {{ fact.label }}
@@ -42,18 +42,14 @@ defineProps<{
 
   <section class="section">
     <div class="container">
-      <div class="activity__features">
-        <article v-for="feature in features" :key="feature.title" class="card activity__feature">
-          <span class="activity__watermark" aria-hidden="true">
-            <IconGlyph :name="feature.icon" :size="96" />
-          </span>
-          <span class="activity__icon"><IconGlyph :name="feature.icon" :size="20" /></span>
+      <div v-if="features" class="activity__features">
+        <div v-for="feature in features" :key="feature.title" class="activity__feature">
           <h2 class="activity__feature-title">{{ feature.title }}</h2>
           <p class="activity__feature-text">{{ feature.text }}</p>
-        </article>
+        </div>
       </div>
 
-      <div class="activity__split">
+      <div class="activity__split" :class="{ 'activity__split--first': !features }">
         <figure class="activity__split-figure">
           <div class="activity__split-photo">
             <img :src="splitPhoto" :alt="splitPhotoAlt ?? ''" />
@@ -77,8 +73,15 @@ defineProps<{
           <figcaption>{{ item.caption }}</figcaption>
         </figure>
       </div>
+    </div>
+  </section>
 
-      <div class="card activity__cta">
+  <!-- full-width band between the content and the closing call to action (e.g. the 3 movements) -->
+  <slot name="band" />
+
+  <section class="section">
+    <div class="container">
+      <div class="activity__cta">
         <div>
           <h2 class="activity__cta-title">{{ cta.title }}</h2>
           <p>{{ cta.text }}</p>
@@ -88,12 +91,12 @@ defineProps<{
             :href="cta.primary.href"
             :target="cta.primary.external ? '_blank' : undefined"
             :rel="cta.primary.external ? 'noopener' : undefined"
-            class="btn btn-primary"
+            class="btn activity__cta-primary"
           >
             {{ cta.primary.label }}
             <IconGlyph name="arrow-right" :size="15" />
           </a>
-          <a v-if="cta.secondary" :href="cta.secondary.href" class="btn btn-secondary">{{ cta.secondary.label }}</a>
+          <a v-if="cta.secondary" :href="cta.secondary.href" class="btn activity__cta-secondary">{{ cta.secondary.label }}</a>
         </div>
       </div>
 
@@ -168,66 +171,36 @@ defineProps<{
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  padding: 8px 14px;
-  border-radius: var(--radius-pill);
-  background: rgba(11, 11, 14, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--color-white);
+}
+
+.activity-hero__facts {
+  column-gap: var(--space-6);
+  row-gap: var(--space-3);
 }
 
 .activity-hero__fact svg {
   color: var(--color-red);
 }
 
+/* plain text columns, no boxes or icons */
 .activity__features {
   display: grid;
-  gap: var(--space-4);
-}
-
-.activity__feature {
-  position: relative;
-  overflow: hidden;
-  padding: var(--space-6);
-}
-
-.activity__watermark {
-  position: absolute;
-  right: -14px;
-  bottom: -14px;
-  color: var(--color-red);
-  opacity: 0.08;
-  line-height: 0;
-  pointer-events: none;
-}
-
-.activity__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: var(--bg-elevated);
-  color: var(--color-red);
-}
-
-[data-theme='light'] .activity__icon {
-  background: var(--text-primary);
+  gap: var(--space-6);
 }
 
 .activity__feature-title {
-  margin-top: var(--space-4);
-  font-size: 20px;
+  font-size: 24px;
   color: var(--text-primary);
 }
 
 .activity__feature-text {
-  margin-top: var(--space-2);
-  font-size: 15px;
+  margin-top: var(--space-3);
+  font-size: 17px;
+  color: var(--text-primary);
+  max-width: 36ch;
 }
 
 .activity__split {
@@ -235,6 +208,10 @@ defineProps<{
   display: grid;
   gap: var(--space-6);
   align-items: center;
+}
+
+.activity__split--first {
+  margin-top: 0;
 }
 
 .activity__split-figure {
@@ -275,6 +252,12 @@ defineProps<{
 
 .activity__prose {
   margin-top: var(--space-4);
+  font-size: 17px;
+  max-width: 62ch;
+}
+
+.activity__prose :deep(p) {
+  color: var(--text-primary);
 }
 
 .activity__prose :deep(p + p) {
@@ -320,18 +303,32 @@ defineProps<{
 }
 
 .activity__cta {
-  margin-top: var(--space-9);
   padding: var(--space-6);
-  border-color: var(--color-red);
-  box-shadow: 0 12px 32px rgba(227, 25, 55, 0.16);
+  border-radius: var(--radius-lg);
+  background: var(--color-red);
   display: grid;
   gap: var(--space-5);
 }
 
 .activity__cta-title {
-  font-size: 26px;
-  color: var(--text-primary);
+  font-size: 30px;
+  color: var(--color-white);
   margin-bottom: var(--space-2);
+}
+
+.activity__cta p {
+  font-size: 17px;
+  color: var(--color-white);
+}
+
+.activity__cta-primary {
+  background: var(--color-white);
+  color: var(--color-navy-2);
+}
+
+.activity__cta-secondary {
+  color: var(--color-white);
+  border-color: var(--color-white);
 }
 
 .activity__cta-actions {
@@ -375,10 +372,12 @@ defineProps<{
 
   .activity__features {
     grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-7);
   }
 
+  /* text column wider than the photo so long prose keeps a comfortable measure */
   .activity__split {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 3fr;
     gap: var(--space-8);
   }
 

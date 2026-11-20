@@ -97,8 +97,14 @@
 }
 
 .coach-home__slot--highlight {
+  background: var(--color-red);
   border-color: var(--color-red);
-  box-shadow: 0 12px 32px rgba(227, 25, 55, 0.16);
+}
+
+.coach-home__slot--highlight .coach-home__slot-day,
+.coach-home__slot--highlight .coach-home__slot-hours,
+.coach-home__slot--highlight .coach-home__slot-label {
+  color: var(--color-white);
 }
 
 .coach-home__slot-when {

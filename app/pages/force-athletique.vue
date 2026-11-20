@@ -35,15 +35,15 @@ const records = ([
       { icon: 'equipment', label: 'Matériel aux normes IPF' }
     ]"
     :features="[
-      { icon: 'discipline', title: 'Règles IPF', text: 'Les mouvements se travaillent selon les règles d\'arbitrage appliquées sur le plateau.' },
-      { icon: 'equipment', title: 'Matériel de compétition', text: 'Racks de compétition, barres 20 kg et 15 kg, disques calibrés aux normes IPF.' },
-      { icon: 'trophy', title: 'Résultats suivis', text: 'Les performances des athlètes du club sont publiées et classées sur ce site.' }
+      { title: 'Règles IPF', text: 'Les mouvements se travaillent selon les règles d\'arbitrage appliquées sur le plateau.' },
+      { title: 'Matériel de compétition', text: 'Racks de compétition, barres 20 kg et 15 kg, disques calibrés aux normes IPF.' },
+      { title: 'Résultats suivis', text: 'Les performances des athlètes du club sont publiées et classées sur ce site.' }
     ]"
     split-title="Se lancer en compétition"
-    split-photo="/deadlift.jpg"
+    split-photo="/gallery/07.jpg"
     :gallery="[
       { src: '/gallery/05.jpg', caption: 'Développé couché' },
-      { src: '/gallery/23.jpg', caption: 'Séance de force' },
+      { src: '/gallery/01.jpg', caption: 'Séance de force' },
       { src: '/gallery/18.jpg', caption: 'Plateau de soulevé de terre' }
     ]"
     :cta="{
@@ -72,15 +72,12 @@ const records = ([
         </p>
         <div class="records__grid">
           <article v-for="record in records" :key="record.title" class="card records__card">
-            <span class="records__watermark" aria-hidden="true"><IconGlyph name="trophy" :size="96" /></span>
             <h3 class="records__title">{{ record.title }}</h3>
             <ul class="records__list">
               <li v-for="row in record.rows" :key="row.label" class="records__row">
-                <span class="records__who">
-                  <NuxtLink :to="`/resultats/${row.slug}`">{{ row.name }}</NuxtLink>
-                  <small class="stat-label">{{ row.label }}</small>
-                </span>
-                <span class="stat-value tabular-nums">{{ row.value }}<small class="stat-unit">kg</small></span>
+                <NuxtLink :to="`/resultats/${row.slug}`" class="records__name">{{ row.name }}</NuxtLink>
+                <span class="records__value tabular-nums">{{ row.value }} kg</span>
+                <span class="records__sex">{{ row.label }}</span>
               </li>
             </ul>
           </article>
@@ -91,8 +88,11 @@ const records = ([
         </NuxtLink>
       </div>
     </template>
+
+    <template #band>
+      <MovementsSection />
+    </template>
   </ActivityPage>
-  <MovementsSection />
 </template>
 
 <style scoped>
@@ -107,19 +107,7 @@ const records = ([
 }
 
 .records__card {
-  position: relative;
-  overflow: hidden;
   padding: var(--space-5);
-}
-
-.records__watermark {
-  position: absolute;
-  right: -14px;
-  bottom: -14px;
-  color: var(--color-red);
-  opacity: 0.08;
-  line-height: 0;
-  pointer-events: none;
 }
 
 .records__title {
@@ -128,51 +116,38 @@ const records = ([
 }
 
 .records__list {
-  position: relative;
   list-style: none;
   margin: var(--space-4) 0 0;
   padding: 0;
   display: grid;
-  gap: var(--space-3);
+  gap: var(--space-5);
 }
 
 .records__row {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: var(--space-3);
-  padding-bottom: var(--space-3);
-  border-bottom: 1px solid var(--border-card);
+  display: grid;
+  gap: 2px;
 }
 
-.records__row:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.records__who {
-  display: flex;
-  flex-direction: column;
-  font-size: 14px;
-}
-
-.records__who a {
+.records__name {
+  font-size: 16px;
+  font-weight: 600;
   color: var(--text-primary);
   text-decoration: none;
-  font-weight: 600;
 }
 
-.records__who a:hover {
+.records__name:hover {
   color: var(--color-red);
 }
 
-.records__row .stat-value {
-  font-size: 28px;
+.records__value {
+  font-family: var(--font-display);
+  font-size: 30px;
   color: var(--color-red);
 }
 
-.records__row .stat-unit {
+.records__sex {
   font-size: 14px;
+  color: var(--text-secondary);
 }
 
 .records__cta {

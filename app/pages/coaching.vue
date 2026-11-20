@@ -48,16 +48,6 @@ const linkGroups = [
     lede="Marc Yeurc'h, coach sportif à la SGHM, vous accompagne sur le plateau le mardi et le mercredi, et anime un cours collectif de Cross Training le mardi soir."
     photo="/group.jpeg"
     photo-alt="Adhérents du club SGHM réunis à la salle de musculation de Guérande"
-    :facts="[
-      { icon: 'calendar', label: 'Mardi 17 h – 19 h' },
-      { icon: 'community', label: 'Cross Training mardi 19 h – 20 h' },
-      { icon: 'calendar', label: 'Mercredi 17 h – 19 h 30' }
-    ]"
-    :features="[
-      { icon: 'calendar', title: 'Programme adapté', text: 'Un programme construit selon vos objectifs, votre âge, votre niveau et votre expérience.' },
-      { icon: 'discipline', title: 'Technique & placements', text: 'Corriger les mouvements et trouver les bons placements pour progresser en sécurité.' },
-      { icon: 'community', title: 'Cross Training', text: 'Le mardi à 19 h, un cours collectif avec des exercices et une intensité adaptés à tous.' }
-    ]"
     split-title="Le mot du coach"
     :split-caption="{
       name: 'Marc Yeurc\'h',
@@ -112,8 +102,10 @@ const linkGroups = [
             class="card coach__slot"
             :class="{ 'coach__slot--highlight': slot.highlight }"
           >
-            <span class="coach__slot-day">{{ slot.day }}</span>
-            <span class="coach__slot-hours tabular-nums">{{ slot.hours }}</span>
+            <span class="coach__slot-when">
+              <span class="coach__slot-day">{{ slot.day }}</span>
+              <span class="coach__slot-hours tabular-nums">{{ slot.hours }}</span>
+            </span>
             <span class="coach__slot-label">{{ slot.label }}</span>
           </li>
         </ul>
@@ -144,7 +136,6 @@ const linkGroups = [
   margin: var(--space-5) 0 0;
   padding-left: var(--space-4);
   border-left: 3px solid var(--color-red);
-  font-size: 15px;
 }
 
 .coach__quote p + p {
@@ -170,17 +161,28 @@ const linkGroups = [
   gap: var(--space-1);
 }
 
-.coach__slot--highlight {
-  border-color: var(--color-red);
-  box-shadow: 0 12px 32px rgba(227, 25, 55, 0.16);
+.coach__slot-when {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
 }
 
 .coach__slot-day {
-  font-size: 12px;
+  font-size: 18px;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-muted);
+  color: var(--text-primary);
+}
+
+/* the group class: a solid red card instead of an outline */
+.coach__slot--highlight {
+  background: var(--color-red);
+  border-color: var(--color-red);
+}
+
+.coach__slot--highlight .coach__slot-day,
+.coach__slot--highlight .coach__slot-hours,
+.coach__slot--highlight .coach__slot-label {
+  color: var(--color-white);
 }
 
 .coach__slot-hours {

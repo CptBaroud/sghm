@@ -19,9 +19,9 @@ useBreadcrumbItems({ overrides: [{ label: 'Accueil' }, { label: 'Musculation loi
       { icon: 'community', label: 'Dès 16 ans' }
     ]"
     :features="[
-      { icon: 'clock', title: 'Créneaux libres', text: 'Venez quand vous voulez pendant les horaires d\'ouverture et suivez votre propre programme.' },
-      { icon: 'equipment', title: 'Matériel complet', text: 'Racks, barres olympiques, disques calibrés, haltères, bancs et machines.' },
-      { icon: 'community', title: 'Entraide', text: 'Une parade sur un squat lourd, un conseil : les autres membres ne sont jamais loin.' }
+      { title: 'Créneaux libres', text: 'Venez quand vous voulez pendant les horaires d\'ouverture et suivez votre propre programme.' },
+      { title: 'Matériel complet', text: 'Racks, barres olympiques, disques calibrés, haltères, bancs et machines.' },
+      { title: 'Entraide', text: 'Une parade sur un squat lourd, un conseil : les autres membres ne sont jamais loin.' }
     ]"
     split-title="Licence loisir"
     split-photo="/gallery/20.jpg"
