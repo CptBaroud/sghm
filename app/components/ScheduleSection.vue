@@ -124,6 +124,10 @@ const pricing = [
             <a href="/documents/reglement-interieur-sghm-2026.pdf" target="_blank">règlement intérieur</a>
             (<a href="/documents/statuts-sghm-2026.pdf" target="_blank">statuts</a>).
           </p>
+          <NuxtLink v-if="!standalone" to="/horaires-tarifs" class="btn btn-secondary schedule__more">
+            Voir le détail des horaires et tarifs
+            <IconGlyph name="arrow-right" :size="15" />
+          </NuxtLink>
         </div>
       </div>
     </div>
@@ -327,6 +331,12 @@ const pricing = [
   grid-column: 1 / -1;
   font-size: 13px;
   color: var(--text-muted);
+}
+
+.schedule__more {
+  grid-column: 1 / -1;
+  justify-self: start;
+  border-radius: var(--radius-pill);
 }
 
 .schedule__pricing-note a {

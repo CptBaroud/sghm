@@ -17,18 +17,10 @@ defineProps<{
   splitCaption?: { name: string; title: string }
   gallery: { src: string; caption: string }[]
   cta: { title: string; text: string; primary: Link; secondary?: Link }
-  related: (keyof typeof pages)[]
+  related: PageCardHref[]
 }>()
 </script>
 
-<script lang="ts">
-// "Voir aussi" cards, shared so each page only lists which ones it links to
-const pages = {
-  '/coaching': { title: 'Coach & cours collectif', photo: '/coach-marc.jpg' },
-  '/musculation': { title: 'Musculation loisir', photo: '/gallery/24.jpg' },
-  '/force-athletique': { title: 'Force athlétique', photo: '/squat.jpg' }
-}
-</script>
 
 <template>
   <section class="activity-hero">
@@ -107,19 +99,7 @@ const pages = {
 
       <nav class="activity__related" aria-label="Voir aussi">
         <h2 class="activity__related-title">Voir aussi</h2>
-        <div class="activity__related-grid">
-          <NuxtLink v-for="href in related" :key="href" :to="href" class="activity__related-card">
-            <img :src="pages[href].photo" alt="" loading="lazy" class="activity__related-photo" />
-            <span class="activity__related-scrim" aria-hidden="true" />
-            <span class="activity__related-body">
-              <span class="activity__related-name">{{ pages[href].title }}</span>
-              <span class="activity__related-more">
-                Découvrir
-                <IconGlyph name="arrow-right" :size="15" />
-              </span>
-            </span>
-          </NuxtLink>
-        </div>
+        <PageCards :links="related" class="activity__related-cards" />
       </nav>
     </div>
   </section>
@@ -373,83 +353,9 @@ const pages = {
   color: var(--text-primary);
 }
 
-.activity__related-grid {
+.activity__related-cards {
   margin-top: var(--space-5);
-  display: grid;
-  gap: var(--space-4);
 }
-
-.activity__related-card {
-  position: relative;
-  overflow: hidden;
-  min-height: 260px;
-  border-radius: var(--radius-lg);
-  display: flex;
-  align-items: flex-end;
-  text-decoration: none;
-  color: var(--color-white);
-}
-
-.activity__related-photo {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 25%;
-  transition: transform 400ms ease;
-}
-
-.activity__related-scrim {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(11, 11, 14, 0.1) 20%, rgba(11, 11, 14, 0.9) 100%);
-}
-
-.activity__related-body {
-  position: relative;
-  padding: var(--space-5);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-1);
-}
-
-.activity__related-name {
-  font-family: var(--font-display);
-  font-size: 26px;
-  text-transform: uppercase;
-  line-height: 1.1;
-}
-
-.activity__related-more {
-  margin-top: var(--space-3);
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.activity__related-more svg {
-  color: var(--color-red);
-  transition: transform 200ms ease;
-}
-
-.activity__related-card:hover .activity__related-photo {
-  transform: scale(1.05);
-}
-
-.activity__related-card:hover .activity__related-more svg {
-  transform: translateX(4px);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .activity__related-photo,
-  .activity__related-more svg {
-    transition: none;
-  }
-}
-
 
 @media (max-width: 767px) {
   .activity-hero__scrim {
@@ -483,10 +389,6 @@ const pages = {
 
   .activity__gallery {
     grid-template-columns: repeat(3, 1fr);
-  }
-
-  .activity__related-grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
 
   .activity__cta {

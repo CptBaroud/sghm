@@ -1,4 +1,7 @@
 <script setup lang="ts">
+// Also rendered on /force-athletique itself, where the link would point to the current page
+const route = useRoute()
+
 const movements = [
   {
     number: '01',
@@ -54,6 +57,13 @@ const movements = [
             <p class="movements__desc">{{ move.description }}</p>
           </div>
         </article>
+      </div>
+
+      <div v-if="route.path !== '/force-athletique'" class="movements__more">
+        <NuxtLink to="/force-athletique" class="btn btn-secondary">
+          Découvrir la force athlétique
+          <IconGlyph name="arrow-right" :size="15" />
+        </NuxtLink>
       </div>
     </div>
   </section>
@@ -138,6 +148,16 @@ const movements = [
   margin-top: var(--space-3);
   font-size: 14px;
   color: var(--text-secondary);
+}
+
+.movements__more {
+  margin-top: var(--space-7);
+  display: flex;
+  justify-content: center;
+}
+
+.movements__more .btn {
+  border-radius: var(--radius-pill);
 }
 
 @media (min-width: 768px) {

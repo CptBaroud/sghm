@@ -6,6 +6,7 @@ const navLinks = [
   { label: 'Coach & cours', href: '/coaching' },
   { label: 'Musculation loisir', href: '/musculation' },
   { label: 'Force athlétique', href: '/force-athletique' },
+  { label: 'Horaires & tarifs', href: '/horaires-tarifs' },
   { label: 'Résultats', href: '/resultats' },
   { label: 'Classement', href: '/classement' }
 ]
