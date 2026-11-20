@@ -30,12 +30,14 @@ const cards: ClubCard[] = [
     title: "Discipline & Technique",
     description:
       "L'apprentissage privilégie la technique avant la charge : profondeur du squat, trajectoire de la barre au développé couché, verrouillage au soulevé de terre.",
+    cta: { label: "Le coach et les cours", href: "/coaching" },
   },
   {
     icon: "equipment",
     title: "Matériel FFForce",
     description:
       "Racks de compétition, barres olympiques 20 kg et 15 kg, disques calibrés aux normes IPF.",
+    cta: { label: "La force athlétique", href: "/force-athletique" },
   },
 ];
 
@@ -104,8 +106,8 @@ const galleryPairs: GalleryPair[] = [
         <h2 class="section__title">L'Esprit et la Vie du Club</h2>
         <p class="section__lede">
           Fondée en 1991, l'association vit grâce à ses bénévoles. La majorité
-          des adhérents vient ici pour une raison simple : s'entraîner
-          régulièrement, à son rythme.
+          des adhérents vient ici pour une raison simple :
+          <NuxtLink to="/musculation">s'entraîner régulièrement, à son rythme</NuxtLink>.
         </p>
       </div>
 
@@ -183,14 +185,14 @@ const galleryPairs: GalleryPair[] = [
           </span>
           <h3 class="club-life__card-title">{{ card.title }}</h3>
           <p class="club-life__card-text">{{ card.description }}</p>
-          <a
+          <NuxtLink
             v-if="card.cta"
-            :href="card.cta.href"
-            class="btn btn-primary club-life__card-cta"
+            :to="card.cta.href"
+            class="btn btn-secondary club-life__card-cta"
           >
             {{ card.cta.label }}
             <IconGlyph name="arrow-right" :size="15" />
-          </a>
+          </NuxtLink>
         </article>
       </div>
 
@@ -370,6 +372,10 @@ const galleryPairs: GalleryPair[] = [
   font-size: 14px;
   color: var(--text-secondary);
   max-width: 40ch;
+}
+
+.club-life .section__lede a {
+  color: var(--color-red);
 }
 
 .club-life__card-cta {
