@@ -62,6 +62,8 @@ defineProps<{
         </div>
       </div>
 
+      <slot name="extra" />
+
       <div class="activity__gallery">
         <figure v-for="item in gallery" :key="item.src" class="activity__gallery-item">
           <img :src="item.src" :alt="`${item.caption} à la salle de musculation SGHM de Guérande`" loading="lazy" />

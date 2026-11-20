@@ -67,8 +67,8 @@ const pricing = [
           </ul>
 
           <p class="schedule__coach">
-            <strong>Coach présent le mardi et le mercredi.</strong>
-            Cours collectif le mardi soir.
+            <strong>Coach présent le mardi (17 h – 19 h) et le mercredi (17 h – 19 h 30).</strong>
+            Cours collectif de Cross Training le mardi de 19 h à 20 h.
             <NuxtLink to="/coaching">En savoir plus</NuxtLink>
           </p>
 
