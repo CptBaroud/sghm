@@ -43,7 +43,7 @@ const pricing = [
 </script>
 
 <template>
-  <section id="tarifs" class="section schedule">
+  <section id="tarifs" class="section schedule" :class="{ 'schedule--page': standalone }">
     <div class="container">
       <div class="section__head section__head--center">
         <component :is="standalone ? 'h1' : 'h2'" class="section__title">Horaires &amp; Tarifs d'Adhésion</component>
@@ -355,6 +355,54 @@ const pricing = [
   color: var(--text-muted);
 }
 
+/* Dedicated page: full-width rows instead of the home page's 1/3 + 2/3 squeeze */
+.schedule--page .schedule__layout {
+  gap: var(--space-8);
+}
+
+.schedule--page .schedule__pricing-grid {
+  order: -1;
+  gap: var(--space-5);
+}
+
+.schedule--page .schedule__tier {
+  padding: var(--space-6);
+}
+
+.schedule--page .schedule__tier-price {
+  font-size: 36px;
+}
+
+.schedule--page .schedule__tier-features {
+  margin-top: var(--space-4);
+  gap: var(--space-3);
+  font-size: 14px;
+}
+
+.schedule--page .schedule__tier-btn {
+  margin-top: var(--space-6);
+  padding: 13px 20px;
+  font-size: 14px;
+}
+
+.schedule--page .schedule__pricing-note {
+  margin-top: var(--space-2);
+  font-size: 14px;
+}
+
+.schedule--page .schedule__hours {
+  padding: var(--space-7);
+}
+
+.schedule--page .schedule__slot {
+  font-size: 16px;
+}
+
+.schedule--page .schedule__coach,
+.schedule--page .schedule__summer {
+  font-size: 15px;
+}
+
 @media (min-width: 560px) {
   .schedule__pricing-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -366,5 +414,23 @@ const pricing = [
     grid-template-columns: 1fr 2fr;
     align-items: stretch;
   }
+
+  .schedule--page .schedule__layout {
+    grid-template-columns: 1fr;
+  }
+
+  /* hours list on the left, notes and address on the right */
+  .schedule--page .schedule__hours {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--space-8);
+    align-items: start;
+  }
+
+  .schedule--page .schedule__hours-title { grid-area: 1 / 1; }
+  .schedule--page .schedule__list { grid-area: 2 / 1 / 5; }
+  .schedule--page .schedule__coach { grid-area: 1 / 2 / 3; margin-top: 0; }
+  .schedule--page .schedule__summer { grid-area: 3 / 2; }
+  .schedule--page .schedule__location { grid-area: 4 / 2; margin-top: 0; }
 }
 </style>
