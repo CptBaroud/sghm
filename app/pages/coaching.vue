@@ -44,7 +44,8 @@ const links = [
       { icon: 'community', title: 'Cross Training', text: 'Le mardi à 19 h, un cours collectif avec des exercices et une intensité adaptés à tous.' }
     ]"
     split-title="Marc Yeurc'h"
-    split-photo="/gallery/06.jpg"
+    split-photo="/coach-marc.jpg"
+    split-photo-alt="Portrait de Marc Yeurc'h, coach sportif à la SGHM"
     :gallery="[
       { src: '/gallery/01.jpg', caption: 'Séance en groupe' },
       { src: '/gallery/03.jpg', caption: 'Conseils sur le plateau' },

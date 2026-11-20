@@ -14,6 +14,7 @@ defineProps<{
   features: { icon: Icon; title: string; text: string }[]
   splitTitle: string
   splitPhoto: string
+  splitPhotoAlt?: string
   gallery: { src: string; caption: string }[]
   cta: { title: string; text: string; primary: Link; secondary?: Link }
   related: Link[]
@@ -54,7 +55,7 @@ defineProps<{
 
       <div class="activity__split">
         <div class="activity__split-photo">
-          <img :src="splitPhoto" alt="" />
+          <img :src="splitPhoto" :alt="splitPhotoAlt ?? ''" />
         </div>
         <div class="activity__split-body">
           <h2 class="section__title">{{ splitTitle }}</h2>
