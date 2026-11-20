@@ -52,7 +52,6 @@ const products = [
         </div>
 
         <div class="preorder__text">
-          <span class="preorder__tag">Précommande</span>
           <h3 class="preorder__name">{{ product.name }}</h3>
           <p class="preorder__tagline">{{ product.tagline }}</p>
           <p class="preorder__price">{{ product.price }}</p>
@@ -130,16 +129,6 @@ const products = [
   object-fit: cover;
   border-radius: var(--radius);
   border: 4px solid var(--bg-base);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
-}
-
-.preorder__tag {
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-red);
 }
 
 .preorder__name {
@@ -161,16 +150,14 @@ const products = [
   font-family: var(--font-display);
   font-size: 48px;
   line-height: 1;
-  color: var(--color-red);
+  color: var(--accent-text);
 }
 
 .preorder__label {
   margin: var(--space-6) 0 var(--space-2);
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--text-muted);
+  color: var(--text-primary);
 }
 
 .preorder__sizes {
@@ -187,7 +174,7 @@ const products = [
   padding: 8px 12px;
   text-align: center;
   border-radius: var(--radius);
-  border: 1px solid var(--border-card);
+  background: var(--surface-card-2);
   color: var(--text-primary);
   font-weight: 600;
   font-size: 14px;
@@ -199,15 +186,15 @@ const products = [
 }
 
 .preorder__cta--soon {
-  border: 1px solid var(--border-card);
-  color: var(--text-muted);
+  background: var(--surface-card-2);
+  color: var(--text-secondary);
   cursor: default;
 }
 
 .preorder__note {
   margin: var(--space-9) 0 0;
-  font-size: 13px;
-  color: var(--text-muted);
+  font-size: 14px;
+  color: var(--text-secondary);
 }
 
 @media (min-width: 768px) {

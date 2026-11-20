@@ -1,4 +1,7 @@
 <script setup lang="ts">
+// h1 on the dedicated /horaires-tarifs page, h2 on the home page
+defineProps<{ standalone?: boolean }>()
+
 const schedule = [
   { days: 'Lundi, Mardi, Mercredi, Jeudi, Vendredi', hours: '17h00 – 21h00', closed: false },
   { days: 'Samedi', hours: '14h00 – 17h00', closed: false },
@@ -8,16 +11,14 @@ const schedule = [
 
 const pricing = [
   {
-    eyebrow: 'Entre 16 et 17 ans',
     title: 'Licence Loisir Jeunes',
     price: '70 €',
     period: '/ an',
-    features: ['Accès a tous les créneaux libres', 'Licence loisir FFForce', "Accompagnement d'un adulte obligatoire"],
+    features: ['Pour les 16 et 17 ans', "Accompagnement d'un adulte obligatoire", 'Accès à tous les créneaux libres', 'Licence loisir FFForce'],
     cta: 'S\'inscrire sur HelloAsso',
     url: HELLOASSO_LOISIR_URL
   },
   {
-    eyebrow: 'Pratique Loisir',
     title: 'Licence Loisir Adultes',
     price: '100 €',
     period: '/ an',
@@ -27,7 +28,6 @@ const pricing = [
     highlight: true
   },
   {
-    eyebrow: 'Pratique compétitive',
     title: 'Licence Compétiteur',
     price: '100 €',
     period: '/ an',
@@ -43,7 +43,7 @@ const pricing = [
   <section id="tarifs" class="section schedule">
     <div class="container">
       <div class="section__head section__head--center">
-        <h2 class="section__title">Horaires &amp; Tarifs d'Adhésion</h2>
+        <component :is="standalone ? 'h1' : 'h2'" class="section__title">Horaires &amp; Tarifs d'Adhésion</component>
         <p class="section__lede">
           Tarifs annuels fixés par l'assemblée générale. Aucun frais caché, ni réengagement
           automatique.
@@ -66,6 +66,7 @@ const pricing = [
             </li>
           </ul>
 
+
           <p class="schedule__summer">
             Juillet &amp; août : ouvert en semaine uniquement. Horaires indicatifs, susceptibles de changer
             selon les vacances, compétitions et disponibilité des bénévoles.
@@ -86,13 +87,12 @@ const pricing = [
             class="card schedule__tier"
             :class="{ 'schedule__tier--highlight': tier.highlight }"
           >
-            <span v-if="tier.highlight" class="schedule__tier-badge">Populaire</span>
-            <span class="schedule__tier-eyebrow">{{ tier.eyebrow }}</span>
-            <h3 class="schedule__tier-title">{{ tier.title }}</h3>
+            <!-- price first: it is what the card is read for, the plan name follows as its heading -->
             <p class="schedule__tier-price">
               <span class="tabular-nums">{{ tier.price }}</span>
               <span class="schedule__tier-period">{{ tier.period }}</span>
             </p>
+            <h3 class="schedule__tier-title">{{ tier.title }}</h3>
             <ul class="schedule__tier-features">
               <li v-for="feature in tier.features" :key="feature">{{ feature }}</li>
             </ul>
@@ -116,6 +116,13 @@ const pricing = [
             (<a href="/documents/statuts-sghm-2026.pdf" target="_blank">statuts</a>).
           </p>
         </div>
+      </div>
+
+      <div v-if="!standalone" class="schedule__more">
+        <NuxtLink to="/horaires-tarifs" class="btn btn-secondary">
+          Voir le détail des horaires et tarifs
+          <IconGlyph name="arrow-right" :size="15" />
+        </NuxtLink>
       </div>
     </div>
   </section>
@@ -143,14 +150,13 @@ const pricing = [
   gap: var(--space-2);
   font-family: var(--font-body);
   font-weight: 700;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  font-size: 17px;
   color: var(--text-primary);
+  text-transform: none;
 }
 
 .schedule__hours-title svg {
-  color: var(--color-red);
+  color: var(--accent-text);
 }
 
 .schedule__list {
@@ -166,23 +172,16 @@ const pricing = [
   align-items: baseline;
   justify-content: space-between;
   gap: var(--space-3);
-  padding-bottom: var(--space-3);
-  border-bottom: 1px solid var(--border-card);
-  font-size: 14px;
-}
-
-.schedule__slot:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
+  font-size: 15px;
 }
 
 .schedule__slot-days {
-  color: var(--text-secondary);
+  color: var(--text-primary);
 }
 
 .schedule__slot-hours {
   font-weight: 700;
-  color: var(--color-red);
+  color: var(--text-primary);
   white-space: nowrap;
 }
 
@@ -193,17 +192,16 @@ const pricing = [
 .schedule__location {
   margin-top: auto;
   padding-top: var(--space-5);
-  border-top: 1px solid var(--border-card);
   display: flex;
   gap: var(--space-2);
-  font-size: 13px;
-  color: var(--text-muted);
+  font-size: 14px;
+  color: var(--text-secondary);
 }
 
 .schedule__location svg {
   flex-shrink: 0;
   margin-top: 1px;
-  color: var(--color-red);
+  color: var(--accent-text);
 }
 
 .schedule__pricing-grid {
@@ -220,37 +218,11 @@ const pricing = [
 
 .schedule__tier--highlight {
   border-color: var(--color-red);
-  box-shadow: 0 12px 32px rgba(227, 25, 55, 0.16);
-}
-
-.schedule__tier-badge {
-  position: absolute;
-  top: -10px;
-  right: var(--space-5);
-  font-size: 9px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--color-white);
-  background: var(--color-red);
-  padding: 3px 9px;
-  border-radius: var(--radius-pill);
-  white-space: nowrap;
-}
-
-.schedule__tier-eyebrow {
-  display: block;
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-muted);
 }
 
 /* h3 for document outline, styled like the former h4 (body font, not the display headings) */
 .schedule__tier-title {
-  margin-top: var(--space-1);
-  margin-bottom: 1.33em;
+  margin-top: var(--space-2);
   font-family: var(--font-body);
   font-weight: 700;
   line-height: 1.55;
@@ -260,7 +232,6 @@ const pricing = [
 }
 
 .schedule__tier-price {
-  margin-top: var(--space-2);
   font-family: var(--font-display);
   font-size: 26px;
   color: var(--text-primary);
@@ -268,9 +239,9 @@ const pricing = [
 
 .schedule__tier-period {
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   text-transform: none;
   margin-left: 3px;
 }
@@ -282,8 +253,8 @@ const pricing = [
   display: grid;
   gap: var(--space-2);
   flex: 1;
-  font-size: 12px;
-  color: var(--text-secondary);
+  font-size: 15px;
+  color: var(--text-primary);
 }
 
 .schedule__tier-features li {
@@ -295,7 +266,7 @@ const pricing = [
   content: '—';
   position: absolute;
   left: 0;
-  color: var(--color-red);
+  color: var(--accent-text);
 }
 
 .schedule__tier-btn {
@@ -316,8 +287,19 @@ const pricing = [
 .schedule__pricing-note {
   margin: 0;
   grid-column: 1 / -1;
-  font-size: 13px;
-  color: var(--text-muted);
+  max-width: 75ch;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.schedule__more {
+  margin-top: var(--space-7);
+  display: flex;
+  justify-content: center;
+}
+
+.schedule__more .btn {
+  border-radius: var(--radius-pill);
 }
 
 .schedule__pricing-note a {
@@ -325,9 +307,56 @@ const pricing = [
 }
 
 .schedule__summer {
-  margin: var(--space-4) 0 var(--space-5);
-  font-size: 12px;
-  color: var(--text-muted);
+  margin: var(--space-5) 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+/* Full-width rows: the price cards get the whole width, the hours card sits below them */
+.schedule__layout {
+  gap: var(--space-8);
+}
+
+.schedule__pricing-grid {
+  order: -1;
+  gap: var(--space-5);
+}
+
+.schedule__tier {
+  padding: var(--space-6);
+}
+
+.schedule__tier-price {
+  font-size: 36px;
+}
+
+.schedule__tier-features {
+  margin-top: var(--space-4);
+  gap: var(--space-3);
+  font-size: 16px;
+}
+
+.schedule__tier-btn {
+  margin-top: var(--space-6);
+  padding: 13px 20px;
+  font-size: 14px;
+}
+
+.schedule__pricing-note {
+  margin-top: var(--space-2);
+  font-size: 16px;
+}
+
+.schedule__hours {
+  padding: var(--space-7);
+}
+
+.schedule__slot {
+  font-size: 16px;
+}
+
+.schedule__summer {
+  font-size: 15px;
 }
 
 @media (min-width: 560px) {
@@ -337,9 +366,17 @@ const pricing = [
 }
 
 @media (min-width: 1024px) {
-  .schedule__layout {
-    grid-template-columns: 1fr 2fr;
-    align-items: stretch;
+  /* hours list on the left, notes and address on the right */
+  .schedule__hours {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--space-8);
+    align-items: start;
   }
+
+  .schedule__hours-title { grid-area: 1 / 1; }
+  .schedule__list { grid-area: 2 / 1 / 5; }
+  .schedule__summer { grid-area: 1 / 2 / 3; margin-top: 0; }
+  .schedule__location { grid-area: 3 / 2; margin-top: 0; }
 }
 </style>

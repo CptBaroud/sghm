@@ -12,24 +12,7 @@ defineOgImage(
   { alt: 'Classement des athlètes de la SGHM Guérande' }
 )
 
-const best = (values: (number | null)[]) => Math.max(0, ...values.map((v) => v ?? 0))
-
-// Best lift of each athlete across all their meets; totals and IPF points only count full SBD meets
-const ranking = clubAthletes.map((athlete) => {
-  const sbd = athlete.results.filter((r) => r.event === 'SBD')
-  return {
-    name: athlete.name,
-    slug: athlete.slug,
-    sex: athlete.sex,
-    division: athlete.division,
-    weightClass: athlete.weightClass,
-    squat: best(athlete.results.map((r) => r.squat.best3)),
-    bench: best(athlete.results.map((r) => r.bench.best3)),
-    deadlift: best(athlete.results.map((r) => r.deadlift.best3)),
-    total: best(sbd.map((r) => r.totalKg)),
-    ipf: best(sbd.map((r) => r.goodlift))
-  }
-})
+const ranking = clubRanking
 
 type Score = 'squat' | 'bench' | 'deadlift' | 'total' | 'ipf'
 
@@ -177,8 +160,7 @@ const boards = computed(() => {
   display: flex;
   align-items: baseline;
   gap: var(--space-3);
-  padding: var(--space-3) 0;
-  border-top: 1px solid var(--border-card);
+  padding: var(--space-2) 0;
 }
 
 .ranking__rank {
@@ -189,7 +171,7 @@ const boards = computed(() => {
 }
 
 .ranking__row:first-child .ranking__rank {
-  color: var(--color-red);
+  color: var(--accent-text);
 }
 
 .ranking__athlete {
@@ -204,7 +186,7 @@ const boards = computed(() => {
 }
 
 .ranking__athlete a:hover {
-  color: var(--color-red);
+  color: var(--accent-text);
   text-decoration: underline;
   text-underline-offset: 3px;
 }

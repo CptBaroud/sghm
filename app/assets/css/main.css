@@ -2,6 +2,8 @@
 :root {
   --color-red: #E31937;
   --color-red-dim: #b4132c;
+  /* red for text: brand red is too dark on the dark ground for small text (4.5:1) */
+  --accent-text: #ff4d63;
   --color-navy: #0A192F;
   --color-navy-2: #0c0c10;
   --color-blue-accent: #2151C4;
@@ -12,8 +14,9 @@
   /* dark mode (principal) */
   --bg-base: #0b0b0e;
   --bg-elevated: #131318;
-  --surface-card: #17171d;
-  --surface-card-2: #1d1d24;
+  /* cards sit a clear tone step above both grounds, since they have no outline */
+  --surface-card: #1e1e26;
+  --surface-card-2: #282831;
   --border-card: #27272f;
   --text-primary: #FFFFFF;
   --text-secondary: #b7bac2;
@@ -42,14 +45,16 @@
 }
 
 [data-theme='light'] {
-  --bg-base: #f7f7f9;
-  --bg-elevated: #f0f0f3;
+  --accent-text: #c8102e;
+  --bg-base: #f1f1f4;
+  --bg-elevated: #e8e8ed;
   --surface-card: #ffffff;
-  --surface-card-2: #f7f7f9;
-  --border-card: #e6e6ea;
+  /* pills and small controls: a visible step below white cards and the light ground */
+  --surface-card-2: #e4e4ea;
+  --border-card: #d9d9e0;
   --text-primary: #131318;
-  --text-secondary: #52545e;
-  --text-muted: #82838d;
+  --text-secondary: #4a4c56;
+  --text-muted: #6b6c76;
   --header-bg: rgba(247, 247, 249, 0.85);
 }
 
@@ -132,28 +137,6 @@ img {
   padding: var(--space-9) 0;
 }
 
-.section__eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-red);
-  margin-bottom: var(--space-3);
-}
-
-.section__eyebrow::before {
-  content: '';
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--color-red);
-  flex-shrink: 0;
-}
-
 .section__title {
   font-size: 32px;
   color: var(--text-primary);
@@ -177,10 +160,6 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-
-  .section__head--center .section__eyebrow {
-    justify-content: center;
   }
 
   .section__head--center .section__lede {
@@ -229,8 +208,8 @@ select:focus-visible,
   font-weight: 600;
   font-size: 15px;
   padding: 13px 26px;
-  border-radius: var(--radius);
-  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  border: 2px solid transparent;
   text-decoration: none;
   cursor: pointer;
   line-height: 1;
@@ -256,9 +235,8 @@ select:focus-visible,
 }
 
 .btn-secondary {
-  background: transparent;
+  background: var(--surface-card-2);
   color: var(--text-primary);
-  border-color: var(--border-card);
 }
 
 .btn-secondary:hover {
@@ -271,8 +249,8 @@ select:focus-visible,
   gap: var(--space-2);
   padding: 6px 14px;
   border-radius: 999px;
-  border: 1px solid var(--border-card);
-  background: var(--surface-card);
+  border: 2px solid transparent;
+  background: var(--surface-card-2);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -281,7 +259,8 @@ select:focus-visible,
 
 .card {
   background: var(--surface-card);
-  border: 1px solid var(--border-card);
+  /* surfaces are told apart by tone; the border only shows when a card is highlighted */
+  border: 2px solid transparent;
   border-radius: var(--radius-lg);
 }
 
@@ -300,10 +279,10 @@ select:focus-visible,
   gap: var(--space-2);
   font-family: var(--font-body);
   font-weight: 600;
-  font-size: 14px;
+  font-size: 15px;
   padding: 11px 22px;
   border-radius: var(--radius-pill);
-  border: 1px solid var(--border-card);
+  border: 2px solid transparent;
   background: var(--surface-card);
   color: var(--text-secondary);
   cursor: pointer;
@@ -337,15 +316,13 @@ select:focus-visible,
   gap: var(--space-2);
   font-family: var(--font-body);
   font-weight: 700;
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-muted);
+  font-size: 18px;
+  color: var(--text-primary);
   margin-bottom: var(--space-4);
 }
 
 .results__panel-title svg {
-  color: var(--color-red);
+  color: var(--accent-text);
 }
 
 .results__table-wrap {
@@ -358,7 +335,7 @@ select:focus-visible,
   width: 100%;
   border-collapse: collapse;
   min-width: 680px;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .results__table th,
@@ -370,10 +347,8 @@ select:focus-visible,
 
 .results__table th {
   font-weight: 600;
-  color: var(--text-muted);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  font-size: 13px;
   background: var(--bg-elevated);
   border-bottom: 1px solid var(--border-card);
 }
@@ -402,8 +377,8 @@ select:focus-visible,
 
 .results__cell-sub {
   margin-top: 2px;
-  font-size: 12px;
-  color: var(--text-muted);
+  font-size: 13px;
+  color: var(--text-secondary);
 }
 
 .results__place-clip {
@@ -423,16 +398,15 @@ select:focus-visible,
 .results__pill {
   display: inline-flex;
   white-space: nowrap;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
   padding: 6px 12px;
   border-radius: var(--radius-pill);
-  background: var(--text-primary);
-  color: var(--bg-base);
+  background: var(--surface-card-2);
+  color: var(--text-primary);
 }
 
+/* podiums and personal records: the one red thing in a row */
 .results__pill--highlight {
   background: var(--color-red);
   color: var(--color-white);
@@ -448,7 +422,7 @@ select:focus-visible,
 
 /* Stats typography shared by /resultats, /resultats/[slug] and /classement; sizes stay per page */
 .stat-total {
-  font-family: 'Anton', var(--font-display);
+  font-family: var(--font-display);
   font-weight: 400;
   line-height: 0.95;
   color: var(--text-primary);
@@ -481,11 +455,9 @@ select:focus-visible,
 
 .stat-label {
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--text-secondary);
 }
 
 .stat-class .stat-label {
@@ -498,6 +470,21 @@ select:focus-visible,
 
 .attempt--failed {
   text-decoration: line-through;
+}
+
+/* Scroll entrance, classes set by plugins/reveal.client.ts */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 600ms ease,
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal--in {
+  opacity: 1;
+  transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -531,5 +518,5 @@ select:focus-visible,
 }
 
 .legal a {
-  color: var(--color-red);
+  color: var(--accent-text);
 }

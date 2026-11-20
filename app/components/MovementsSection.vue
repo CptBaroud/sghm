@@ -1,4 +1,7 @@
 <script setup lang="ts">
+// Also rendered on /force-athletique itself, where the link would point to the current page
+const route = useRoute()
+
 const movements = [
   {
     number: '01',
@@ -49,11 +52,17 @@ const movements = [
           </div>
 
           <div class="movements__body">
-            <span class="movements__eyebrow">{{ move.tag }}</span>
             <h3 class="movements__name">{{ move.name }}</h3>
             <p class="movements__desc">{{ move.description }}</p>
           </div>
         </article>
+      </div>
+
+      <div v-if="route.path !== '/force-athletique'" class="movements__more">
+        <NuxtLink to="/force-athletique" class="btn btn-secondary">
+          Découvrir la force athlétique
+          <IconGlyph name="arrow-right" :size="15" />
+        </NuxtLink>
       </div>
     </div>
   </section>
@@ -62,8 +71,6 @@ const movements = [
 <style scoped>
 .movements {
   background: var(--bg-elevated);
-  border-top: 1px solid var(--border-card);
-  border-bottom: 1px solid var(--border-card);
 }
 
 .movements__grid {
@@ -83,7 +90,7 @@ const movements = [
   align-items: flex-start;
   padding: var(--space-4);
   overflow: hidden;
-  background: linear-gradient(200deg, #2a2a33, #101014);
+  background: var(--surface-card-2);
 }
 
 .movements__photo-img {
@@ -102,42 +109,29 @@ const movements = [
   background: linear-gradient(180deg, rgba(11, 11, 14, 0.55) 0%, rgba(11, 11, 14, 0) 40%, rgba(11, 11, 14, 0.15) 100%);
 }
 
-.movements__photo-tag {
-  position: relative;
-  z-index: 1;
-  font-family: var(--font-display);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-white);
-  background: rgba(0, 0, 0, 0.45);
-  padding: 6px 12px;
-  border-radius: var(--radius-pill);
-}
-
 .movements__body {
   padding: var(--space-5) var(--space-5) var(--space-6);
 }
 
-.movements__eyebrow {
-  display: block;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-red);
-}
-
 .movements__name {
-  margin-top: var(--space-1);
   font-size: 22px;
   color: var(--text-primary);
 }
 
 .movements__desc {
   margin-top: var(--space-3);
-  font-size: 14px;
-  color: var(--text-secondary);
+  font-size: 16px;
+  color: var(--text-primary);
+}
+
+.movements__more {
+  margin-top: var(--space-7);
+  display: flex;
+  justify-content: center;
+}
+
+.movements__more .btn {
+  border-radius: var(--radius-pill);
 }
 
 @media (min-width: 768px) {
