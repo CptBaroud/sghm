@@ -15,6 +15,7 @@ defineProps<{
   splitTitle: string
   splitPhoto: string
   splitPhotoAlt?: string
+  splitCaption?: { name: string; title: string }
   gallery: { src: string; caption: string }[]
   cta: { title: string; text: string; primary: Link; secondary?: Link }
   related: Link[]
@@ -54,9 +55,15 @@ defineProps<{
       </div>
 
       <div class="activity__split">
-        <div class="activity__split-photo">
-          <img :src="splitPhoto" :alt="splitPhotoAlt ?? ''" />
-        </div>
+        <figure class="activity__split-figure">
+          <div class="activity__split-photo">
+            <img :src="splitPhoto" :alt="splitPhotoAlt ?? ''" />
+          </div>
+          <figcaption v-if="splitCaption" class="activity__split-caption">
+            <span class="activity__split-name">{{ splitCaption.name }}</span>
+            <span class="activity__split-role">{{ splitCaption.title }}</span>
+          </figcaption>
+        </figure>
         <div class="activity__split-body">
           <h2 class="section__title">{{ splitTitle }}</h2>
           <div class="activity__prose"><slot /></div>
@@ -229,6 +236,31 @@ defineProps<{
   display: grid;
   gap: var(--space-6);
   align-items: center;
+}
+
+.activity__split-figure {
+  margin: 0;
+}
+
+.activity__split-caption {
+  margin-top: var(--space-4);
+  padding-left: var(--space-3);
+  border-left: 3px solid var(--color-red);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.activity__split-name {
+  font-family: var(--font-display);
+  font-size: 22px;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.activity__split-role {
+  font-size: 13px;
+  color: var(--text-secondary);
 }
 
 .activity__split-photo {

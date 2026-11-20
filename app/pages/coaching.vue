@@ -63,7 +63,11 @@ const linkGroups = [
       { icon: 'discipline', title: 'Technique & placements', text: 'Corriger les mouvements et trouver les bons placements pour progresser en sécurité.' },
       { icon: 'community', title: 'Cross Training', text: 'Le mardi à 19 h, un cours collectif avec des exercices et une intensité adaptés à tous.' }
     ]"
-    split-title="Marc Yeurc'h"
+    split-title="Le mot du coach"
+    :split-caption="{
+      name: 'Marc Yeurc\'h',
+      title: 'Coach sportif à la SGHM · Head coach et fondateur de LIFTRAINER · Champion de France de streetlifting 2022 (-101 kg)'
+    }"
     split-photo="/coach-marc.jpg"
     split-photo-alt="Portrait de Marc Yeurc'h, coach sportif à la SGHM"
     :gallery="[
@@ -82,7 +86,6 @@ const linkGroups = [
       { label: 'Force athlétique', href: '/force-athletique' }
     ]"
   >
-    <p class="coach__role">Head coach et fondateur de LIFTRAINER · Champion de France de streetlifting 2022 (-101 kg)</p>
     <blockquote class="coach__quote">
       <p>
         La SGHM, c'est la première salle de sport dans laquelle je me suis entraîné, en 2005. C'est ici, à Guérande,
@@ -145,16 +148,8 @@ const linkGroups = [
 </template>
 
 <style scoped>
-.coach__role {
-  font-size: 13px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--color-red);
-}
-
 .coach__quote {
-  margin: var(--space-4) 0 0;
+  margin: var(--space-5) 0 0;
   padding-left: var(--space-4);
   border-left: 3px solid var(--color-red);
   font-size: 15px;
