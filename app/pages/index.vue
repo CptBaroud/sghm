@@ -9,6 +9,7 @@ useSeoMeta({ title: 'Salle de Musculation Guérande | SGHM — Club Associatif F
   <ClubLifeSection />
   <GallerySection />
   <MovementsSection />
+  <CoachSection />
   <ScheduleSection />
   <ResultsSection />
   <PreorderSection />

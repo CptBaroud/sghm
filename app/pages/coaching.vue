@@ -5,11 +5,7 @@ useSeoMeta({
 })
 useBreadcrumbItems({ overrides: [{ label: 'Accueil' }, { label: 'Coach et cours collectif' }] })
 
-const slots = [
-  { day: 'Mardi', hours: '17 h – 19 h', label: 'Accompagnement sur le plateau de musculation' },
-  { day: 'Mardi', hours: '19 h – 20 h', label: 'Cours collectif de Cross Training, tous âges et tous niveaux', highlight: true },
-  { day: 'Mercredi', hours: '17 h – 19 h 30', label: 'Accompagnement sur le plateau de musculation' }
-]
+const slots = COACH_SLOTS
 
 const linkGroups = [
   {

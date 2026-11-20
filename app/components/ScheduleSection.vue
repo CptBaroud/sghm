@@ -69,11 +69,6 @@ const pricing = [
             </li>
           </ul>
 
-          <p class="schedule__coach">
-            <strong>Coach présent le mardi (17 h – 19 h) et le mercredi (17 h – 19 h 30).</strong>
-            Cours collectif de Cross Training le mardi de 19 h à 20 h.
-            <NuxtLink to="/coaching">En savoir plus</NuxtLink>
-          </p>
 
           <p class="schedule__summer">
             Juillet &amp; août : ouvert en semaine uniquement. Horaires indicatifs, susceptibles de changer
@@ -124,11 +119,14 @@ const pricing = [
             <a href="/documents/reglement-interieur-sghm-2026.pdf" target="_blank">règlement intérieur</a>
             (<a href="/documents/statuts-sghm-2026.pdf" target="_blank">statuts</a>).
           </p>
-          <NuxtLink v-if="!standalone" to="/horaires-tarifs" class="btn btn-secondary schedule__more">
-            Voir le détail des horaires et tarifs
-            <IconGlyph name="arrow-right" :size="15" />
-          </NuxtLink>
         </div>
+      </div>
+
+      <div v-if="!standalone" class="schedule__more">
+        <NuxtLink to="/horaires-tarifs" class="btn btn-secondary">
+          Voir le détail des horaires et tarifs
+          <IconGlyph name="arrow-right" :size="15" />
+        </NuxtLink>
       </div>
     </div>
   </section>
@@ -334,29 +332,17 @@ const pricing = [
 }
 
 .schedule__more {
-  grid-column: 1 / -1;
-  justify-self: start;
+  margin-top: var(--space-7);
+  display: flex;
+  justify-content: center;
+}
+
+.schedule__more .btn {
   border-radius: var(--radius-pill);
 }
 
 .schedule__pricing-note a {
   color: inherit;
-}
-
-.schedule__coach {
-  margin: var(--space-5) 0 0;
-  padding-left: var(--space-3);
-  border-left: 3px solid var(--color-red);
-  font-size: 13px;
-  color: var(--text-secondary);
-}
-
-.schedule__coach a {
-  color: var(--color-red);
-}
-
-.schedule__coach strong {
-  color: var(--text-primary);
 }
 
 .schedule__summer {
@@ -408,7 +394,6 @@ const pricing = [
   font-size: 16px;
 }
 
-.schedule--page .schedule__coach,
 .schedule--page .schedule__summer {
   font-size: 15px;
 }
@@ -439,8 +424,7 @@ const pricing = [
 
   .schedule--page .schedule__hours-title { grid-area: 1 / 1; }
   .schedule--page .schedule__list { grid-area: 2 / 1 / 5; }
-  .schedule--page .schedule__coach { grid-area: 1 / 2 / 3; margin-top: 0; }
-  .schedule--page .schedule__summer { grid-area: 3 / 2; }
-  .schedule--page .schedule__location { grid-area: 4 / 2; margin-top: 0; }
+  .schedule--page .schedule__summer { grid-area: 1 / 2 / 3; margin-top: 0; }
+  .schedule--page .schedule__location { grid-area: 3 / 2; margin-top: 0; }
 }
 </style>

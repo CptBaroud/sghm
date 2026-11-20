@@ -8,3 +8,10 @@ export const PAGE_CARDS = {
 }
 
 export type PageCardHref = keyof typeof PAGE_CARDS
+
+// Coach Marc Yeurc'h's weekly slots (coaching page and homepage)
+export const COACH_SLOTS = [
+  { day: 'Mardi', hours: '17 h – 19 h', label: 'Accompagnement sur le plateau de musculation' },
+  { day: 'Mardi', hours: '19 h – 20 h', label: 'Cours collectif de Cross Training, tous âges et tous niveaux', highlight: true },
+  { day: 'Mercredi', hours: '17 h – 19 h 30', label: 'Accompagnement sur le plateau de musculation' }
+]
