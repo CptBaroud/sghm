@@ -77,7 +77,7 @@ const linkGroups = [
     :cta="{
       title: 'On vous attend le mardi à 19 h',
       text: 'N\'hésitez pas à venir voir Marc, même pour une simple question.',
-      primary: { label: 'Horaires & tarifs', href: '/#tarifs' },
+      primary: { label: 'Horaires & tarifs', href: '/horaires-tarifs' },
       secondary: { label: 'Nous contacter', href: '/#contact' }
     }"
     :related="['/musculation', '/force-athletique']"

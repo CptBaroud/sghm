@@ -1,4 +1,7 @@
 <script setup lang="ts">
+// h1 on the dedicated /horaires-tarifs page, h2 on the home page
+defineProps<{ standalone?: boolean }>()
+
 const schedule = [
   { days: 'Lundi, Mardi, Mercredi, Jeudi, Vendredi', hours: '17h00 – 21h00', closed: false },
   { days: 'Samedi', hours: '14h00 – 17h00', closed: false },
@@ -43,7 +46,7 @@ const pricing = [
   <section id="tarifs" class="section schedule">
     <div class="container">
       <div class="section__head section__head--center">
-        <h2 class="section__title">Horaires &amp; Tarifs d'Adhésion</h2>
+        <component :is="standalone ? 'h1' : 'h2'" class="section__title">Horaires &amp; Tarifs d'Adhésion</component>
         <p class="section__lede">
           Tarifs annuels fixés par l'assemblée générale. Aucun frais caché, ni réengagement
           automatique.

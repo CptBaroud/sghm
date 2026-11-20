@@ -34,7 +34,7 @@ useBreadcrumbItems({ overrides: [{ label: 'Accueil' }, { label: 'Musculation loi
       title: 'Prendre sa licence loisir',
       text: 'Inscription et paiement sécurisé en ligne, puis rendez-vous à la salle.',
       primary: { label: 'S\'inscrire sur HelloAsso', href: HELLOASSO_LOISIR_URL, external: true },
-      secondary: { label: 'Horaires & tarifs', href: '/#tarifs' }
+      secondary: { label: 'Horaires & tarifs', href: '/horaires-tarifs' }
     }"
     :related="['/coaching', '/force-athletique']"
   >

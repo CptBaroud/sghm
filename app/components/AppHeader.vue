@@ -5,7 +5,7 @@ const navLinks = [
   { label: 'Musculation', href: '/musculation' },
   { label: 'Force athlétique', href: '/force-athletique' },
   { label: 'Coaching', href: '/coaching' },
-  { label: 'Horaires & Tarifs', href: '/#tarifs' },
+  { label: 'Horaires & Tarifs', href: '/horaires-tarifs' },
   { label: 'Résultats', href: '/resultats' }
 ]
 
@@ -311,7 +311,7 @@ function closeDrawer() {
     display: flex;
     flex: 1;
     justify-content: center;
-    gap: 14px;
+    gap: 10px;
     font-size: 11px;
   }
 
@@ -326,7 +326,7 @@ function closeDrawer() {
 
 @media (min-width: 1024px) {
   .header__nav {
-    gap: var(--space-4);
+    gap: var(--space-3);
     font-size: 12px;
   }
 
@@ -345,6 +345,13 @@ function closeDrawer() {
 
   .header__cta {
     display: inline-flex;
+  }
+}
+
+/* 6 links + the CTA overflow at 1024px with 16px gaps */
+@media (min-width: 1200px) {
+  .header__nav {
+    gap: var(--space-5);
   }
 }
 </style>
