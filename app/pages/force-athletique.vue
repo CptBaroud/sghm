@@ -8,7 +8,6 @@ useBreadcrumbItems({ overrides: [{ label: 'Accueil' }, { label: 'Force athlétiq
 
 <template>
   <ActivityPage
-    eyebrow="Pratique compétitive"
     title="Force"
     accent="athlétique"
     lede="Soulever la charge la plus lourde possible sur trois mouvements : squat, développé couché et soulevé de terre. La SGHM est affiliée à la Fédération Française de Force (FFForce)."

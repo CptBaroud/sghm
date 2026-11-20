@@ -4,7 +4,6 @@ type Icon = 'discipline' | 'equipment' | 'community' | 'clock' | 'trophy' | 'fla
 interface Link { label: string; href: string; external?: boolean }
 
 defineProps<{
-  eyebrow: string
   title: string
   accent: string
   lede: string
@@ -25,10 +24,10 @@ defineProps<{
 <script lang="ts">
 // "Voir aussi" cards, shared so each page only lists which ones it links to
 const pages = {
-  '/coaching': { eyebrow: 'Encadrement', title: 'Coach & cours collectif', text: 'Marc vous accompagne le mardi et le mercredi, Cross Training le mardi à 19 h.', photo: '/coach-marc.jpg' },
-  '/musculation': { eyebrow: 'Pratique loisir', title: 'Musculation loisir', text: 'Créneaux libres 7j/7, à son rythme, dès 100 € par an.', photo: '/gallery/24.jpg' },
-  '/force-athletique': { eyebrow: 'Pratique compétitive', title: 'Force athlétique', text: 'Squat, développé couché, soulevé de terre : la compétition FFForce.', photo: '/squat.jpg' },
-  '/classement': { eyebrow: 'Compétition', title: 'Classement du club', text: 'Les meilleures performances des athlètes de la SGHM.', photo: '/bench.jpg' }
+  '/coaching': { title: 'Coach & cours collectif', photo: '/coach-marc.jpg' },
+  '/musculation': { title: 'Musculation loisir', photo: '/gallery/24.jpg' },
+  '/force-athletique': { title: 'Force athlétique', photo: '/squat.jpg' },
+  '/classement': { title: 'Classement du club', photo: '/bench.jpg' }
 }
 </script>
 
@@ -37,7 +36,6 @@ const pages = {
     <img :src="photo" :alt="photoAlt" class="activity-hero__photo" />
     <span class="activity-hero__scrim" aria-hidden="true" />
     <div class="container activity-hero__inner">
-      <span class="section__eyebrow">{{ eyebrow }}</span>
       <h1 class="activity-hero__title">
         {{ title }} <span class="activity-hero__accent">{{ accent }}</span>
       </h1>
@@ -115,9 +113,7 @@ const pages = {
             <img :src="pages[href].photo" alt="" loading="lazy" class="activity__related-photo" />
             <span class="activity__related-scrim" aria-hidden="true" />
             <span class="activity__related-body">
-              <span class="activity__related-eyebrow">{{ pages[href].eyebrow }}</span>
               <span class="activity__related-name">{{ pages[href].title }}</span>
-              <span class="activity__related-text">{{ pages[href].text }}</span>
               <span class="activity__related-more">
                 Découvrir
                 <IconGlyph name="arrow-right" :size="15" />
@@ -419,29 +415,11 @@ const pages = {
   gap: var(--space-1);
 }
 
-.activity__related-eyebrow {
-  align-self: flex-start;
-  margin-bottom: var(--space-1);
-  padding: 3px 9px;
-  border-radius: var(--radius-pill);
-  background: var(--color-red);
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-white);
-}
-
 .activity__related-name {
   font-family: var(--font-display);
   font-size: 26px;
   text-transform: uppercase;
   line-height: 1.1;
-}
-
-.activity__related-text {
-  font-size: 14px;
-  color: var(--color-steel-300);
 }
 
 .activity__related-more {

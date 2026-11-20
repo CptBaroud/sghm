@@ -47,7 +47,6 @@ const linkGroups = [
 
 <template>
   <ActivityPage
-    eyebrow="Encadrement"
     title="Coach &"
     accent="cours collectif"
     lede="Marc Yeurc'h, coach sportif à la SGHM, vous accompagne sur le plateau le mardi et le mercredi, et anime un cours collectif de Cross Training le mardi soir."

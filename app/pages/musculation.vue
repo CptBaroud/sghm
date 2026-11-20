@@ -8,7 +8,6 @@ useBreadcrumbItems({ overrides: [{ label: 'Accueil' }, { label: 'Musculation loi
 
 <template>
   <ActivityPage
-    eyebrow="Pratique loisir"
     title="Musculation"
     accent="à son rythme"
     lede="La majorité des adhérents vient à la SGHM pour une raison simple : s'entraîner régulièrement, sans objectif de compétition, dans une salle associative et conviviale."
