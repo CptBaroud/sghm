@@ -61,6 +61,7 @@ const formatPlace = (place: string) => (place === 'G' ? 'Invité' : place === '1
           {{ formatWeightClass(athlete.weightClass) }} · {{ athlete.division }} ·
           {{ athlete.results.length }} compétition{{ athlete.results.length > 1 ? 's' : '' }}
         </p>
+        <p class="athlete-page__legend">En rouge, son meilleur total : son record personnel.</p>
       </div>
 
       <div class="results__panels">
@@ -121,7 +122,7 @@ const formatPlace = (place: string) => (place === 'G' ? 'Invité' : place === '1
                   <td>
                     <div class="athlete-page__pills">
                       <span class="results__pill">{{ formatPlace(meet.place) }}</span>
-                      <span v-if="meet.isBest" class="results__pill results__pill--highlight">Record perso</span>
+                      <span v-if="meet.isBest" class="visually-hidden">Record perso</span>
                     </div>
                   </td>
                 </tr>
@@ -149,7 +150,7 @@ const formatPlace = (place: string) => (place === 'G' ? 'Invité' : place === '1
                 </p>
                 <div class="athlete-page__pills">
                   <span class="results__pill">{{ formatPlace(meet.place) }}</span>
-                  <span v-if="meet.isBest" class="results__pill results__pill--highlight">Record perso</span>
+                  <span v-if="meet.isBest" class="visually-hidden">Record perso</span>
                 </div>
               </div>
 
@@ -200,6 +201,12 @@ const formatPlace = (place: string) => (place === 'G' ? 'Invité' : place === '1
   border-radius: var(--radius-pill);
 }
 
+.athlete-page__legend {
+  margin-top: var(--space-2);
+  font-size: 15px;
+  color: var(--text-secondary);
+}
+
 /* 8 columns: tighter than the home table so it fits the container on desktop */
 .results__table th,
 .results__table td {
@@ -239,8 +246,23 @@ const formatPlace = (place: string) => (place === 'G' ? 'Invité' : place === '1
   min-width: 0;
 }
 
+/* personal record: the whole row (or card on a phone) in the brand red */
+.athlete-page__best td,
 .meet--best {
+  background: var(--color-red);
   border-color: var(--color-red);
+}
+
+.athlete-page__best td,
+.athlete-page__best td *,
+.meet--best,
+.meet--best * {
+  color: var(--color-white);
+}
+
+.athlete-page__best .results__pill,
+.meet--best .results__pill {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .meet__heading {
