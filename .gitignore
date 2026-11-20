@@ -25,3 +25,6 @@ logs
 
 # OpenIPF raw dataset (npm run data:download)
 data/openipf
+
+# design-taste-frontend inspector output
+.taste-skill/
