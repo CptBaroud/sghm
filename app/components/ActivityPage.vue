@@ -244,8 +244,6 @@ defineProps<{
 
 .activity__split-caption {
   margin-top: var(--space-4);
-  padding-left: var(--space-3);
-  border-left: 3px solid var(--color-red);
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -268,16 +266,6 @@ defineProps<{
   border-radius: var(--radius-lg);
   overflow: hidden;
   aspect-ratio: 1;
-}
-
-.activity__split-photo::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  background: var(--color-red);
 }
 
 .activity__split-photo img {
