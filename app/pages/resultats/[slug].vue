@@ -54,7 +54,6 @@ const formatPlace = (place: string) => (place === 'G' ? 'Invité' : place === '1
 <template>
   <section class="section">
     <div class="container">
-      <a href="/resultats" class="athlete-page__back"><span aria-hidden="true">←</span> Tous les résultats</a>
 
       <div class="section__head">
         <h1 class="section__title">{{ athlete.name }}</h1>
@@ -62,6 +61,7 @@ const formatPlace = (place: string) => (place === 'G' ? 'Invité' : place === '1
           {{ formatWeightClass(athlete.weightClass) }} · {{ athlete.division }} ·
           {{ athlete.results.length }} compétition{{ athlete.results.length > 1 ? 's' : '' }}
         </p>
+        <p class="athlete-page__legend">En rouge, son meilleur total : son record personnel.</p>
       </div>
 
       <div class="results__panels">
@@ -122,7 +122,7 @@ const formatPlace = (place: string) => (place === 'G' ? 'Invité' : place === '1
                   <td>
                     <div class="athlete-page__pills">
                       <span class="results__pill">{{ formatPlace(meet.place) }}</span>
-                      <span v-if="meet.isBest" class="results__pill results__pill--highlight">Record perso</span>
+                      <span v-if="meet.isBest" class="visually-hidden">Record perso</span>
                     </div>
                   </td>
                 </tr>
@@ -150,7 +150,7 @@ const formatPlace = (place: string) => (place === 'G' ? 'Invité' : place === '1
                 </p>
                 <div class="athlete-page__pills">
                   <span class="results__pill">{{ formatPlace(meet.place) }}</span>
-                  <span v-if="meet.isBest" class="results__pill results__pill--highlight">Record perso</span>
+                  <span v-if="meet.isBest" class="visually-hidden">Record perso</span>
                 </div>
               </div>
 
@@ -189,23 +189,22 @@ const formatPlace = (place: string) => (place === 'G' ? 'Invité' : place === '1
           </ul>
         </div>
       </div>
+
+      <a href="/resultats" class="btn btn-secondary athlete-page__back"><span aria-hidden="true">←</span> Tous les résultats</a>
     </div>
   </section>
 </template>
 
 <style scoped>
 .athlete-page__back {
-  display: inline-flex;
-  gap: var(--space-2);
-  margin-bottom: var(--space-5);
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  text-decoration: none;
+  margin-top: var(--space-7);
+  border-radius: var(--radius-pill);
 }
 
-.athlete-page__back:hover {
-  color: var(--color-red);
+.athlete-page__legend {
+  margin-top: var(--space-2);
+  font-size: 15px;
+  color: var(--text-secondary);
 }
 
 /* 8 columns: tighter than the home table so it fits the container on desktop */
@@ -213,11 +212,6 @@ const formatPlace = (place: string) => (place === 'G' ? 'Invité' : place === '1
 .results__table td {
   padding-left: 12px;
   padding-right: 12px;
-}
-
-.athlete-page__best td,
-.meet--best {
-  background: color-mix(in srgb, var(--color-red) 8%, var(--surface-card));
 }
 
 .athlete-page__attempts {
@@ -252,8 +246,23 @@ const formatPlace = (place: string) => (place === 'G' ? 'Invité' : place === '1
   min-width: 0;
 }
 
+/* personal record: the whole row (or card on a phone) in the brand red */
+.athlete-page__best td,
 .meet--best {
+  background: var(--color-red);
   border-color: var(--color-red);
+}
+
+.athlete-page__best td,
+.athlete-page__best td *,
+.meet--best,
+.meet--best * {
+  color: var(--color-white);
+}
+
+.athlete-page__best .results__pill,
+.meet--best .results__pill {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .meet__heading {
@@ -286,8 +295,8 @@ const formatPlace = (place: string) => (place === 'G' ? 'Invité' : place === '1
 
 .meet__info {
   margin-top: var(--space-1);
-  font-size: 13px;
-  color: var(--text-muted);
+  font-size: 14px;
+  color: var(--text-secondary);
 }
 
 .meet__body {

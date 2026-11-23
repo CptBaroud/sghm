@@ -142,7 +142,7 @@ function onSubmit() {
 
 .contact__info-list svg {
   flex-shrink: 0;
-  color: var(--color-red);
+  color: var(--accent-text);
 }
 
 .contact__info-list a {
@@ -169,11 +169,9 @@ function onSubmit() {
 }
 
 .contact__field label {
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--text-muted);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
 .contact__field input,
@@ -194,7 +192,7 @@ function onSubmit() {
 
 .contact__error {
   font-size: 13px;
-  color: var(--color-red);
+  color: var(--accent-text);
 }
 
 .contact__submit {
